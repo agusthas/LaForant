@@ -82,8 +82,18 @@ body {
   text-transform: uppercase;
 }
 
-.c-section-body {
+.o-section-subtitle {
+  grid-column: 1 / -1;
+  font-family: $ff-uni-sans;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.o-section-body {
+  grid-column: 1 / 6;
   font-size: 0.85rem;
+  color: $clr-text-secondary;
 }
 
 .navbar {
