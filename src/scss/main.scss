@@ -48,11 +48,6 @@ body {
   background-color: $clr-light-brown;
 }
 
-.c-tertiary-btn {
-  @extend .c-btn;
-  outline: 1px solid $clr-primary;
-}
-
 .c-play-button {
   --radius: 45px;
   width: var(--radius);
