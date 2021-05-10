@@ -1,51 +1,27 @@
 @use './resets';
 @use './fontface';
-
-$clr-primary: hsl(210, 40%, 10%);
-$clr-secondary: hsl(355, 100%, 64%);
-
-$clr-light-brown: hsl(38, 22%, 90%);
-$clr-text-secondary: hsl(215, 14%, 34%);
-
-$ff-tungsten: 'Tungsten Bold', 'Segoe Ui', sans-serif;
-$ff-uni-sans: 'Uni Sans', 'Segoe Ui', sans-serif;
-$ff-roboto: 'Roboto', 'Segoe Ui', sans-serif;
+@use './transitions' as *;
+@use './animations' as *;
+@use './media' as *;
+@use './variables' as *;
+@use './buttons' as *;
 
 body {
-  background-color: $clr-light-brown;
+  background-color: $clr-tertiary;
   font-family: $ff-roboto;
   color: $clr-primary;
 }
 
-.l-grid-6 {
+.l-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
-  gap: 10px 20px;
-}
+  align-items: center;
+  gap: 10px 30px;
 
-.c-btn {
-  display: inline-block;
-  padding: 0.5em 4em;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-family: $ff-uni-sans;
-  letter-spacing: 0.04em;
-  text-align: center;
-  font-weight: 900;
-  color: $clr-light-brown;
-  border: 0;
-  outline: 1px solid $clr-light-brown;
-  outline-offset: 5px;
-  background-color: $clr-secondary;
-  cursor: pointer;
-}
-
-.c-secondary-btn {
-  @extend .c-btn;
-  color: $clr-primary;
-  background-color: $clr-light-brown;
+  @include bp-min('sm') {
+    grid-template-columns: repeat(8, 1fr);
+  }
 }
 
 .c-play-button {
@@ -55,7 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid $clr-light-brown;
+  border: 2px solid $clr-tertiary;
   border-radius: 99999px;
   cursor: pointer;
 
@@ -64,7 +40,7 @@ body {
     --tr-size: 15px;
     width: var(--tr-size);
     height: calc(var(--tr-size) - 5px);
-    background-color: $clr-light-brown;
+    background-color: $clr-tertiary;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     transform: rotate(90deg) translateY(-1px);
   }
@@ -76,20 +52,73 @@ body {
   line-height: 1.1;
   font-family: $ff-tungsten;
   text-transform: uppercase;
+
+  @include bp-min('sm') {
+    font-size: 5rem;
+  }
 }
 
 .o-section-subtitle {
-  grid-column: 1 / -1;
   font-family: $ff-uni-sans;
   text-transform: uppercase;
   font-size: 1.1rem;
+  line-height: 1.2;
   letter-spacing: 0.02em;
+
+  @include bp-min('sm') {
+    font-size: 1.5rem;
+  }
 }
 
 .o-section-body {
-  grid-column: 1 / 6;
   font-size: 0.85rem;
   color: $clr-text-secondary;
+  line-height: 1.6;
+
+  @include bp-min('sm') {
+    font-size: 1rem;
+  }
+}
+
+.grid-wrapper {
+  margin-top: 2rem;
+
+  @include bp-min('sm') {
+    margin-top: 3rem;
+  }
+}
+
+.social {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    color: $clr-tertiary;
+    font-size: 1.3rem;
+    @include transition();
+
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+      color: $clr-secondary;
+    }
+  }
+}
+
+.scroll-down {
+  display: none;
+
+  @include bp-min('sm') {
+    display: block;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    @include animate-bounce();
+  }
 }
 
 .navbar {
@@ -101,6 +130,10 @@ body {
   width: 100%;
   padding: 1.3rem 2rem;
   z-index: 10;
+
+  @include bp-min('sm') {
+    padding: 2rem 3rem;
+  }
 
   .logo {
     height: 2rem;
@@ -118,7 +151,7 @@ body {
       position: relative;
       width: 100%;
       height: 2px;
-      background-color: $clr-light-brown;
+      background-color: $clr-tertiary;
 
       &::before,
       &::after {
@@ -143,6 +176,9 @@ body {
 
 .section-container {
   padding: 5.25rem 2rem;
+  @include bp-min('sm') {
+    padding: 4rem 3rem;
+  }
 }
 
 .top {
@@ -153,7 +189,7 @@ body {
   min-height: 100vh;
   background-color: $clr-primary;
   text-align: center;
-  color: $clr-light-brown;
+  color: $clr-tertiary;
   position: relative;
 
   &__title {
@@ -166,6 +202,7 @@ body {
 
   &__subtitle {
     margin-top: 1rem;
+    max-width: 55ch;
     padding: 0 0.2rem;
     font-family: $ff-roboto;
     line-height: 1.6;
@@ -176,16 +213,34 @@ body {
     margin-top: 2rem;
   }
 
-  &__watch-trailer {
+  &__container {
     position: absolute;
-    right: 2rem;
-    bottom: 1.5rem;
+    display: flex;
+    padding: 0 2rem;
+    bottom: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__watch-trailer {
     display: flex;
     align-items: center;
     font-family: $ff-uni-sans;
     font-weight: 900;
     text-align: left;
     letter-spacing: 0.06em;
+    cursor: pointer;
+    @include transition();
+
+    &:hover {
+      color: $clr-secondary;
+
+      .c-play-button {
+        border-top-color: $clr-secondary;
+        @include animate-spin();
+      }
+    }
 
     .c-play-button {
       margin-right: 0.5rem;
@@ -202,72 +257,63 @@ body {
       line-height: 1;
     }
   }
+
+  @include bp-min('sm') {
+    &__title {
+      font-size: 5.5rem;
+    }
+
+    &__subtitle {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    &__btn {
+      margin-top: 3rem;
+    }
+  }
 }
 
+/* ABOUT */
 .about {
-  &__title {
-    font-size: 3.6rem;
-  }
-
-  .wrapper {
-    margin-top: 2rem;
-  }
-
-  &__subtitle {
-    grid-column: 1 / -1;
-    font-family: $ff-uni-sans;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    letter-spacing: 0.02em;
+  &__content {
+    grid-column: 1/6;
   }
 
   &__body {
-    grid-column: 1 / 6;
-    font-size: 0.85rem;
-    color: $clr-text-secondary;
+    margin-top: 1rem;
   }
 
   &__video {
-    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(#c4c4c4, 0.8);
-    width: 100%;
-    height: 212px;
-    position: relative;
-  }
-}
-
-.c-image-container {
-  width: 100%;
-  position: relative;
-  pointer-events: none;
-
-  .img-1 {
-    position: absolute;
-    width: 80%;
-    left: -40px;
+    grid-column: 1/-1;
+    min-height: 180px;
+    align-self: stretch;
   }
 
-  .img-2 {
-    top: 0;
-    bottom: 0;
-    right: -40px;
-    width: 80%;
-    position: absolute;
-    transform: translateY(60px);
+  @include bp-min('sm') {
+    &__content {
+      grid-column: 1/5;
+    }
+
+    &__video {
+      grid-column: 5/-1;
+    }
   }
 }
 
 .agents {
   width: 100%;
   background-color: $clr-secondary;
-  color: $clr-light-brown;
+  color: $clr-tertiary;
   position: relative;
 
-  .wrapper {
-    padding: 5.5rem 2rem 2rem;
+  &--wrapper {
+    @extend .section-container;
+    padding-bottom: 2rem;
   }
 
   &__body {
@@ -283,8 +329,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
-    font-size: 0.8rem;
-    padding: 0.5em 2em;
+    padding: 0.5em 1.5em;
   }
 
   &__images {
@@ -308,6 +353,19 @@ body {
       position: absolute;
     }
   }
+
+  @include bp-min('sm') {
+    &__body {
+      font-size: 1rem;
+      max-width: 65ch;
+    }
+
+    &__btn {
+      bottom: 150px;
+      font-size: 1rem;
+      padding: 0.6em 4.5em;
+    }
+  }
 }
 
 .maps {
@@ -316,11 +374,15 @@ body {
   background-size: cover;
 
   &__content {
-    margin-top: 2rem;
+    grid-column: 1/6;
+  }
+
+  &__body {
+    margin-top: 1rem;
   }
 
   &__btn {
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 }
 
@@ -328,7 +390,7 @@ body {
   width: 100%;
   padding-top: 2rem;
   background-color: $clr-primary;
-  color: $clr-light-brown;
+  color: $clr-tertiary;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -340,6 +402,7 @@ body {
 
   &__copyright {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
     padding: 0.1em 2em;

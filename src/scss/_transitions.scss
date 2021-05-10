@@ -1,0 +1,55 @@
+@use "sass:map";
+
+$transition-duration: (
+  'DEFAULT': 150ms,
+  '100': 100ms,
+  '150': 200ms,
+  '300': 300ms,
+  '500': 500ms,
+  '600': 600ms,
+  '1000': 1000ms,
+);
+
+$transition-timing-function: (
+  'DEFAULT': cubic-bezier(0.4, 0, 0.2, 1),
+  'linear': linear,
+  'in': cubic-bezier(0.4, 0, 1, 1),
+  'out': cubic-bezier(0, 0, 0.2, 1),
+);
+
+$transition-property: (
+  'none': none,
+  'all': all,
+  'DEFAULT': (
+    background-color,
+    border-color,
+    color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    backdrop-filter,
+  ),
+  'colors': (
+    background-color,
+    border-color,
+    color,
+    fill,
+    stroke,
+  ),
+  'opacity': opacity,
+  'shadow': box-shadow,
+  'transform': transform,
+);
+
+@mixin transition(
+  $property: 'DEFAULT',
+  $duration: 'DEFAULT',
+  $timing: 'DEFAULT'
+) {
+  transition: all map-get($transition-duration, $duration)
+    map-get($transition-timing-function, $timing);
+  transition-property: map-get($transition-property, $property);
+}

@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
     <title>Vite App</title>
   </head>
   <body>
@@ -22,36 +29,52 @@
             egestas pharetra urna, eu, ipsum rutrum proin arcu diam. Nibh
             suspendisse amet duis ut.
           </p>
-          <button class="top__btn c-btn">Play Now</button>
+          <a href="#" class="top__btn c-btn-secondary">
+            PLAY NOW
+            <span class="c-btn-secondary__box"></span>
+          </a>
         </div>
 
-        <div class="top__watch-trailer">
-          <button class="c-play-button">
-            <span class=""></span>
-          </button>
-
-          <div>
-            <div class="watch">watch</div>
-            <div class="trailer">trailer</div>
+        <div class="top__container">
+          <div class="social">
+            <a class="social__link" href="#"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a class="social__link" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="social__link" href="#"><i class="fab fa-youtube"></i></a>
           </div>
+
+          <div class="top__watch-trailer">
+            <button class="c-play-button">
+              <span class=""></span>
+            </button>
+
+            <div>
+              <div class="watch">watch</div>
+              <div class="trailer">trailer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-down">
+          <i class="fa fa-arrow-down fa-2x"></i>
         </div>
       </section>
       <section class="about section-container">
         <h2 class="about__title c-section-header">We are laforant</h2>
-        <div class="wrapper">
-          <div class="l-grid-6">
-            <h3 class="about__subtitle">Define your own battlefield</h3>
-            <p class="about__body c-section-body">
+
+        <div class="grid-wrapper l-grid">
+          <div class="about__content">
+            <h3 class="about__subtitle o-section-subtitle">
+              Find your own battlefield
+            </h3>
+            <p class="about__body o-section-body">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
               in leo tempus, nisl, tellus augue. Vitae et praesent convallis
               commodo. Porttitor nulla sed pretium at et erat. Aliquam massa
               amet et consequat. Id odio volutpat erat aliquet cursus est.
-              Senectus vestibulum sit feugiat mattis ornare tristique euismod
-              tempus pellentesque. Tempor egestas venenatis eget amet amet
-              consectetur ac massa.
             </p>
           </div>
-
           <div class="about__video">
             <button class="about__video-button c-play-button">
               <span></span>
@@ -60,23 +83,60 @@
         </div>
       </section>
 
-      <section class="agents section-container">
-        <h2 class="agents__title c-section-header">Pick your agents</h2>
-        <p class="agents__body c-section-body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-          leo tempus, nisl, tellus augue. Vitae et praesent convallis commodo.
-          Porttitor nulla sed pretium at et erat. Aliquam massa amet et
-          consequat. Id odio volutpat erat aliquet cursus est.
-        </p>
-        <button class="agents__btn c-secondary-btn">View All Agents</button>
+      <section class="agents">
+        <div class="agents--wrapper">
+          <h2 class="agents__title c-section-header">Pick your agents</h2>
+          <p class="agents__body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+            leo tempus, nisl, tellus augue. Vitae et praesent convallis commodo.
+            Porttitor nulla sed pretium at et erat. Aliquam massa amet et
+            consequat. Id odio volutpat erat aliquet cursus est.
+          </p>
+        </div>
+        <a href="#" class="agents__btn c-btn-tertiary">
+          View All Agents
+          <span class="c-btn-tertiary__box"></span>
+        </a>
         <div class="agents__images">
-          <div class="c-image-container">
-            <img class="img-1" src="/src/assets/images/sage.png" alt="sage" />
-            <img class="img-2" src="/src/assets/images/raze.png" alt="raze" />
-          </div>
+          <img class="sage" src="/src/assets/images/sage.png" alt="" />
+          <img class="raze" src="/src/assets/images/raze.png" alt="" />
         </div>
       </section>
+      <section class="maps section-container">
+        <h2 class="maps__title c-section-header">
+          Choose
+          <br />
+          your maps
+        </h2>
+        <div class="grid-wrapper l-grid">
+          <div class="maps__content">
+            <h3 class="maps__subtitle o-section-subtitle">
+              Fight around the world
+            </h3>
+            <p class="maps__body o-section-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+              in leo tempus, nisl, tellus augue. Vitae et praesent convallis
+              commodo. Porttitor nulla sed pretium at et erat.
+            </p>
+          </div>
+        </div>
+        <a href="#" class="maps__btn c-btn-primary">
+          VIEW ALL MAPS
+          <span class="c-btn-primary__box"></span>
+        </a>
+      </section>
     </main>
+    <footer class="footer">
+      <h2 class="footer__title">DEFY YOUR OWN LIMITS.</h2>
+      <div class="footer__copyright">
+        <div>&COPY; 2021 Laforant</div>
+        <div class="social">
+          <a class="social__link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social__link" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="social__link" href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
     <!-- Scripts -->
     <script type="module" src="/src/js/main.js"></script>
   </body>

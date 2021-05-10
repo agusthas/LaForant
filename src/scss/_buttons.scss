@@ -1,0 +1,103 @@
+@use "sass:map";
+@use './variables' as *;
+@use './transitions' as *;
+@use './media' as *;
+
+$main-color: (
+  'primary': (
+    'bg-awal': $clr-primary,
+    'bg-transisi': $clr-tertiary,
+    'text-awal': $clr-tertiary,
+    'text-transisi': $clr-primary,
+    'outline-awal': $clr-primary,
+    'outline-transisi': $clr-primary,
+    'box-awal': $clr-secondary,
+    'box-transisi': $clr-primary,
+  ),
+  'secondary': (
+    'bg-awal': $clr-secondary,
+    'bg-transisi': $clr-primary,
+    'text-awal': $clr-tertiary,
+    'text-transisi': $clr-secondary,
+    'outline-awal': $clr-tertiary,
+    'outline-transisi': $clr-secondary,
+    'box-awal': $clr-primary,
+    'box-transisi': $clr-secondary,
+  ),
+  'tertiary': (
+    'bg-awal': $clr-tertiary,
+    'bg-transisi': $clr-primary,
+    'text-awal': $clr-primary,
+    'text-transisi': $clr-tertiary,
+    'outline-awal': $clr-tertiary,
+    'outline-transisi': $clr-tertiary,
+    'box-awal': $clr-primary,
+    'box-transisi': $clr-tertiary,
+  ),
+);
+
+@each $type, $color in $main-color {
+  .c-btn-#{$type} {
+    display: inline-block;
+    padding: 0.6em 5em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-family: $ff-uni-sans;
+    letter-spacing: 0.04em;
+    text-align: center;
+    font-weight: 900;
+    color: map-get($color, 'text-awal');
+    border: 0;
+    outline: 1px solid map-get($color, 'outline-awal');
+    outline-offset: 5px;
+    background-color: map-get($color, 'bg-awal');
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    @include transition('colors', $duration: '600');
+
+    &::before {
+      --skew: -30deg;
+      content: '';
+      position: absolute;
+      top: -2px;
+      right: -20px;
+      bottom: -2px;
+      left: -20px;
+      background-color: map-get($color, 'bg-transisi');
+      transform: translateX(-105%) skew(var(--skew));
+      z-index: -1;
+      @include transition('transform', '600');
+    }
+
+    &__box {
+      --sz: 6px;
+      width: var(--sz);
+      height: var(--sz);
+      display: inline-block;
+      position: absolute;
+      background-color: map-get($color, 'box-awal');
+      right: 0;
+      bottom: 0;
+      @include transition('colors', '600');
+    }
+
+    &:hover {
+      color: map-get($color, 'text-transisi');
+      outline-color: map-get($color, 'outline-transisi');
+      &::before {
+        transform: translateX(0) skew(var(--skew));
+      }
+
+      .c-btn-#{$type}__box {
+        background-color: map-get($color, 'box-transisi');
+      }
+    }
+
+    @include bp-min('sm') {
+      font-size: 1rem;
+    }
+  }
+}
