@@ -34,6 +34,7 @@ body {
   letter-spacing: 0.04em;
   text-align: center;
   font-weight: 900;
+  color: $clr-light-brown;
   border: 0;
   outline: 1px solid $clr-light-brown;
   outline-offset: 5px;
@@ -288,6 +289,28 @@ body {
 
   &__images {
     margin-top: 2rem;
-    min-height: 310px;
+  }
+}
+
+.footer {
+  width: 100%;
+  padding-top: 2rem;
+  background-color: $clr-primary;
+  color: $clr-light-brown;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  &__copyright {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.1em 2em;
+    background-color: $clr-secondary;
   }
 }
