@@ -271,9 +271,14 @@ body {
   color: $clr-light-brown;
   position: relative;
 
+  .wrapper {
+    padding: 5.5rem 2rem 2rem;
+  }
+
   &__body {
     padding-right: 2em;
     margin-top: 2rem;
+    font-size: 0.85rem;
     line-height: 1.6;
   }
 
@@ -288,6 +293,34 @@ body {
   }
 
   &__images {
+    position: relative;
+    overflow-x: clip; // FIXME: Hacks
+
+    .sage {
+      width: 70%;
+      transform: translateX(-10px);
+    }
+
+    .raze {
+      width: 70%;
+      top: 0;
+      right: 0;
+      transform: translate(1rem, 3rem);
+      position: absolute;
+    }
+  }
+}
+
+.maps {
+  padding-top: 7rem;
+  background-image: url('../assets/images/maps-bg.png');
+  background-size: cover;
+
+  &__content {
+    margin-top: 2rem;
+  }
+
+  &__btn {
     margin-top: 2rem;
   }
 }
