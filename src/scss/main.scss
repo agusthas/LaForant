@@ -22,6 +22,10 @@ body {
   @include bp-min('sm') {
     grid-template-columns: repeat(8, 1fr);
   }
+
+  @include bp-min('md') {
+    grid-template-columns: repeat(12, 1fr);
+  }
 }
 
 .c-play-button {
@@ -54,6 +58,66 @@ body {
     transform: translate(-40%, -50%);
     @include transition();
   }
+
+  @include bp-min('md') {
+    &:hover {
+      .c-play-button__icon {
+        color: $clr-primary;
+      }
+    }
+
+    &__spinner {
+      --radius: 70px;
+    }
+
+    &__icon {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.c-trailer {
+  display: flex;
+  align-items: center;
+  font-family: $ff-uni-sans;
+  font-weight: 900;
+  text-align: left;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+
+  &__button {
+    margin-right: 0.5rem;
+  }
+
+  &__top {
+    font-size: 0.7rem;
+    line-height: 1;
+  }
+
+  &__bottom {
+    font-size: 1rem;
+    margin-top: 0.3rem;
+    line-height: 1;
+  }
+
+  @include bp-min('md') {
+    &__button {
+      margin-right: 1rem;
+    }
+
+    &__top,
+    &__bottom {
+      letter-spacing: 0.025em;
+    }
+
+    &__top {
+      font-size: 1.1rem;
+    }
+
+    &__bottom {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .c-section-header {
@@ -65,6 +129,14 @@ body {
 
   @include bp-min('sm') {
     font-size: 5rem;
+  }
+
+  @include bp-min('md') {
+    font-size: 6.5rem;
+  }
+
+  @include bp-min('lg') {
+    font-size: 8.5rem;
   }
 }
 
@@ -78,15 +150,35 @@ body {
   @include bp-min('sm') {
     font-size: 1.5rem;
   }
+
+  @include bp-min('md') {
+    font-size: 1.8rem;
+  }
 }
 
 .o-section-body {
   font-size: 0.85rem;
   color: $clr-text-secondary;
   line-height: 1.6;
+  max-width: 45ch;
 
   @include bp-min('sm') {
     font-size: 1rem;
+  }
+
+  @include bp-min('md') {
+    font-size: 1.125rem;
+  }
+}
+
+.section-container {
+  padding: 5.25rem 2rem;
+  @include bp-min('sm') {
+    padding: 4rem 3rem;
+  }
+
+  @include bp-min('md') {
+    padding: 4rem 5rem;
   }
 }
 
@@ -95,6 +187,10 @@ body {
 
   @include bp-min('sm') {
     margin-top: 3rem;
+  }
+
+  @include bp-min('md') {
+    margin-top: 4.5rem;
   }
 }
 
@@ -146,6 +242,16 @@ body {
       color: var(--clr-hover);
     }
   }
+
+  @include bp-min('md') {
+    &__link {
+      font-size: 1.7rem;
+
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
 }
 
 .scroll-down {
@@ -158,6 +264,10 @@ body {
     left: 50%;
     transform: translateX(-50%);
     @include animate-bounce();
+  }
+
+  @include bp-min('md') {
+    display: none;
   }
 }
 
@@ -219,12 +329,22 @@ body {
   .logo {
     height: 2rem;
   }
-}
 
-.section-container {
-  padding: 5.25rem 2rem;
-  @include bp-min('sm') {
-    padding: 4rem 3rem;
+  @include bp-min('md') {
+    background-color: transparent;
+    padding: 1.5rem 2rem;
+
+    .hamburger {
+      display: none;
+    }
+
+    .logo {
+      height: 3rem;
+    }
+  }
+
+  @include bp-min('lg') {
+    padding: 3rem;
   }
 }
 
@@ -293,7 +413,6 @@ body {
   }
 
   &__list {
-    // outline: 2px solid aqua;
     padding: 0.1em 1.25em;
     padding-left: 1.5em;
 
@@ -339,6 +458,7 @@ body {
 }
 
 .top {
+  // TODO: geser kanan dikit itu bg-secondary nyaa buat lg screen
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -351,7 +471,12 @@ body {
   z-index: 2;
 
   &__image {
-    display: none;
+    &--mobile {
+      display: none;
+    }
+    &--desktop {
+      display: none;
+    }
   }
 
   &__title {
@@ -383,32 +508,8 @@ body {
     bottom: 2rem;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-  }
-
-  &__watch-trailer {
-    display: flex;
-    align-items: center;
-    font-family: $ff-uni-sans;
-    font-weight: 900;
-    text-align: left;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-
-    .c-play-button {
-      margin-right: 0.5rem;
-    }
-
-    .watch {
-      font-size: 0.7rem;
-      line-height: 1;
-    }
-
-    .trailer {
-      font-size: 1rem;
-      margin-top: 0.3rem;
-      line-height: 1;
-    }
+    left: 0;
+    right: 0;
   }
 
   @include bp-min('sm') {
@@ -416,7 +517,11 @@ body {
       margin-top: 20rem;
     }
 
-    &__image {
+    &__image--desktop {
+      display: none;
+    }
+
+    &__image--mobile {
       position: absolute;
       display: flex;
       justify-content: center;
@@ -426,10 +531,8 @@ body {
       left: 50%;
       transform: translateX(-50%);
       z-index: -1;
-      // background: linear-gradient(180.09deg, $clr-primary 43.57%, red 87.3%),
-      //   url('../assets/images/jett-desktop.png');
       background: linear-gradient(180deg, transparent 45%, $clr-primary 55%),
-        url('../assets/images/jett-desktop.png');
+        url('../assets/images/jett.png');
       background-repeat: no-repeat;
       background-position: top center;
     }
@@ -445,6 +548,69 @@ body {
 
     &__btn {
       margin-top: 3rem;
+    }
+  }
+
+  @include bp-min('md') {
+    flex-direction: row;
+    justify-content: initial;
+    overflow: clip;
+    padding-bottom: 2rem;
+
+    &__container {
+      padding: 0 2.5rem;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      right: -48%;
+      z-index: -1;
+      background-color: $clr-secondary;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+      box-shadow: 0 0 10px rgba(#000, 0.3);
+    }
+
+    &__image--mobile {
+      display: none;
+    }
+
+    &__image--desktop {
+      order: 1;
+      display: block;
+      margin-top: auto;
+      filter: drop-shadow(0 0 1em rgba(#000, 0.3)); // TODO: Tanya nadya
+
+      .character {
+        max-width: 90%;
+      }
+    }
+
+    &__content--wrapper {
+      margin: initial;
+      text-align: left;
+    }
+
+    &__subtitle {
+      max-width: 45ch;
+    }
+  }
+
+  @include bp-min('lg') {
+    align-items: center;
+    &__title {
+      font-size: 6rem;
+    }
+
+    &__image--desktop {
+      margin-left: 2rem;
+      margin-top: 0;
+      .character {
+        max-width: 100%;
+      }
     }
   }
 }
@@ -478,6 +644,18 @@ body {
       grid-column: 5/-1;
     }
   }
+
+  @include bp-min('md') {
+    &__content {
+      align-self: flex-start;
+      grid-column: 2 / span 5;
+    }
+
+    &__video {
+      min-height: 350px;
+      grid-column: 8 / -1;
+    }
+  }
 }
 
 .agents {
@@ -492,10 +670,14 @@ body {
   }
 
   &__body {
-    padding-right: 2em;
+    max-width: 35ch;
     margin-top: 2rem;
-    font-size: 0.85rem;
     line-height: 1.6;
+    color: $clr-tertiary;
+  }
+
+  &__btn--desktop {
+    display: none;
   }
 
   &__btn {
@@ -541,12 +723,93 @@ body {
       padding: 0.6em 4.5em;
     }
   }
+
+  @include bp-min('md') {
+    display: flex;
+    padding: 4rem 0;
+    // gap: 2rem;
+
+    &--wrapper {
+      order: 1;
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    &__title {
+      max-width: 8ch;
+      line-height: 1;
+    }
+
+    &__body {
+      max-width: 50ch;
+      font-size: 1.125rem;
+      margin-top: 2.5rem;
+    }
+
+    &__btn--desktop {
+      display: initial;
+      margin-top: 6rem;
+      max-width: 80%;
+    }
+
+    &__btn {
+      display: none;
+    }
+
+    &__images {
+      max-width: none;
+      margin: 0;
+      flex-grow: 1;
+
+      .sage {
+        width: 60%;
+        max-width: 100%;
+        transform: translateX(10%);
+      }
+
+      .raze {
+        max-width: 100%;
+        width: 60%;
+        top: 18%;
+        left: 40%;
+        transform: translate(0);
+      }
+    }
+  }
+
+  @include bp-min('lg') {
+    padding-left: 5rem;
+    padding-right: 5rem;
+
+    &--wrapper {
+      justify-content: center;
+    }
+
+    &__images {
+      .sage {
+        width: 45%;
+        transform: translateX(20%);
+      }
+
+      .raze {
+        width: 45%;
+        top: 15%;
+      }
+    }
+  }
 }
 
 .maps {
   padding-top: 7rem;
-  background-image: url('../assets/images/maps-bg.png');
-  background-size: cover;
+
+  &--bg-image {
+    background-image: url('../assets/images/maps-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
   &__content {
     grid-column: 1/6;
@@ -559,28 +822,99 @@ body {
   &__btn {
     margin-top: 3rem;
   }
+
+  @include bp-min('md') {
+    &--bg-image {
+      background-position: center center;
+    }
+  }
+
+  @include bp-min('lg') {
+    margin-top: 3.5rem;
+    min-height: 100vh;
+    max-height: 120vh;
+    &--bg-image {
+      background-position: top -5px left 0px;
+    }
+  }
 }
 
 .footer {
   width: 100%;
-  padding-top: 2rem;
   background-color: $clr-primary;
   color: $clr-tertiary;
-  position: relative;
-  display: flex;
-  flex-direction: column;
 
-  &__title {
-    font-size: 1rem;
-    text-align: center;
+  &__top {
+    padding: 0.8rem 2.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
   }
 
-  &__copyright {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-    padding: 0.1em 2em;
+  &__title {
+    font-family: $ff-uni-sans;
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+  }
+
+  .social {
+    &__link {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__bottom {
+    padding: 1.125rem 1.8rem;
     background-color: $clr-secondary;
+  }
+
+  .copyright {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.6;
+
+    &__links {
+      display: none;
+    }
+  }
+
+  @include bp-min('sm') {
+    &__top {
+      padding: 0.75rem 2.1rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .social {
+      &__link {
+        &:not(:last-child) {
+          margin-right: 2.25rem;
+        }
+      }
+    }
+
+    .copyright {
+      max-width: 80ch;
+      font-size: 1.125rem;
+      &__links {
+        text-align: center;
+        margin-top: 1px;
+        display: inline-flex;
+        gap: 1rem;
+      }
+
+      &__link {
+        color: $clr-tertiary;
+        font-size: inherit;
+        text-decoration: underline;
+      }
+    }
   }
 }

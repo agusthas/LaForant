@@ -20,7 +20,9 @@
     </div> -->
     <!-- TODO: BUAT VERSI DESKTOP, PERBAIKIN FOOTER -->
     <nav class="navbar">
-      <img class="logo" src="/src/assets/images/logo-desktop.png" alt="" />
+      <a href="#" class="navbar__logo"
+        ><img class="logo" src="/src/assets/images/logo.png" alt=""
+      /></a>
       <button id="js-hamburger-open" class="hamburger">
         <span class="hamburger__line"></span>
       </button>
@@ -64,23 +66,27 @@
 
     <main class="l-container">
       <section class="top section-container">
-        <div class="top__image">
+        <div class="top__image--mobile">
           <img
             hidden
             class="character"
-            src="/src/assets/images/jett-desktop.png"
+            src="/src/assets/images/jett.png"
             alt="jett"
           />
+        </div>
+        <div class="top__image--desktop">
+          <img class="character" src="/src/assets/images/jett.png" alt="jett" />
         </div>
         <div class="top__content--wrapper">
           <h1 class="top__title">Laforant</h1>
           <p class="top__subtitle">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque,
-            egestas pharetra urna, eu, ipsum rutrum proin arcu diam. Nibh
-            suspendisse amet duis ut.
+            A team-based shooter with a realistic bent. As a squad of four, if
+            you go it alone you’ll definitely meet a bloody end. Each map is
+            meticulously crafted to allow for myriad tactics requiring varying
+            degrees of skill.
           </p>
           <a href="#" class="top__btn c-btn-secondary">
-            PLAY NOW
+            JOIN THE BETA
             <span class="c-btn-secondary__box"></span>
           </a>
         </div>
@@ -94,15 +100,15 @@
             <a class="social__link" href="#"><i class="fab fa-youtube"></i></a>
           </div>
 
-          <div class="top__watch-trailer">
-            <button class="c-play-button">
+          <div class="c-trailer">
+            <button class="c-play-button c-trailer__button">
               <div class="c-play-button__spinner"></div>
               <span class="fas fa-play c-play-button__icon"></span>
             </button>
 
-            <div>
-              <div class="watch">watch</div>
-              <div class="trailer">trailer</div>
+            <div class="c-trailer__title">
+              <div class="c-trailer__top">watch</div>
+              <div class="c-trailer__bottom">trailer</div>
             </div>
           </div>
         </div>
@@ -112,25 +118,26 @@
         </div>
       </section>
       <section class="about section-container">
-        <h2 class="about__title c-section-header">We are laforant</h2>
-
-        <div class="grid-wrapper l-grid">
-          <div class="about__content">
-            <h3 class="about__subtitle o-section-subtitle">
-              Find your own battlefield
-            </h3>
-            <p class="about__body o-section-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              in leo tempus, nisl, tellus augue. Vitae et praesent convallis
-              commodo. Porttitor nulla sed pretium at et erat. Aliquam massa
-              amet et consequat. Id odio volutpat erat aliquet cursus est.
-            </p>
-          </div>
-          <div class="about__video">
-            <button class="about__video-button c-play-button">
-              <div class="c-play-button__spinner"></div>
-              <span class="fas fa-play c-play-button__icon"></span>
-            </button>
+        <div class="big-wrapper">
+          <h2 class="about__title c-section-header">We are laforant</h2>
+          <div class="grid-wrapper l-grid">
+            <div class="about__content">
+              <h3 class="about__subtitle o-section-subtitle">
+                Find your own battlefield
+              </h3>
+              <p class="about__body o-section-body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                in leo tempus, nisl, tellus augue. Vitae et praesent convallis
+                commodo. Porttitor nulla sed pretium at et erat. Aliquam massa
+                amet et consequat. Id odio volutpat erat aliquet cursus est.
+              </p>
+            </div>
+            <div class="about__video">
+              <button class="about__video-button c-play-button">
+                <div class="c-play-button__spinner"></div>
+                <span class="fas fa-play c-play-button__icon"></span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -138,23 +145,30 @@
       <section class="agents">
         <div class="agents--wrapper">
           <h2 class="agents__title c-section-header">Pick your agents</h2>
-          <p class="agents__body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-            leo tempus, nisl, tellus augue. Vitae et praesent convallis commodo.
-            Porttitor nulla sed pretium at et erat. Aliquam massa amet et
-            consequat. Id odio volutpat erat aliquet cursus est.
+          <p class="agents__body o-section-body">
+            Choose your favourite Agents, then armed them with adaptive, swift,
+            and lethal abilities. Think faster than your opponents to unlock new
+            agents. Create opportunities to let your gunplay shine and win the
+            game. Hard work beats talent.
           </p>
+          <a href="#" class="agents__btn--desktop c-btn-tertiary">
+            View All Agents
+            <span class="c-btn-tertiary__box"></span>
+          </a>
         </div>
+
         <a href="#" class="agents__btn c-btn-tertiary">
           View All Agents
           <span class="c-btn-tertiary__box"></span>
         </a>
+
         <div class="agents__images">
           <img class="sage" src="/src/assets/images/sage.png" alt="" />
           <img class="raze" src="/src/assets/images/raze.png" alt="" />
         </div>
       </section>
-      <section class="maps section-container">
+
+      <section class="maps maps--bg-image section-container">
         <h2 class="maps__title c-section-header">
           Choose
           <br />
@@ -166,9 +180,9 @@
               Fight around the world
             </h3>
             <p class="maps__body o-section-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              in leo tempus, nisl, tellus augue. Vitae et praesent convallis
-              commodo. Porttitor nulla sed pretium at et erat.
+              The world is in your hand. Beat your opponents and conquer the
+              world. Turn every moment into highlight. Make the play others will
+              imitate for years to come. Be a legend.
             </p>
           </div>
         </div>
@@ -178,15 +192,32 @@
         </a>
       </section>
     </main>
+
     <footer class="footer">
-      <h2 class="footer__title">DEFY YOUR OWN LIMITS.</h2>
-      <div class="footer__copyright">
-        <div>&COPY; 2021 Laforant</div>
+      <div class="footer__top">
         <div class="social">
           <a class="social__link" href="#"><i class="fab fa-facebook-f"></i></a>
           <a class="social__link" href="#"><i class="fab fa-twitter"></i></a>
           <a class="social__link" href="#"><i class="fab fa-youtube"></i></a>
         </div>
+
+        <h2 class="footer__title">DEFY YOUR OWN LIMITS.</h2>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="copyright">
+          &COPY; 2021 LaForant Corporation. All rights reserved. All trademarks
+          are property of their respective owners in Indonesia and other
+          countries. VAT included in all prices where applicable.
+          <br />
+          <span class="copyright__links">
+            <a href="#" class="copyright__link">Privacy Policy</a>
+            <span>|</span>
+            <a href="#" class="copyright__link">Terms of Service</a>
+            <span>|</span>
+            <a href="#" class="copyright__link">Cookie Preferences</a>
+          </span>
+        </p>
       </div>
     </footer>
     <!-- Scripts -->
