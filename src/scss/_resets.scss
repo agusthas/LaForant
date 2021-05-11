@@ -8,43 +8,16 @@ html {
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: inherit;
 }
 
-/*******************
- Core body defaults
- @see https://hankchizljaw.com/wrote/a-modern-css-reset/
- *******************/
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-}
-
-/****************************
- Generic Margins and Paddings
- ****************************/
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-ol,
-li,
-p,
-pre,
-blockquote,
-figure,
-figcaption,
-hr,
-dl,
-dd {
-  margin: 0;
-  padding: 0;
 }
 
 /*******************
@@ -54,6 +27,15 @@ ul {
   list-style: none;
 }
 
+/*******************
+ Links
+ *******************/
+a,
+a:active,
+a:focus,
+a:visited {
+  text-decoration: none;
+}
 /*******************
  Forms and buttons
  *******************/
@@ -66,13 +48,6 @@ button {
   letter-spacing: inherit;
 }
 
-/* I usually expand input and textarea to full-width */
-input[type='text'],
-textarea {
-  width: 100%;
-}
-
-/* More friendly border */
 input,
 textarea,
 button {
@@ -100,14 +75,6 @@ svg {
 }
 
 /*******************
- Useful table styles
- *******************/
-table {
-  table-layout: fixed;
-  width: 100%;
-}
-
-/*******************
  The hidden attribute
  *******************/
 [hidden] {
@@ -122,13 +89,6 @@ noscript {
   display: block;
   margin-bottom: 1em;
   margin-top: 1em;
-}
-
-/*******************
- Tabindex
- *******************/
-[tabindex='-1'] {
-  outline: none !important;
 }
 
 /*******************
@@ -159,14 +119,4 @@ noscript {
   clip: rect(0 0 0 0);
   overflow: hidden;
   white-space: nowrap;
-}
-
-/*******************
-CUSTOMS
- *******************/
-a,
-a:active,
-a:focus,
-a:visited {
-  text-decoration: none;
 }

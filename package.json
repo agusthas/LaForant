@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "sass:compile": "sass ./src/scss:./src/css"
   },
   "devDependencies": {
     "sass": "^1.32.12",

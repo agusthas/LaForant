@@ -1,3 +1,6 @@
+@use "sass:map";
+@use './transitions' as t;
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -20,10 +23,48 @@
   }
 }
 
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(40px);
+  }
+}
+
 @mixin animate-spin() {
   animation: spin 1.5s linear infinite;
 }
 
 @mixin animate-bounce() {
   animation: bounce 1s infinite;
+}
+
+@mixin animate-fadeInLeft() {
+  animation: fadeInLeft map-get(t.$transition-duration, '150')
+    map-get(t.$transition-timing-function, 'DEFAULT') forwards;
+}
+
+@mixin animate-fadeOutRight() {
+  animation: fadeOutRight map-get(t.$transition-duration, '150')
+    map-get(t.$transition-timing-function, 'DEFAULT') forwards;
 }

@@ -14,15 +14,65 @@
     <title>Vite App</title>
   </head>
   <body>
+    <!-- <div class="c-loading">
+      <div class="c-loading__spinner"></div>
+      <h2 class="c-loading__text">Loading...</h2>
+    </div> -->
+    <!-- TODO: BUAT VERSI DESKTOP, PERBAIKIN FOOTER -->
     <nav class="navbar">
       <img class="logo" src="/src/assets/images/logo-desktop.png" alt="" />
-      <div class="hamburger">
-        <div class="hamburger__line"></div>
-      </div>
+      <button id="js-hamburger-open" class="hamburger">
+        <span class="hamburger__line"></span>
+      </button>
     </nav>
+
+    <!-- SHOWN ONLY WHEN SCREEN < 600px -->
+    <div class="mobile-menu">
+      <div class="mobile-menu--wrapper">
+        <div class="navbar mobile-menu__navbar">
+          <img class="logo" src="/src/assets/images/logo-desktop.png" alt="" />
+          <button id="js-hamburger-close" class="hamburger">
+            <span class="hamburger__line"></span>
+          </button>
+        </div>
+
+        <ul class="mobile-menu__list-wrapper">
+          <li class="mobile-menu__list">
+            <a href="#" class="mobile-menu__link">Home</a>
+          </li>
+          <li class="mobile-menu__list">
+            <a href="#" class="mobile-menu__link">Agents </a>
+          </li>
+          <li class="mobile-menu__list">
+            <a href="#" class="mobile-menu__link">Maps</a>
+          </li>
+          <li class="mobile-menu__list">
+            <a href="#" class="mobile-menu__link">System Requirements</a>
+          </li>
+          <li class="mobile-menu__list">
+            <a href="#" class="mobile-menu__link">Register</a>
+          </li>
+        </ul>
+
+        <div class="social">
+          <a class="social__link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social__link" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="social__link" href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
     <main class="l-container">
       <section class="top section-container">
-        <div>
+        <div class="top__image">
+          <img
+            hidden
+            class="character"
+            src="/src/assets/images/jett-desktop.png"
+            alt="jett"
+          />
+        </div>
+        <div class="top__content--wrapper">
           <h1 class="top__title">Laforant</h1>
           <p class="top__subtitle">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque,
