@@ -16,7 +16,6 @@ body {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
-  align-items: center;
   gap: 10px 30px;
 
   @include bp-min('sm') {
@@ -615,48 +614,90 @@ body {
   }
 }
 
-/* ABOUT */
-.about {
-  &__content {
-    grid-column: 1/6;
-  }
+.c-newspaper {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  &__body {
-    margin-top: 1rem;
-  }
-
-  &__video {
+  &__image {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(#c4c4c4, 0.8);
-    grid-column: 1/-1;
-    min-height: 180px;
-    align-self: stretch;
+    width: 382px;
+    height: 232px;
+    background-color: #c4c4c4;
   }
 
-  @include bp-min('sm') {
-    &__content {
-      grid-column: 1/5;
-    }
-
-    &__video {
-      grid-column: 5/-1;
-    }
+  &__date,
+  &__headlines {
+    font-family: $ff-uni-sans;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    font-weight: 900;
   }
 
-  @include bp-min('md') {
-    &__content {
-      align-self: flex-start;
-      grid-column: 2 / span 5;
-    }
+  &__date {
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+  }
 
-    &__video {
-      min-height: 350px;
-      grid-column: 8 / -1;
-    }
+  &__headlines {
+    font-size: 1.8rem;
+    line-height: 0.8;
+    margin-top: 1rem;
+    color: $clr-secondary;
   }
 }
+
+.news {
+  padding: 0;
+  margin: 3rem 2rem;
+  position: relative;
+  overflow-y: visible;
+
+  .news__title {
+    color: $clr-secondary;
+    position: absolute;
+    z-index: 100;
+    top: -45px;
+    left: 110px;
+  }
+
+  .l-news-wrapper {
+    display: flex;
+    padding: 5rem 1rem;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: auto;
+    position: relative;
+    scrollbar-color: $clr-primary $clr-tertiary;
+    scrollbar-width: thin;
+    z-index: -200;
+
+    &::before {
+      @extend .c-section-header;
+      content: 'LATEST UPDATES';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      color: $clr-secondary;
+      font-family: $ff-tungsten;
+    }
+  }
+
+  .c-newspaper:not(:last-child) {
+    margin-right: 5rem;
+  }
+}
+
+// .l-grid {
+//   background-color: rgba(red, 0.3);
+//   overflow-x: auto;
+// }
+// }
 
 .agents {
   width: 100%;
