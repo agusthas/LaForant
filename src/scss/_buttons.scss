@@ -34,6 +34,16 @@ $main-color: (
     'box-awal': $clr-primary,
     'box-transisi': $clr-tertiary,
   ),
+  'accent': (
+    'bg-awal': $clr-secondary,
+    'bg-transisi': $clr-primary,
+    'text-awal': $clr-tertiary,
+    'text-transisi': $clr-secondary,
+    'outline-awal': $clr-primary,
+    'outline-transisi': $clr-primary,
+    'box-awal': $clr-primary,
+    'box-transisi': $clr-secondary,
+  ),
 );
 
 @each $type, $color in $main-color {

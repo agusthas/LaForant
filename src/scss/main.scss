@@ -25,25 +25,34 @@ body {
 }
 
 .c-play-button {
-  --radius: 45px;
-  width: var(--radius);
-  height: var(--radius);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid $clr-tertiary;
-  background-color: transparent;
-  border-radius: 99999px;
+  position: relative;
+  background: transparent;
+  border: 0;
+  outline: 0;
   cursor: pointer;
 
-  span {
-    display: inline-block;
-    --tr-size: 15px;
-    width: var(--tr-size);
-    height: calc(var(--tr-size) - 5px);
-    background-color: $clr-tertiary;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    transform: rotate(90deg) translateY(-1px);
+  &:hover {
+    .c-play-button__icon {
+      color: $clr-secondary;
+    }
+  }
+
+  &__spinner {
+    --radius: 45px;
+    width: var(--radius);
+    height: var(--radius);
+    border: 2px solid $clr-tertiary;
+    background-color: transparent;
+    border-radius: 99999px;
+  }
+
+  &__icon {
+    position: absolute;
+    font-size: 0.8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    @include transition();
   }
 }
 
@@ -385,16 +394,6 @@ body {
     text-align: left;
     letter-spacing: 0.06em;
     cursor: pointer;
-    @include transition();
-
-    &:hover {
-      color: $clr-secondary;
-
-      .c-play-button {
-        border-top-color: $clr-secondary;
-        @include animate-spin();
-      }
-    }
 
     .c-play-button {
       margin-right: 0.5rem;

@@ -59,7 +59,7 @@ button * {
 }
 
 /***********************************
- Easy responsive for media elements
+Image, video, svg
  ***********************************/
 img,
 iframe,
@@ -75,48 +75,9 @@ svg {
 }
 
 /*******************
- The hidden attribute
+hidden attribute
  *******************/
 [hidden] {
   opacity: 0;
   visibility: hidden;
-}
-
-/*******************
- Noscript
- *******************/
-noscript {
-  display: block;
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
-
-/*******************
- Remove animations and transitions
- @see https://hankchizljaw.com/wrote/a-modern-css-reset/
- *******************/
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/*******************
- * Screen-ready only class to hide content visually
- * Solution by Joe Watkins.
- * @see https://zellwk.com/blog/hide-content-accessibly/
- *******************/
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-  white-space: nowrap;
 }

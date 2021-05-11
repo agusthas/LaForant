@@ -55,6 +55,10 @@
   animation: spin 1.5s linear infinite;
 }
 
+@mixin animate-spin-reverse() {
+  animation: spin 1.5s reverse linear infinite;
+}
+
 @mixin animate-bounce() {
   animation: bounce 1s infinite;
 }
