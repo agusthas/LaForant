@@ -79,14 +79,6 @@ button {
   border: 1px solid gray;
 }
 
-/* Some defaults for one-liner buttons */
-button {
-  padding: 0.75em 1em;
-  line-height: inherit;
-  border-radius: 0;
-  background-color: transparent;
-}
-
 button * {
   pointer-events: none;
 }
