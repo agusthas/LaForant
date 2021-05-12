@@ -305,7 +305,7 @@ body {
   }
 }
 
-.c-newspaper {
+.newspaper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -313,7 +313,7 @@ body {
   cursor: pointer;
 
   &:hover {
-    .c-newspaper__image {
+    .newspaper__image {
       &::before {
         transform: translateX(0);
       }
