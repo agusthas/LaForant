@@ -2,6 +2,7 @@
 @use '../base' as *;
 @use '../animations/' as  *;
 @use '../transitions/' as *;
+@use '../components/navbar';
 @use '../components/buttons';
 @use '../components/mobileMenu';
 @use '../components/playButton';
@@ -135,7 +136,7 @@ body {
   }
 }
 
-.grid-wrapper {
+.l-grid-wrapper {
   margin-top: 2rem;
 
   @include bp-min('sm') {
@@ -144,83 +145,6 @@ body {
 
   @include bp-min('md') {
     margin-top: 4.5rem;
-  }
-}
-
-.hamburger {
-  --size: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--size);
-  height: var(--size);
-  cursor: pointer;
-  background-color: transparent;
-  border: 0;
-
-  &__line {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: 2px;
-    background-color: $clr-tertiary;
-
-    &::before,
-    &::after {
-      --distance: -8px;
-      position: absolute;
-      right: 0;
-      left: 0;
-      height: 100%;
-      content: '';
-      background-color: inherit;
-    }
-
-    &::before {
-      top: var(--distance);
-    }
-
-    &::after {
-      bottom: var(--distance);
-    }
-  }
-}
-
-.navbar {
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 1.3rem 2rem;
-  background-color: $clr-primary;
-
-  @include bp-min('sm') {
-    position: absolute;
-    padding: 2rem 3rem;
-  }
-
-  .logo {
-    height: 2rem;
-  }
-
-  @include bp-min('md') {
-    padding: 1.5rem 2rem;
-    background-color: transparent;
-
-    .hamburger {
-      display: none;
-    }
-
-    .logo {
-      height: 3rem;
-    }
-  }
-
-  @include bp-min('lg') {
-    padding: 3rem;
   }
 }
 
