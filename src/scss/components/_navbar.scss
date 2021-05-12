@@ -1,6 +1,40 @@
+// @use 'sass:color';
 @use '../abstracts/' as *;
 @use '../base/' as *;
 @use '../transitions/' as *;
+
+.cursor-reset {
+  cursor: context-menu;
+}
+
+.dropdown {
+  @include transition('all');
+  opacity: 1;
+  visibility: visible;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 300%;
+  padding-top: 10%;
+  max-width: 138px;
+  box-shadow: 0 0 1em rgba(#000, 0.3);
+  cursor: pointer;
+
+  &__list {
+    @include transition();
+    font-family: $ff-uni-sans;
+    font-weight: 900;
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    padding: 0.5rem 0.625rem;
+    background-color: $clr-secondary;
+    color: $clr-tertiary;
+
+    &:hover {
+      background: mix(#fff, $clr-secondary, 30%);
+    }
+  }
+}
 
 .hamburger {
   --size: 30px;
@@ -73,10 +107,8 @@
     &__links {
       margin-left: 3rem;
       display: flex;
-
-      li:not(:last-child) {
-        margin-right: 1.8rem;
-      }
+      align-items: center;
+      gap: 1.8rem;
     }
 
     &__link {
@@ -87,37 +119,46 @@
 
       &--active {
         color: $clr-secondary;
-        @include transition();
-
         &::after {
           content: '';
           position: absolute;
-          left: -10px;
-          right: -10px;
+          left: -8%;
+          right: -10%;
           bottom: -10px;
           height: 3px;
           background-color: $clr-secondary;
         }
       }
 
-      a {
-        @include transition();
-        text-transform: uppercase;
-        font-family: $ff-uni-sans;
-        font-weight: 900;
-        line-height: 1;
-        letter-spacing: 0.03em;
-        font-size: 1.25rem;
+      &:hover {
+        color: $clr-secondary;
 
-        &:hover {
-          color: $clr-secondary;
+        .dropdown {
+          visibility: visible;
+          opacity: 1;
         }
       }
+    }
 
-      .fas {
-        font-size: 1.2rem;
-        margin-left: 0.4em;
-      }
+    &__a {
+      text-transform: uppercase;
+      font-family: $ff-uni-sans;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.03em;
+      font-size: 1.25rem;
+    }
+
+    .dropdown {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .fas {
+      font-size: 1.2rem;
+      margin-top: -2px;
+      margin-left: 0.4em;
+      cursor: pointer;
     }
 
     .hamburger {
