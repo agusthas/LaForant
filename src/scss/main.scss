@@ -457,7 +457,6 @@ body {
 }
 
 .top {
-  // TODO: geser kanan dikit itu bg-secondary nyaa buat lg screen
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -581,7 +580,7 @@ body {
       order: 1;
       display: block;
       margin-top: auto;
-      filter: drop-shadow(0 0 1em rgba(#000, 0.3)); // TODO: Tanya nadya
+      filter: drop-shadow(0 0 1em rgba(#000, 0.3));
 
       .character {
         max-width: 90%;
@@ -730,10 +729,6 @@ body {
     align-items: center;
     padding: 1.5rem 0;
     overflow: hidden;
-    // overflow: scroll;
-    // overflow-y: hidden;
-    // scrollbar-width: thin;
-    // scrollbar-color: $clr-primary $clr-tertiary;
     gap: 4rem;
   }
 
@@ -832,7 +827,6 @@ body {
   @include bp-min('md') {
     display: flex;
     padding: 4rem 0;
-    // gap: 2rem;
 
     &--wrapper {
       order: 1;
