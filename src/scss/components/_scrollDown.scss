@@ -1,0 +1,20 @@
+@use '../abstracts/' as *;
+@use '../base/' as *;
+@use '../animations/' as *;
+
+.scroll-down {
+  display: none;
+
+  @include bp-min('sm') {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    display: block;
+    transform: translateX(-50%);
+    @include animation($name: bounce, $duration: 1s, $count: infinite);
+  }
+
+  @include bp-min('md') {
+    display: none;
+  }
+}

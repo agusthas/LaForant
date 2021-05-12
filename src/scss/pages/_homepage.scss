@@ -6,6 +6,7 @@
 @use '../components/mobileMenu';
 @use '../components/playButton';
 @use '../components/socials';
+@use '../components/scrollDown';
 
 body {
   font-family: $ff-roboto;
@@ -143,23 +144,6 @@ body {
 
   @include bp-min('md') {
     margin-top: 4.5rem;
-  }
-}
-
-.scroll-down {
-  display: none;
-
-  @include bp-min('sm') {
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    display: block;
-    transform: translateX(-50%);
-    @include animation($name: bounce, $duration: 1s, $count: infinite);
-  }
-
-  @include bp-min('md') {
-    display: none;
   }
 }
 
