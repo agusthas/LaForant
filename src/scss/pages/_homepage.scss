@@ -244,7 +244,8 @@ body {
   @include bp-min('md') {
     flex-direction: row;
     justify-content: initial;
-    padding-bottom: 2rem;
+    padding-top: 5.4rem;
+    padding-bottom: 1rem;
     overflow: clip;
 
     &__container {
@@ -254,7 +255,7 @@ body {
     &::after {
       position: absolute;
       top: 0;
-      right: -48%;
+      right: -50%;
       bottom: 0;
       z-index: -1;
       width: 100%;

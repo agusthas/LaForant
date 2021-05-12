@@ -36,6 +36,10 @@ a:focus,
 a:visited {
   text-decoration: none;
 }
+
+* a {
+  color: inherit;
+}
 /*******************
  Forms and buttons
  *******************/
