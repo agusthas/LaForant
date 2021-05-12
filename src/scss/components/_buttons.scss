@@ -82,7 +82,7 @@ $main-color: (
       @include transition('transform', '150');
     }
 
-    &__box {
+    .box {
       --sz: 6px;
       position: absolute;
       right: 0;
@@ -101,7 +101,7 @@ $main-color: (
         transform: translateX(0) skew(var(--skew));
       }
 
-      .c-btn-#{$type}__box {
+      .box {
         background-color: map-get($color, 'box-transisi');
       }
     }
