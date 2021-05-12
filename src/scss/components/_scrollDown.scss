@@ -2,7 +2,7 @@
 @use '../base/' as *;
 @use '../animations/' as *;
 
-.scroll-down {
+.c-scroll-down {
   display: none;
 
   @include bp-min('sm') {
