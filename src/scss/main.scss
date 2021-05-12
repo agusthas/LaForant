@@ -7,15 +7,15 @@
 @use './buttons' as *;
 
 body {
-  background-color: $clr-tertiary;
   font-family: $ff-roboto;
   color: $clr-primary;
+  background-color: $clr-tertiary;
 }
 
 .l-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px 30px;
 
   @include bp-min('sm') {
@@ -29,10 +29,10 @@ body {
 
 .c-play-button {
   position: relative;
+  cursor: pointer;
   background: transparent;
   border: 0;
   outline: 0;
-  cursor: pointer;
 
   &:hover {
     .c-play-button__icon {
@@ -44,16 +44,16 @@ body {
     --radius: 45px;
     width: var(--radius);
     height: var(--radius);
-    border: 2px solid $clr-tertiary;
     background-color: transparent;
+    border: 2px solid $clr-tertiary;
     border-radius: 99999px;
   }
 
   &__icon {
     position: absolute;
-    font-size: 0.8rem;
     top: 50%;
     left: 50%;
+    font-size: 0.8rem;
     transform: translate(-40%, -50%);
     @include transition();
   }
@@ -94,8 +94,8 @@ body {
   }
 
   &__bottom {
-    font-size: 1rem;
     margin-top: 0.3rem;
+    font-size: 1rem;
     line-height: 1;
   }
 
@@ -120,11 +120,11 @@ body {
 }
 
 .c-section-header {
-  font-size: 3.4rem;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
   font-family: $ff-tungsten;
+  font-size: 3.4rem;
+  line-height: 1.1;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
 
   @include bp-min('sm') {
     font-size: 5rem;
@@ -141,9 +141,9 @@ body {
 
 .o-section-subtitle {
   font-family: $ff-uni-sans;
-  text-transform: uppercase;
   font-size: 1.1rem;
   line-height: 1.2;
+  text-transform: uppercase;
   letter-spacing: 0.02em;
 
   @include bp-min('sm') {
@@ -156,10 +156,10 @@ body {
 }
 
 .o-section-body {
-  font-size: 0.85rem;
-  color: $clr-text-secondary;
-  line-height: 1.6;
   max-width: 45ch;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: $clr-text-secondary;
 
   @include bp-min('sm') {
     font-size: 1rem;
@@ -194,25 +194,25 @@ body {
 }
 
 .c-loading {
-  min-height: 100vh;
-  width: 100vw;
-  background-color: $clr-tertiary;
   position: fixed;
   top: 0;
   z-index: 99999;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: $clr-tertiary;
 
   &__spinner {
     --sz: 60px;
     width: var(--sz);
     height: var(--sz);
-    border-radius: 99999px;
     border: 4px solid $clr-primary;
     border-color: $clr-primary;
     border-top-color: $clr-secondary;
+    border-radius: 99999px;
     @include animate-spin;
   }
 
@@ -228,8 +228,8 @@ body {
   align-items: center;
 
   &__link {
-    color: var(--clr-awal);
     font-size: 1.3rem;
+    color: var(--clr-awal);
     @include transition();
 
     &:not(:last-child) {
@@ -237,8 +237,8 @@ body {
     }
 
     &:hover {
-      transform: translateY(-8px);
       color: var(--clr-hover);
+      transform: translateY(-8px);
     }
   }
 
@@ -257,10 +257,10 @@ body {
   display: none;
 
   @include bp-min('sm') {
-    display: block;
     position: absolute;
     bottom: 1rem;
     left: 50%;
+    display: block;
     transform: translateX(-50%);
     @include animate-bounce();
   }
@@ -273,17 +273,17 @@ body {
 .hamburger {
   --size: 30px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  border: 0;
-  background-color: transparent;
+  justify-content: center;
   width: var(--size);
   height: var(--size);
   cursor: pointer;
+  background-color: transparent;
+  border: 0;
 
   &__line {
-    display: inline-block;
     position: relative;
+    display: inline-block;
     width: 100%;
     height: 2px;
     background-color: $clr-tertiary;
@@ -291,12 +291,12 @@ body {
     &::before,
     &::after {
       --distance: -8px;
-      content: '';
       position: absolute;
-      background-color: inherit;
-      left: 0;
       right: 0;
+      left: 0;
       height: 100%;
+      content: '';
+      background-color: inherit;
     }
 
     &::before {
@@ -310,15 +310,15 @@ body {
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 1.3rem 2rem;
   background-color: $clr-primary;
-  z-index: 100;
 
   @include bp-min('sm') {
     position: absolute;
@@ -330,8 +330,8 @@ body {
   }
 
   @include bp-min('md') {
-    background-color: transparent;
     padding: 1.5rem 2rem;
+    background-color: transparent;
 
     .hamburger {
       display: none;
@@ -348,14 +348,14 @@ body {
 }
 
 .mobile-menu {
-  opacity: 0;
-  visibility: hidden;
-  z-index: 1000;
   position: fixed;
   top: 0;
+  z-index: 1000;
   width: 100vw;
   height: 100vh;
+  visibility: hidden;
   background-color: rgba(#000, 0.3);
+  opacity: 0;
 
   &--show {
     @include animate-fadeInLeft;
@@ -366,18 +366,18 @@ body {
   }
 
   &--wrapper {
-    margin-left: auto;
-    background: $clr-secondary;
+    display: flex;
+    flex-direction: column;
     width: 88%;
     height: 100%;
     padding: 1.5rem 1rem;
-    display: flex;
-    flex-direction: column;
+    margin-left: auto;
+    background: $clr-secondary;
 
     .navbar {
-      background-color: transparent;
       position: initial;
       padding: 1rem;
+      background-color: transparent;
     }
 
     .hamburger__line {
@@ -385,8 +385,8 @@ body {
 
       &::before,
       &::after {
-        visibility: visible;
         top: 0;
+        visibility: visible;
         background-color: $clr-primary;
       }
 
@@ -401,9 +401,9 @@ body {
     .social {
       --clr-awal: #{$clr-primary};
       --clr-hover: #{$clr-tertiary};
+      padding: 0 1rem;
       margin: 0 auto;
       margin-top: auto;
-      padding: 0 1rem;
     }
   }
 
@@ -423,18 +423,18 @@ body {
       transform: scale(1.05) translate(15px, -2px);
 
       > .mobile-menu__link {
+        position: relative;
         font-size: 1.4rem;
         color: $clr-primary;
-        position: relative;
 
         &::after {
-          content: '';
           position: absolute;
-          background-color: $clr-primary;
+          bottom: -3px;
+          left: 0;
           width: 100%;
           height: 3px;
-          left: 0;
-          bottom: -3px;
+          content: '';
+          background-color: $clr-primary;
         }
       }
     }
@@ -442,12 +442,12 @@ body {
 
   &__link {
     font-family: $ff-uni-sans;
+    font-size: 1.25rem;
     font-weight: 900;
     line-height: 1;
-    letter-spacing: 0.03em;
-    font-size: 1.25rem;
-    text-transform: uppercase;
     color: $clr-tertiary;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
     @include transition();
 
     &:hover {
@@ -457,16 +457,16 @@ body {
 }
 
 .top {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: $clr-primary;
-  text-align: center;
-  color: $clr-tertiary;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: $clr-tertiary;
+  text-align: center;
+  background-color: $clr-primary;
 
   &__image {
     &--mobile {
@@ -479,20 +479,20 @@ body {
 
   &__title {
     font-family: $ff-uni-sans;
+    font-size: 4rem;
     font-weight: 900;
     line-height: 0.97;
-    font-size: 4rem;
     letter-spacing: 0.05em;
     filter: drop-shadow(0 0 10px rgba($clr-primary, 0.8));
   }
 
   &__subtitle {
-    margin-top: 1rem;
     max-width: 55ch;
     padding: 0 0.2rem;
+    margin-top: 1rem;
     font-family: $ff-roboto;
-    line-height: 1.6;
     font-size: 1rem;
+    line-height: 1.6;
   }
 
   &__btn {
@@ -501,13 +501,13 @@ body {
 
   &__container {
     position: absolute;
-    display: flex;
-    padding: 0 2rem;
-    bottom: 2rem;
-    justify-content: space-between;
-    align-items: center;
-    left: 0;
     right: 0;
+    bottom: 2rem;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
   }
 
   @include bp-min('sm') {
@@ -521,18 +521,18 @@ body {
 
     &__image--mobile {
       position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
       top: 12%;
       left: 50%;
-      transform: translateX(-50%);
       z-index: -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
       background: linear-gradient(180deg, transparent 45%, $clr-primary 55%),
         url('../assets/images/jett.png');
       background-repeat: no-repeat;
       background-position: top center;
+      transform: translateX(-50%);
     }
 
     &__title {
@@ -540,8 +540,8 @@ body {
     }
 
     &__subtitle {
-      font-size: 1.2rem;
       margin-top: 1.5rem;
+      font-size: 1.2rem;
     }
 
     &__btn {
@@ -552,23 +552,23 @@ body {
   @include bp-min('md') {
     flex-direction: row;
     justify-content: initial;
-    overflow: clip;
     padding-bottom: 2rem;
+    overflow: clip;
 
     &__container {
       padding: 0 2.5rem;
     }
 
     &::after {
-      content: '';
       position: absolute;
       top: 0;
-      bottom: 0;
-      width: 100%;
       right: -48%;
+      bottom: 0;
       z-index: -1;
-      background-color: $clr-secondary;
+      width: 100%;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+      content: '';
+      background-color: $clr-secondary;
       box-shadow: 0 0 10px rgba(#000, 0.3);
     }
 
@@ -577,8 +577,8 @@ body {
     }
 
     &__image--desktop {
-      order: 1;
       display: block;
+      order: 1;
       margin-top: auto;
       filter: drop-shadow(0 0 1em rgba(#000, 0.3));
 
@@ -604,8 +604,8 @@ body {
     }
 
     &__image--desktop {
-      margin-left: 2rem;
       margin-top: 0;
+      margin-left: 2rem;
       .character {
         max-width: 100%;
       }
@@ -614,10 +614,10 @@ body {
 }
 
 .c-newspaper {
-  width: max-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: max-content;
   cursor: pointer;
 
   &:hover {
@@ -629,22 +629,22 @@ body {
   }
 
   &__image {
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 320px;
     height: 200px;
-    background-color: #c4c4c4;
-    position: relative;
     overflow: hidden;
+    background-color: #c4c4c4;
 
     &::before {
-      content: '';
       position: absolute;
+      top: 0;
       width: 102%;
       height: 101%;
+      content: '';
       background-color: rgba($clr-secondary, 0.6);
-      top: 0;
       transform: translateX(-110%) skew(-20deg);
       @include transition();
     }
@@ -653,20 +653,20 @@ body {
   &__date,
   &__headlines {
     font-family: $ff-uni-sans;
-    letter-spacing: 0.04em;
-    line-height: 1.1;
     font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
   }
 
   &__date {
-    font-size: 1rem;
     margin-top: 1rem;
+    font-size: 1rem;
   }
 
   &__headlines {
+    margin-top: 1rem;
     font-size: 1.4rem;
     line-height: 0.8;
-    margin-top: 1rem;
     color: $clr-secondary;
   }
 
@@ -676,14 +676,14 @@ body {
       height: 300px;
     }
     &__date {
-      font-size: 1.25rem;
       margin-top: 1.25rem;
+      font-size: 1.25rem;
     }
 
     &__headlines {
+      margin-top: 1rem;
       font-size: 1.8rem;
       line-height: 0.8;
-      margin-top: 1rem;
       color: $clr-secondary;
     }
   }
@@ -702,20 +702,20 @@ body {
   padding-bottom: 6rem;
 
   &__title {
-    color: $clr-secondary;
     position: relative;
     top: 2.5rem;
     left: 0.4rem;
     z-index: 10;
+    color: $clr-secondary;
   }
 
   &__link--mobile {
     display: inline-block;
+    margin-top: 1rem;
     font-family: $ff-uni-sans;
     font-weight: 900;
-    letter-spacing: 0.04em;
     color: $clr-secondary;
-    margin-top: 1rem;
+    letter-spacing: 0.04em;
 
     i {
       margin-left: 0.5rem;
@@ -725,11 +725,11 @@ body {
   .l-news-wrapper {
     display: grid;
     grid-template-columns: repeat(12, auto);
-    justify-items: center;
+    gap: 4rem;
     align-items: center;
+    justify-items: center;
     padding: 1.5rem 0;
     overflow: hidden;
-    gap: 4rem;
   }
 
   @include bp-min('sm') {
@@ -738,12 +738,12 @@ body {
     }
 
     &__title {
-      color: $clr-secondary;
       position: relative;
       top: 3.5rem;
       left: 0.4rem;
       z-index: 10;
       font-size: 7rem;
+      color: $clr-secondary;
     }
     .l-news-wrapper {
       overflow: scroll;
@@ -759,10 +759,10 @@ body {
 }
 
 .agents {
-  width: 100%;
-  background-color: $clr-secondary;
-  color: $clr-tertiary;
   position: relative;
+  width: 100%;
+  color: $clr-tertiary;
+  background-color: $clr-secondary;
 
   &--wrapper {
     @extend .section-container;
@@ -781,19 +781,19 @@ body {
   }
 
   &__btn {
-    z-index: 10;
+    position: absolute;
     bottom: 80px;
     left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
+    z-index: 10;
     padding: 0.5em 1.5em;
+    transform: translateX(-50%);
   }
 
   &__images {
     position: relative;
-    overflow-x: clip; // FIXME: Hacks
-    margin: 0 auto;
     max-width: 450px;
+    margin: 0 auto;
+    overflow-x: clip; // FIXME: Hacks
 
     .sage {
       width: 70%;
@@ -802,25 +802,25 @@ body {
     }
 
     .raze {
-      width: 70%;
-      max-width: 320px;
+      position: absolute;
       top: 0;
       right: 0;
+      width: 70%;
+      max-width: 320px;
       transform: translate(1rem, 3rem);
-      position: absolute;
     }
   }
 
   @include bp-min('sm') {
     &__body {
-      font-size: 1rem;
       max-width: 65ch;
+      font-size: 1rem;
     }
 
     &__btn {
       bottom: 150px;
-      font-size: 1rem;
       padding: 0.6em 4.5em;
+      font-size: 1rem;
     }
   }
 
@@ -829,12 +829,12 @@ body {
     padding: 4rem 0;
 
     &--wrapper {
-      order: 1;
-      margin-left: auto;
       display: flex;
       flex-direction: column;
+      order: 1;
       padding-top: 0;
       padding-bottom: 0;
+      margin-left: auto;
     }
 
     &__title {
@@ -844,14 +844,14 @@ body {
 
     &__body {
       max-width: 50ch;
-      font-size: 1.125rem;
       margin-top: 2.5rem;
+      font-size: 1.125rem;
     }
 
     &__btn--desktop {
       display: initial;
-      margin-top: 6rem;
       max-width: 80%;
+      margin-top: 6rem;
     }
 
     &__btn {
@@ -859,9 +859,9 @@ body {
     }
 
     &__images {
+      flex-grow: 1;
       max-width: none;
       margin: 0;
-      flex-grow: 1;
 
       .sage {
         width: 60%;
@@ -870,18 +870,18 @@ body {
       }
 
       .raze {
-        max-width: 100%;
-        width: 60%;
         top: 18%;
         left: 40%;
+        width: 60%;
+        max-width: 100%;
         transform: translate(0);
       }
     }
   }
 
   @include bp-min('lg') {
-    padding-left: 5rem;
     padding-right: 5rem;
+    padding-left: 5rem;
 
     &--wrapper {
       justify-content: center;
@@ -894,8 +894,8 @@ body {
       }
 
       .raze {
-        width: 45%;
         top: 15%;
+        width: 45%;
       }
     }
   }
@@ -906,8 +906,8 @@ body {
 
   &--bg-image {
     background-image: url('../assets/images/maps-bg.png');
-    background-size: cover;
     background-repeat: no-repeat;
+    background-size: cover;
   }
 
   &__content {
@@ -929,9 +929,9 @@ body {
   }
 
   @include bp-min('lg') {
-    margin-top: 3.5rem;
     min-height: 100vh;
     max-height: 120vh;
+    margin-top: 3.5rem;
     &--bg-image {
       background-position: top -5px left 0px;
     }
@@ -940,24 +940,24 @@ body {
 
 .footer {
   width: 100%;
-  background-color: $clr-primary;
   color: $clr-tertiary;
+  background-color: $clr-primary;
 
   &__top {
-    padding: 0.8rem 2.1rem;
     display: flex;
     flex-direction: column;
+    gap: 0.7rem;
     align-items: center;
     justify-content: center;
-    gap: 0.7rem;
+    padding: 0.8rem 2.1rem;
   }
 
   &__title {
     font-family: $ff-uni-sans;
-    font-weight: 900;
     font-size: 1.5rem;
-    letter-spacing: 0.04em;
+    font-weight: 900;
     line-height: 1.3;
+    letter-spacing: 0.04em;
   }
 
   .social {
@@ -973,9 +973,9 @@ body {
 
   .copyright {
     margin: 0 auto;
-    text-align: center;
     font-size: 0.9rem;
     line-height: 1.6;
+    text-align: center;
 
     &__links {
       display: none;
@@ -984,11 +984,11 @@ body {
 
   @include bp-min('sm') {
     &__top {
-      padding: 0.75rem 2.1rem;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+      padding: 0.75rem 2.1rem;
     }
 
     .social {
@@ -1003,15 +1003,15 @@ body {
       max-width: 80ch;
       font-size: 1.125rem;
       &__links {
-        text-align: center;
-        margin-top: 1px;
         display: inline-flex;
         gap: 1rem;
+        margin-top: 1px;
+        text-align: center;
       }
 
       &__link {
-        color: $clr-tertiary;
         font-size: inherit;
+        color: $clr-tertiary;
         text-decoration: underline;
       }
     }

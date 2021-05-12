@@ -48,49 +48,49 @@ $main-color: (
 
 @each $type, $color in $main-color {
   .c-btn-#{$type} {
+    position: relative;
+    z-index: 10;
     display: inline-block;
     padding: 0.6em 5em;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 0.95rem;
+    overflow: hidden;
     font-family: $ff-uni-sans;
-    letter-spacing: 0.04em;
-    text-align: center;
+    font-size: 0.95rem;
     font-weight: 900;
     color: map-get($color, 'text-awal');
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    background-color: map-get($color, 'bg-awal');
     border: 0;
     outline: 1px solid map-get($color, 'outline-awal');
     outline-offset: 5px;
-    background-color: map-get($color, 'bg-awal');
-    cursor: pointer;
-    position: relative;
-    z-index: 10;
-    overflow: hidden;
     @include transition('colors', $duration: '150');
 
     &::before {
       --skew: -30deg;
-      content: '';
       position: absolute;
       top: -2px;
       right: -20px;
       bottom: -2px;
       left: -20px;
+      z-index: -1;
+      content: '';
       background-color: map-get($color, 'bg-transisi');
       transform: translateX(-105%) skew(var(--skew));
-      z-index: -1;
       @include transition('transform', '150');
     }
 
     &__box {
       --sz: 6px;
-      width: var(--sz);
-      height: var(--sz);
-      display: inline-block;
       position: absolute;
-      background-color: map-get($color, 'box-awal');
       right: 0;
       bottom: 0;
+      display: inline-block;
+      width: var(--sz);
+      height: var(--sz);
+      background-color: map-get($color, 'box-awal');
       @include transition('colors', '150');
     }
 
