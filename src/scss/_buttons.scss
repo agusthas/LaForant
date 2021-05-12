@@ -66,7 +66,7 @@ $main-color: (
     position: relative;
     z-index: 10;
     overflow: hidden;
-    @include transition('colors', $duration: '600');
+    @include transition('colors', $duration: '150');
 
     &::before {
       --skew: -30deg;
@@ -79,7 +79,7 @@ $main-color: (
       background-color: map-get($color, 'bg-transisi');
       transform: translateX(-105%) skew(var(--skew));
       z-index: -1;
-      @include transition('transform', '600');
+      @include transition('transform', '150');
     }
 
     &__box {
@@ -91,7 +91,7 @@ $main-color: (
       background-color: map-get($color, 'box-awal');
       right: 0;
       bottom: 0;
-      @include transition('colors', '600');
+      @include transition('colors', '150');
     }
 
     &:hover {
