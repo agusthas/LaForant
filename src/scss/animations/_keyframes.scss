@@ -1,0 +1,55 @@
+@mixin keyframe($animation-name) {
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@include keyframe(spin) {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@include keyframe(bounce) {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+  }
+}
+
+@include keyframe(fadeInLeft) {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@include keyframe(fadeOutRight) {
+  from {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}

@@ -1,5 +1,3 @@
-@use "sass:map";
-
 $transition-duration: (
   'DEFAULT': 150ms,
   '100': 100ms,
@@ -43,13 +41,3 @@ $transition-property: (
   'shadow': box-shadow,
   'transform': transform,
 );
-
-@mixin transition(
-  $property: 'DEFAULT',
-  $duration: 'DEFAULT',
-  $timing: 'DEFAULT'
-) {
-  transition: all map-get($transition-duration, $duration)
-    map-get($transition-timing-function, $timing);
-  transition-property: map-get($transition-property, $property);
-}

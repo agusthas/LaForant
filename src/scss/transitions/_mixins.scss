@@ -1,0 +1,12 @@
+@use 'sass:map';
+@use './variables' as *;
+
+@mixin transition(
+  $property: 'DEFAULT',
+  $duration: 'DEFAULT',
+  $timing: 'DEFAULT'
+) {
+  transition: all map-get($transition-duration, $duration)
+    map-get($transition-timing-function, $timing);
+  transition-property: map-get($transition-property, $property);
+}
