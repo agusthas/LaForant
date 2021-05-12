@@ -1,0 +1,35 @@
+@use '../abstracts/' as *;
+@use '../base/' as *;
+@use '../transitions/' as *;
+
+.social {
+  --clr-awal: #{$clr-tertiary};
+  --clr-hover: #{$clr-secondary};
+  display: flex;
+  align-items: center;
+
+  &__link {
+    font-size: 1.3rem;
+    color: var(--clr-awal);
+    @include transition();
+
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+
+    &:hover {
+      color: var(--clr-hover);
+      transform: translateY(-8px);
+    }
+  }
+
+  @include bp-min('md') {
+    &__link {
+      font-size: 1.7rem;
+
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+}
