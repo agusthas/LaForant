@@ -31,7 +31,7 @@
     );
   }
 
-  &--wrapper {
+  .l-sidebar {
     display: flex;
     flex-direction: column;
     width: 88%;
@@ -39,38 +39,39 @@
     padding: 1.5rem 1rem;
     margin-left: auto;
     background: $clr-secondary;
+  }
 
-    .navbar {
-      position: initial;
-      padding: 1rem;
-      background-color: transparent;
+  .hamburger__line {
+    visibility: hidden;
+
+    &::before,
+    &::after {
+      top: 0;
+      visibility: visible;
+      background-color: $clr-primary;
     }
 
-    .hamburger__line {
-      visibility: hidden;
-
-      &::before,
-      &::after {
-        top: 0;
-        visibility: visible;
-        background-color: $clr-primary;
-      }
-
-      &::before {
-        transform: rotate(45deg);
-      }
-      &::after {
-        transform: rotate(-45deg);
-      }
+    &::before {
+      transform: rotate(45deg);
     }
-
-    .social {
-      --clr-awal: #{$clr-primary};
-      --clr-hover: #{$clr-tertiary};
-      padding: 0 1rem;
-      margin: 0 auto;
-      margin-top: auto;
+    &::after {
+      transform: rotate(-45deg);
     }
+  }
+
+  .social {
+    --clr-awal: #{$clr-primary};
+    --clr-hover: #{$clr-tertiary};
+
+    padding: 0 1rem;
+    margin: 0 auto;
+    margin-top: auto;
+  }
+
+  &__navbar {
+    position: initial;
+    padding: 1rem;
+    background-color: transparent;
   }
 
   &__list-wrapper {
@@ -99,24 +100,25 @@
     &:not(:last-child) {
       margin-bottom: 1.9rem;
     }
+  }
 
-    &--active {
-      transform: scale(1.05) translate(15px, -2px);
+  &__list--active {
+    transform: scale(1.05) translate(15px, -2px);
 
-      > .mobile-menu__link {
-        position: relative;
-        font-size: 1.4rem;
-        color: $clr-primary;
+    > .mobile-menu__link {
+      position: relative;
+      font-size: 1.4rem;
+      color: $clr-primary;
 
-        &::after {
-          position: absolute;
-          bottom: -3px;
-          left: 0;
-          width: 100%;
-          height: 3px;
-          content: '';
-          background-color: $clr-primary;
-        }
+      /* stylelint-disable-next-line max-nesting-depth */
+      &::after {
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        content: '';
+        background-color: $clr-primary;
       }
     }
   }

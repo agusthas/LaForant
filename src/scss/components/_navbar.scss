@@ -1,4 +1,4 @@
-// @use 'sass:color';
+@use 'sass:color';
 @use '../abstracts/' as *;
 @use '../base/' as *;
 @use '../transitions/' as *;
@@ -9,35 +9,38 @@
 
 .dropdown {
   @include transition('all');
-  opacity: 1;
-  visibility: visible;
+
   position: absolute;
   top: 100%;
   left: 0;
-  padding-top: 10%;
   width: 200%;
   max-width: 138px;
-  box-shadow: 0 0 1em rgba(#000, 0.3);
+  padding-top: 10%;
   cursor: pointer;
+  visibility: visible;
+  box-shadow: 0 0 1em rgba(#000, 0.3);
+  opacity: 1;
 
   &__list {
     @include transition();
-    font-family: $ff-uni-sans;
-    font-weight: 900;
-    font-size: 1.25rem;
-    letter-spacing: 0.04em;
+
     padding: 0.625rem;
-    background-color: $clr-secondary;
+    font-family: $ff-uni-sans;
+    font-size: 1.25rem;
+    font-weight: 900;
     color: $clr-tertiary;
+    letter-spacing: 0.04em;
+    background-color: $clr-secondary;
 
     &:hover {
-      background: mix(#fff, $clr-secondary, 30%);
+      background: color.mix(#fff, $clr-secondary, 30%);
     }
   }
 }
 
 .hamburger {
   --size: 30px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,6 +60,7 @@
     &::before,
     &::after {
       --distance: -8px;
+
       position: absolute;
       right: 0;
       left: 0;
@@ -75,6 +79,7 @@
   }
 }
 
+/* stylelint-disable max-nesting-depth */
 .navbar {
   position: fixed;
   top: 0;
@@ -100,19 +105,19 @@
   }
 
   @include bp-min('md') {
+    justify-content: initial;
     padding: 1.5rem 2rem;
     background-color: transparent;
-    justify-content: initial;
 
     .dropdown {
-      opacity: 0;
       visibility: hidden;
+      opacity: 0;
     }
 
     .fas {
-      font-size: 1.2rem;
       margin-top: -2px;
       margin-left: 0.4em;
+      font-size: 1.2rem;
       cursor: pointer;
     }
 
@@ -125,10 +130,10 @@
     }
 
     &__links {
-      margin-left: 3rem;
       display: flex;
-      align-items: center;
       gap: 1.8rem;
+      align-items: center;
+      margin-left: 3rem;
     }
 
     &__link {
@@ -149,24 +154,24 @@
       &--active {
         color: $clr-secondary;
         &::after {
-          content: '';
           position: absolute;
-          left: -8%;
           right: -10%;
           bottom: -10px;
+          left: -8%;
           height: 3px;
+          content: '';
           background-color: $clr-secondary;
         }
       }
     }
 
     &__a {
-      text-transform: uppercase;
       font-family: $ff-uni-sans;
+      font-size: 1.25rem;
       font-weight: 900;
       line-height: 1;
+      text-transform: uppercase;
       letter-spacing: 0.03em;
-      font-size: 1.25rem;
     }
   }
 
@@ -178,3 +183,5 @@
     }
   }
 }
+
+/* stylelint-enable max-nesting-depth */

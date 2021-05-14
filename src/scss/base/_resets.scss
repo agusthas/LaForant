@@ -1,4 +1,5 @@
 @use '../abstracts/' as a;
+
 /*******************
  Box Sizing
  *******************/
@@ -16,12 +17,12 @@ html {
 
 body {
   min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
   font-family: a.$ff-roboto;
+  line-height: 1.5;
   color: a.$clr-primary;
   background-color: a.$clr-tertiary;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
 }
 
 /*******************
@@ -45,6 +46,7 @@ a:focus,
 a:visited {
   text-decoration: none;
 }
+
 /*******************
  Forms and buttons
  *******************/
