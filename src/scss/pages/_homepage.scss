@@ -255,7 +255,7 @@ body {
     &::after {
       position: absolute;
       top: 0;
-      right: -50%;
+      right: -60%;
       bottom: 0;
       z-index: -1;
       width: 100%;
@@ -272,6 +272,7 @@ body {
     &__image--desktop {
       display: block;
       order: 1;
+      margin-left: 2rem;
       margin-top: auto;
       filter: drop-shadow(0 0 1em rgba(#000, 0.3));
 
@@ -292,6 +293,11 @@ body {
 
   @include bp-min('lg') {
     align-items: center;
+
+    &::after {
+      right: -50%;
+    }
+
     &__title {
       font-size: 6rem;
     }
