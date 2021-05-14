@@ -6,7 +6,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "sass:compile": "sass ./src/scss:./src/css",
-    "lint:fix": "stylelint \"./src/**/*.css\" --fix"
+    "lint": "stylelint \"./src/**/*.{scss,css}\"",
+    "lint:fix": "stylelint \"./src/**/*.{scss,css}\" --fix"
   },
   "devDependencies": {
     "sass": "^1.32.12",
