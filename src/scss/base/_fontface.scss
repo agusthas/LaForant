@@ -7,7 +7,7 @@ ROBOTO
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  src: url('/public/assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
 }
 
 /* Medium */
@@ -15,7 +15,7 @@ ROBOTO
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
-  src: url('../assets/fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+  src: url('/public/assets/fonts/Roboto/Roboto-Medium.ttf') format('truetype');
 }
 
 /* Bold */
@@ -23,7 +23,7 @@ ROBOTO
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: url('../assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+  src: url('/public/assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
 }
 
 /* Black */
@@ -31,7 +31,7 @@ ROBOTO
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  src: url('../assets/fonts/Roboto/Roboto-Black.ttf') format('truetype');
+  src: url('/public/assets/fonts/Roboto/Roboto-Black.ttf') format('truetype');
 }
 
 /* 
@@ -41,7 +41,8 @@ Tungsten Bold
   font-family: 'Tungsten Bold';
   font-style: normal;
   font-weight: 700;
-  src: url('../assets/fonts/tungsten-bold/Tungsten-Bold.ttf') format('truetype');
+  src: url('/public/assets/fonts/tungsten-bold/Tungsten-Bold.ttf')
+    format('truetype');
 }
 
 /* 
@@ -52,12 +53,13 @@ Uni Sans
   font-family: 'Uni Sans';
   font-style: normal;
   font-weight: 900;
-  src: url('../assets/fonts/uni-sans/Uni-Sans-Heavy.otf') format('opentype');
+  src: url('/public/assets/fonts/uni-sans/Uni-Sans-Heavy.otf')
+    format('opentype');
 }
 
 @font-face {
   font-family: 'Uni Sans';
   font-style: normal;
   font-weight: 200;
-  src: url('../assets/fonts/uni-sans/Uni-Sans-Thin.otf') format('opentype');
+  src: url('/public/assets/fonts/uni-sans/Uni-Sans-Thin.otf') format('opentype');
 }

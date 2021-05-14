@@ -221,7 +221,7 @@ body {
       justify-content: center;
       width: 100%;
       background: linear-gradient(180deg, transparent 45%, $clr-primary 55%),
-        url('../assets/images/jett.png');
+        url('/public/assets/images/jett.png');
       background-repeat: no-repeat;
       background-position: top center;
       transform: translateX(-50%);
@@ -584,7 +584,7 @@ body {
   padding-top: 7rem;
 
   &--bg-image {
-    background-image: url('../assets/images/maps-bg.png');
+    background-image: url('/public/assets/images/maps-bg.png');
     background-repeat: no-repeat;
     background-size: cover;
   }
