@@ -46,6 +46,17 @@ $main-color: (
   ),
 );
 
+%box-placeholder {
+  --sz: 6px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: inline-block;
+  width: var(--sz);
+  height: var(--sz);
+  @include transition('colors', '150');
+}
+
 @each $type, $color in $main-color {
   .c-btn-#{$type} {
     position: relative;
@@ -68,6 +79,11 @@ $main-color: (
     outline-offset: 5px;
     @include transition('colors', $duration: '150');
 
+    &__box {
+      @extend %box-placeholder;
+      background-color: map-get($color, 'box-awal');
+    }
+
     &::before {
       --skew: -30deg;
       position: absolute;
@@ -82,27 +98,16 @@ $main-color: (
       @include transition('transform', '150');
     }
 
-    .box {
-      --sz: 6px;
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      display: inline-block;
-      width: var(--sz);
-      height: var(--sz);
-      background-color: map-get($color, 'box-awal');
-      @include transition('colors', '150');
-    }
-
     &:hover {
       color: map-get($color, 'text-transisi');
       outline-color: map-get($color, 'outline-transisi');
-      &::before {
-        transform: translateX(0) skew(var(--skew));
+
+      .c-btn-#{$type}__box {
+        background-color: map-get($color, 'box-transisi');
       }
 
-      .box {
-        background-color: map-get($color, 'box-transisi');
+      &::before {
+        transform: translateX(0) skew(var(--skew));
       }
     }
 

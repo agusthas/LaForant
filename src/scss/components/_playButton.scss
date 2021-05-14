@@ -9,12 +9,6 @@
   border: 0;
   outline: 0;
 
-  &:hover {
-    .c-play-button__icon {
-      color: $clr-secondary;
-    }
-  }
-
   &__spinner {
     --radius: 45px;
     width: var(--radius);
@@ -33,19 +27,25 @@
     @include transition();
   }
 
-  @include bp-min('md') {
-    &:hover {
-      .c-play-button__icon {
-        color: $clr-primary;
-      }
+  &:hover {
+    .c-play-button__icon {
+      color: $clr-secondary;
     }
+  }
 
+  @include bp-min('md') {
     &__spinner {
       --radius: 70px;
     }
 
     &__icon {
       font-size: 1.2rem;
+    }
+
+    &:hover {
+      .c-play-button__icon {
+        color: $clr-primary;
+      }
     }
   }
 }

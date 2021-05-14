@@ -2,19 +2,17 @@
 @use '../base' as *;
 @use '../animations/' as  *;
 @use '../transitions/' as *;
+
 @use '../components/navbar';
 @use '../components/buttons';
+@use '../components/socials';
 @use '../components/mobileMenu';
 @use '../components/playButton';
-@use '../components/socials';
 @use '../components/scrollDown';
 
-body {
-  font-family: $ff-roboto;
-  color: $clr-primary;
-  background-color: $clr-tertiary;
-}
-
+/*******************
+ HOMEPAGE
+ *******************/
 .l-grid {
   display: grid;
   grid-template-rows: auto;
@@ -318,14 +316,6 @@ body {
   justify-content: center;
   width: max-content;
 
-  &:hover {
-    .newspaper__image {
-      &::before {
-        transform: translateX(0);
-      }
-    }
-  }
-
   &__image {
     position: relative;
     display: flex;
@@ -367,6 +357,14 @@ body {
     font-size: 1.4rem;
     line-height: 0.8;
     color: $clr-secondary;
+  }
+
+  &:hover {
+    .newspaper__image {
+      &::before {
+        transform: translateX(0);
+      }
+    }
   }
 
   @include bp-min('sm') {
@@ -696,3 +694,6 @@ body {
     }
   }
 }
+/*******************
+ END OF HOMEPAGE
+ *******************/
