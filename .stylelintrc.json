@@ -1,3 +1,25 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-recess-order"]
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recess-order",
+    "stylelint-config-prettier"
+  ],
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "max-nesting-depth": [
+      2,
+      {
+        "ignore": ["pseudo-classes", "blockless-at-rules"]
+      }
+    ],
+    "scss/dollar-variable-no-missing-interpolation": true,
+    "scss/comment-no-empty": true,
+    "scss/declaration-nested-properties-no-divided-groups": true,
+    "scss/dimension-no-non-numeric-values": true,
+    "scss/map-keys-quotes": "always",
+    "scss/no-duplicate-mixins": true,
+    "scss/no-global-function-names": true
+  }
 }
