@@ -28,50 +28,6 @@
   }
 }
 
-.trailer {
-  display: flex;
-  align-items: center;
-  font-family: $ff-uni-sans;
-  font-weight: 900;
-  text-align: left;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-
-  &__button {
-    margin-right: 0.5rem;
-  }
-
-  &__top {
-    font-size: 0.7rem;
-    line-height: 1;
-  }
-
-  &__bottom {
-    margin-top: 0.3rem;
-    font-size: 1rem;
-    line-height: 1;
-  }
-
-  @include bp-min('md') {
-    &__button {
-      margin-right: 1rem;
-    }
-
-    &__top,
-    &__bottom {
-      letter-spacing: 0.025em;
-    }
-
-    &__top {
-      font-size: 1.1rem;
-    }
-
-    &__bottom {
-      font-size: 1.5rem;
-    }
-  }
-}
-
 .o-section-header {
   font-family: $ff-tungsten;
   font-size: 3.4rem;
