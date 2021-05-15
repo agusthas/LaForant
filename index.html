@@ -15,90 +15,92 @@
   </head>
   <body>
     <!-- NAVBAR -->
-    <nav class="navbar">
-      <a href="#" class="navbar__logo">
-        <img class="logo" src="/assets/images/logo.png" alt="" />
-      </a>
-      <ul class="navbar__links">
-        <li class="navbar__link navbar__link--active">
-          <a class="navbar__a" href="#">HOME</a>
-        </li>
-        <li class="navbar__link navbar__link--dropdown">
-          <a class="navbar__a" href="#">MAPS</a>
-          <i class="fas fa-caret-down"></i>
-
-          <ul class="dropdown">
-            <li class="dropdown__list">
-              <a href="#">HAVEN</a>
-            </li>
-            <li class="dropdown__list">
-              <a href="#">ASCENT</a>
-            </li>
-            <li class="dropdown__list">
-              <a href="#">BIND</a>
-            </li>
-            <li class="dropdown__list">
-              <a href="#">ICEBOX</a>
-            </li>
-            <li class="dropdown__list">
-              <a href="#">SPLIT</a>
-            </li>
-          </ul>
-        </li>
-        <li class="navbar__link">
-          <a class="navbar__a" href="#">AGENTS</a>
-        </li>
-        <li class="navbar__link">
-          <a class="navbar__a" href="#">SYSTEM REQUIREMENTS</a>
-        </li>
-        <li class="navbar__link">
-          <a class="navbar__a" href="#">PRE-REGISTER</a>
-        </li>
-      </ul>
-      <button id="js-hamburger-open" class="hamburger">
-        <span class="hamburger__line"></span>
-      </button>
-    </nav>
-
-    <!-- MOBILE-MENU: SHOWN ONLY WHEN SCREEN < 600px -->
-    <div class="mobile-menu">
-      <div class="l-sidebar">
-        <!-- MOBILE-MENU-TOP -->
-        <header class="navbar mobile-menu__navbar">
-          <img class="logo" src="/assets/images/logo.png" alt="" />
-          <button id="js-hamburger-close" class="hamburger">
-            <span class="hamburger__line"></span>
-          </button>
-        </header>
-
-        <!-- MOBILE-MENU-LIST -->
-        <main>
-          <ul class="mobile-menu__list-wrapper">
-            <li class="mobile-menu__list mobile-menu__list--active">
-              <a href="#" class="mobile-menu__link">Home</a>
-            </li>
-            <li class="mobile-menu__list">
-              <a href="#" class="mobile-menu__link">Agents </a>
-            </li>
-            <li class="mobile-menu__list">
-              <a href="#" class="mobile-menu__link">Maps</a>
-            </li>
-            <li class="mobile-menu__list">
-              <a href="#" class="mobile-menu__link">System Requirements</a>
-            </li>
-            <li class="mobile-menu__list">
-              <a href="#" class="mobile-menu__link">Pre-Register</a>
-            </li>
-          </ul>
-        </main>
-
-        <footer class="social">
-          <a class="social__link" href="#"><i class="fab fa-facebook-f"></i></a>
-          <a class="social__link" href="#"><i class="fab fa-twitter"></i></a>
-          <a class="social__link" href="#"><i class="fab fa-youtube"></i></a>
-        </footer>
+    <nav>
+      <div class="nav">
+        <a href="#" class="">
+          <img class="navbar__logo" src="/assets/images/logo.png" alt="" />
+        </a>
+        <button id="js-hamburger--open" class="navbar__hamburger hamburger">
+          <span class="hamburger__line"></span>
+        </button>
       </div>
-    </div>
+      <div id="js-sidebar" class="l-nav">
+        <div class="navbar">
+          <div class="l-top-wrapper">
+            <a href="#" class="">
+              <img class="navbar__logo" src="/assets/images/logo.png" alt="" />
+            </a>
+            <button
+              id="js-hamburger--close"
+              class="navbar__hamburger hamburger"
+            >
+              <span class="hamburger__line hamburger__line--close"></span>
+            </button>
+          </div>
+          <ul id="js-navbar__links" class="navbar__links">
+            <li class="navbar__link">
+              <a class="navbar__link-text" href="#">HOME</a>
+            </li>
+            <li class="navbar__link">
+              <span data-dd-toggler class="navbar__link-text"
+                >MAPS<i class="icon fas fa-caret-down"></i
+              ></span>
+
+              <ul dropdown class="dropdown">
+                <li class="dropdown__list">
+                  <a href="#">HAVEN</a>
+                </li>
+                <li class="dropdown__list">
+                  <a href="#">ASCENT</a>
+                </li>
+                <li class="dropdown__list">
+                  <a href="#">BIND</a>
+                </li>
+                <li class="dropdown__list">
+                  <a href="#">ICEBOX</a>
+                </li>
+                <li class="dropdown__list">
+                  <a href="#">SPLIT</a>
+                </li>
+              </ul>
+            </li>
+            <li class="navbar__link">
+              <span data-dd-toggler class="navbar__link-text"
+                >AGENTS<i class="icon fas fa-caret-down"></i
+              ></span>
+
+              <ul dropdown class="dropdown">
+                <li class="dropdown__list">
+                  <a href="#">ASTRA</a>
+                </li>
+                <li class="dropdown__list">
+                  <a href="#">JETT</a>
+                </li>
+                <li class="dropdown__list">
+                  <a href="#">SKYE</a>
+                </li>
+                <li class="dropdown__list">
+                  <a href="#">VIPER</a>
+                </li>
+              </ul>
+            </li>
+            <li class="navbar__link">
+              <a class="navbar__link-text" href="#">SYSTEM REQUIREMENTS</a>
+            </li>
+            <li class="navbar__link">
+              <a class="navbar__link-text" href="#">PRE-REGISTER</a>
+            </li>
+          </ul>
+          <footer class="social">
+            <a class="social__link" href="#"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a class="social__link" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="social__link" href="#"><i class="fab fa-youtube"></i></a>
+          </footer>
+        </div>
+      </div>
+    </nav>
 
     <main class="l-container">
       <!-- TOP -->

@@ -25,31 +25,3 @@
     animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
   }
 }
-
-@include keyframe(fadeInLeft) {
-  from {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateX(40px);
-  }
-
-  to {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@include keyframe(fadeOutRight) {
-  from {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  to {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateX(40px);
-  }
-}

@@ -3,6 +3,7 @@ $transition-duration: (
   '100': 100ms,
   '150': 200ms,
   '300': 300ms,
+  '400': 400ms,
   '500': 500ms,
   '600': 600ms,
   '1000': 1000ms,
@@ -14,10 +15,10 @@ $transition-timing-function: (
   'linear': linear,
   'in': cubic-bezier(0.4, 0, 1, 1),
   'out': cubic-bezier(0, 0, 0.2, 1),
+  'ease': ease,
 );
 
 $transition-property: (
-  'none': none,
   'all': all,
   'DEFAULT': (
     background-color,
@@ -41,4 +42,10 @@ $transition-property: (
   'opacity': opacity,
   'shadow': box-shadow,
   'transform': transform,
+  'height': (
+    height,
+    width,
+    max-height,
+    max-width,
+  ),
 );

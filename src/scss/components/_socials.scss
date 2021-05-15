@@ -1,16 +1,17 @@
 @use '../abstracts/' as *;
-@use '../base/' as *;
 @use '../transitions/' as *;
 
 .social {
   --clr-awal: #{$clr-tertiary};
   --clr-hover: #{$clr-secondary};
+  --icon-size-xs: 1.3rem;
+  --icon-size-md: 1.7rem;
 
   display: flex;
   align-items: center;
 
   &__link {
-    font-size: 1.3rem;
+    font-size: var(--icon-size-xs);
     color: var(--clr-awal);
     @include transition();
 
@@ -26,7 +27,7 @@
 
   @include bp-min('md') {
     &__link {
-      font-size: 1.7rem;
+      font-size: var(--icon-size-md);
 
       &:not(:last-child) {
         margin-right: 2rem;
