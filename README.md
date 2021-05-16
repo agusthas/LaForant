@@ -6,6 +6,8 @@ Maximum size : <= 1920px
 
 # LIVE DEPLOYMENT
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9abe1d66-30d9-4cde-98aa-6c6b89c2ba54/deploy-status)](https://app.netlify.com/sites/laforant/deploys)
+
 Netlify: [LaForant Website](https://laforant.netlify.app)
 
 # HOW TO RUN
