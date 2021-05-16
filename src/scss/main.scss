@@ -1,1 +1,6 @@
+@use './base';
+
+@use './layout/navbar';
+@use './layout/footer';
+
 @use './pages/homepage';
