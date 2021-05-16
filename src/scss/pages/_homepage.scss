@@ -43,10 +43,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 100%;
+  padding-bottom: 2rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
   color: $clr-tertiary;
   text-align: center;
   background-color: $clr-primary;
+
+  @include bp-min('md') {
+    flex-direction: row;
+    justify-content: initial;
+    padding-top: 5.4rem;
+  }
+
+  @include bp-min('lg') {
+    align-items: center;
+  }
 
   &::after {
     @include bp-min('md') {
@@ -84,30 +98,6 @@
     }
   }
 
-  &__image--mobile {
-    display: none;
-
-    @include bp-min('sm') {
-      position: absolute;
-      top: 12%;
-      left: 50%;
-      z-index: -1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      background: linear-gradient(180deg, transparent 45%, $clr-primary 55%),
-        url('/assets/images/jett.png');
-      background-repeat: no-repeat;
-      background-position: top center;
-      transform: translateX(-50%);
-    }
-
-    @include bp-min('md') {
-      display: none;
-    }
-  }
-
   &__image--desktop {
     display: none;
 
@@ -126,13 +116,40 @@
   }
 
   &__content--wrapper {
+    margin-top: 40%; /* Magic Number */
+    margin-bottom: 5rem;
+
     @include bp-min('sm') {
-      margin-top: 20rem;
+      margin-top: 65%; /* Magic Number */
     }
 
     @include bp-min('md') {
       margin: initial;
       text-align: left;
+    }
+  }
+
+  &__content--wrapper::before {
+    @include bp-min('sm') {
+      position: absolute;
+      top: 12%; /* Magic Number */
+      left: 50%;
+      z-index: -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      content: '';
+      background: linear-gradient(180deg, transparent 45%, $clr-primary 55%),
+        url('/assets/images/jett.png');
+      background-repeat: no-repeat;
+      background-position: top center;
+      transform: translateX(-50%);
+    }
+
+    @include bp-min('md') {
+      display: none;
     }
   }
 
@@ -190,30 +207,20 @@
   }
 
   &__container {
-    position: absolute;
-    right: 0;
-    bottom: 2rem;
-    left: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2rem;
+    margin-top: auto;
+    margin-right: auto;
 
     @include bp-min('md') {
+      position: absolute;
+      right: 0;
+      bottom: 3rem;
+      left: 0;
       padding: 0 2.5rem;
+      margin: 0;
     }
-  }
-
-  @include bp-min('md') {
-    flex-direction: row;
-    justify-content: initial;
-    padding-top: 5.4rem;
-    padding-bottom: 1rem;
-    overflow: clip;
-  }
-
-  @include bp-min('lg') {
-    align-items: center;
   }
 }
 
