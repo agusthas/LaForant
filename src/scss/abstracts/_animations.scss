@@ -1,3 +1,9 @@
+@mixin keyframe($animation-name) {
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
 @mixin animation(
   $delay: 0s,
   $name: none,
