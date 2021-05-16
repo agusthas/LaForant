@@ -1,3 +1,9 @@
+## Supported Viewport
+
+Phones : >= 375px
+Ipad : >= 600px
+Maximum size : <= 1920px
+
 # LIVE DEPLOYMENT
 
 Netlify: [LaForant Website](https://laforant.netlify.app)
