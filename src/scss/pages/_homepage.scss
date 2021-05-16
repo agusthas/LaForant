@@ -572,9 +572,28 @@
 }
 
 .footer {
+  --ff-primary: $ff-uni-sans;
+  --clr-bg-primary: #{$clr-primary};
+  --clr-bg-secondary: #{$clr-secondary};
+  --text-color: #{$clr-tertiary};
+  --font-size-title: 1.5rem; /* 24px */
+  --font-size-body: 1.125rem; /* 18px */
+
   width: 100%;
-  color: $clr-tertiary;
-  background-color: $clr-primary;
+  color: var(--text-color);
+  background-color: var(--clr-bg-primary);
+
+  .social {
+    &__link {
+      font-size: 1.4rem;
+
+      @include bp-min('sm') {
+        &:not(:last-child) {
+          margin-right: 2.25rem;
+        }
+      }
+    }
+  }
 
   &__top {
     display: flex;
@@ -592,8 +611,8 @@
 
   &__title {
     margin-top: 0.7rem;
-    font-family: $ff-uni-sans;
-    font-size: 1.5rem;
+    font-family: var(--ff-primary);
+    font-size: var(--font-size-title);
     font-weight: 900;
     line-height: 1.3;
     letter-spacing: 0.04em;
@@ -603,60 +622,39 @@
     }
   }
 
-  .social {
-    &__link {
-      font-size: 1.4rem;
-    }
-  }
-
   &__bottom {
     padding: 1.125rem 1.8rem;
-    background-color: $clr-secondary;
+    background-color: var(--clr-bg-secondary);
   }
 
-  .copyright {
+  &__copyright {
     margin: 0 auto;
     font-size: 0.9rem;
     line-height: 1.6;
     text-align: center;
 
-    &__links {
-      display: none;
+    @include bp-min('sm') {
+      max-width: 80ch;
+      font-size: var(--font-size-body);
     }
   }
 
-  @include bp-min('sm') {
-    &__top {
+  &__extras {
+    display: none;
+
+    @include bp-min('sm') {
       display: flex;
-      flex-direction: row;
       align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 2.1rem;
+      justify-content: center;
     }
+  }
 
-    .social {
-      &__link {
-        &:not(:last-child) {
-          margin-right: 2.25rem;
-        }
-      }
-    }
-
-    .copyright {
-      max-width: 80ch;
-      font-size: 1.125rem;
-      &__links {
-        display: inline-flex;
-        gap: 1rem;
-        margin-top: 1px;
-        text-align: center;
-      }
-
-      &__link {
-        font-size: inherit;
-        color: $clr-tertiary;
-        text-decoration: underline;
-      }
+  &__extra {
+    @include bp-min('sm') {
+      margin: 0 1rem;
+      font-size: var(--font-size-body);
+      color: var(--text-color);
+      text-decoration: underline;
     }
   }
 }
