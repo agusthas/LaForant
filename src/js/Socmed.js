@@ -1,17 +1,5 @@
-const data = [
-  {
-    icon: 'fab fa-facebook-f',
-    link: 'https://www.facebook.com/PlayVALORANT/',
-  },
-  {
-    icon: 'fab fa-twitter',
-    link: 'https://twitter.com/playvalorant',
-  },
-  {
-    icon: 'fab fa-youtube',
-    link: 'https://www.youtube.com/channel/UC8CX0LD98EDXl4UYX1MDCXg',
-  },
-];
+import Socials from './contents/Socials';
+import { listAppend } from './utils';
 
 /**
  * Creating <a> tag
@@ -27,13 +15,10 @@ const aTag = ({ link, icon }) => {
 const Socmed = () => {
   const socmedParent = $('[data-socmed]');
 
-  const Lists = data.map((value) => {
-    return aTag(value);
-  });
-
-  socmedParent.each((_, el) => {
-    $(el).append(Lists.join(''));
-  });
+  listAppend(
+    socmedParent,
+    Socials.map((value) => aTag(value)),
+  );
 };
 
 export default Socmed;
