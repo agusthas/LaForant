@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <!-- Google Font: Roboto -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>LAFORANT</title>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav>
+      <div class="nav">
+        <a href="/index.html" class="">
+          <img
+            loading="lazy"
+            class="navbar__logo"
+            src="/assets/images/logo.png"
+            alt=""
+          />
+        </a>
+        <button id="js-hamburger--open" class="navbar__hamburger hamburger">
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+      <div id="js-sidebar" class="l-nav">
+        <div class="navbar">
+          <div class="l-top-wrapper">
+            <a href="/index.html" class="">
+              <img
+                loading="lazy"
+                class="navbar__logo"
+                src="/assets/images/logo.png"
+                alt=""
+              />
+            </a>
+            <button
+              id="js-hamburger--close"
+              class="navbar__hamburger hamburger"
+            >
+              <span class="hamburger__line hamburger__line--close"></span>
+            </button>
+          </div>
+          <ul id="js-navbar__links" class="navbar__links">
+            <li class="navbar__link">
+              <a class="navbar__link-text" href="/index.html">HOME</a>
+            </li>
+            <li class="navbar__link">
+              <span data-dd-toggler class="navbar__link-text"
+                >MAPS<i class="icon fas fa-caret-down"></i
+              ></span>
+
+              <ul data-dropdown-maps class="dropdown"></ul>
+            </li>
+            <li class="navbar__link">
+              <span data-dd-toggler class="navbar__link-text"
+                >AGENTS<i class="icon fas fa-caret-down"></i
+              ></span>
+
+              <ul data-dropdown-agents class="dropdown"></ul>
+            </li>
+            <li class="navbar__link">
+              <a class="navbar__link-text" href="/pages/requirement.html"
+                >SYSTEM REQUIREMENTS</a
+              >
+            </li>
+            <li class="navbar__link">
+              <a class="navbar__link-text" href="/pages/register.html"
+                >PRE-REGISTER</a
+              >
+            </li>
+          </ul>
+          <div data-socmed class="social"></div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="l-container">
+      <section class="spec l-section-container">
+        <h1 class="spec__title big-heading">SPECS</h1>
+        <img class="spec__image" src="/assets/images/skye.png" alt="Skye" />
+      </section>
+      <section class="requirement l-section-container">
+        <h2 class="requirement__title">HARDWARE REQUIREMENTS</h2>
+      </section>
+    </main>
+
+    <!-- FOOOTER -->
+    <footer class="footer">
+      <div class="footer__top">
+        <div data-socmed class="social"></div>
+
+        <h2 class="footer__title">DEFY YOUR OWN LIMITS.</h2>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &COPY; 2021 LaForant Corporation. All rights reserved. All trademarks
+          are property of their respective owners in Indonesia and other
+          countries. VAT included in all prices where applicable.
+        </p>
+        <div class="footer__extras">
+          <a href="#" class="footer__extra">Privacy Policy</a>
+          <span>|</span>
+          <a href="#" class="footer__extra">Terms of Service</a>
+          <span>|</span>
+          <a href="#" class="footer__extra">Cookie Preferences</a>
+        </div>
+      </div>
+    </footer>
+    <!-- Scripts -->
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>
