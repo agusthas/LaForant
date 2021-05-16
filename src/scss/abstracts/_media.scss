@@ -1,9 +1,10 @@
 @use "sass:map";
 
+/* prettier-ignore */
 $breakpoints: (
-  'sm': 600px,
-  'md': 1200px,
-  'lg': 1600px,
+  'sm': 600px, // Mobile Phones
+  'md': 1200px, // Ipad
+  'lg': 1600px, // Laptop
 );
 
 @mixin bp-min($br) {
