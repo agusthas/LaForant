@@ -10,7 +10,7 @@ $logo-height-md: 3rem;
 
 $gap-link-md: 1.8rem; /* 28.8px */
 
-$max-height-dropdown-md: 20rem; /* 320px  */
+$max-height-dropdown: 20rem; /* 320px  */
 
 .hamburger {
   display: flex;
@@ -89,7 +89,7 @@ $max-height-dropdown-md: 20rem; /* 320px  */
   z-index: 1000;
   width: 100%;
   max-width: 0;
-  overflow: hidden;
+  // overflow: hidden;
   visibility: hidden;
   background-color: rgba($clr-primary, 70%);
   opacity: 0;
@@ -112,6 +112,74 @@ $max-height-dropdown-md: 20rem; /* 320px  */
   }
 }
 
+.dropdown {
+  --left-right-padding: 0.5em;
+
+  @include transition('height', '400', 'ease');
+
+  position: relative;
+  top: 0.5rem;
+  z-index: 1000;
+  width: 200%;
+  max-width: 100%;
+  max-height: 0;
+  padding-right: var(--left-right-padding);
+  padding-left: var(--left-right-padding);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  cursor: pointer;
+  visibility: hidden;
+  background-color: transparent;
+  opacity: 0;
+  scrollbar-width: auto;
+
+  &.show {
+    max-height: $max-height-dropdown;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  @include bp-min('md') {
+    --left-right-padding: 0;
+
+    position: absolute;
+    top: 100%;
+    left: -0.5em;
+    max-width: $max-height-dropdown;
+  }
+
+  &__list {
+    --clr-text-awal: #{$clr-tertiary};
+    --clr-text-hover: #{$clr-primary};
+    --clr-bg-awal: #{$clr-primary};
+    --clr-bg-hover: #{color.mix($white, $clr-secondary, 30%)};
+    --padding-per-list: calc(0.625rem / 1.5) 0.625rem;
+    @include transition('colors', 'DEFAULT', 'ease');
+
+    font: {
+      family: $ff-uni-sans;
+      weight: 900;
+      size: 1.25rem;
+    }
+
+    padding: var(--padding-per-list);
+    line-height: 1.5;
+    color: var(--clr-text-awal);
+    background-color: var(--clr-bg-awal);
+
+    &:hover {
+      color: var(--clr-text-hover);
+      background-color: var(--clr-bg-hover);
+    }
+
+    @include bp-min('md') {
+      --clr-text-awal: #{$clr-tertiary};
+      --clr-text-hover: #{$clr-tertiary};
+      --clr-bg-awal: #{$clr-secondary};
+    }
+  }
+}
+
 /* stylelint-disable max-nesting-depth */
 .navbar {
   display: flex;
@@ -119,9 +187,11 @@ $max-height-dropdown-md: 20rem; /* 320px  */
   align-items: center;
   width: 90%;
   max-width: 100vw;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 100%;
   padding: 1rem;
   margin-left: auto;
+  overflow: scroll;
   background-color: rgba($clr-secondary, 100%);
   box-shadow: 0 0 1.1em rgba($black, 40%);
 
@@ -132,6 +202,7 @@ $max-height-dropdown-md: 20rem; /* 320px  */
     min-height: auto;
     padding: 1.5rem 2rem;
     margin: 0;
+    overflow: visible;
     background-color: transparent;
     box-shadow: none;
   }
@@ -146,75 +217,6 @@ $max-height-dropdown-md: 20rem; /* 320px  */
       display: block;
       width: auto;
       padding: 0;
-    }
-  }
-
-  .dropdown {
-    --left-right-padding: 0.5em;
-
-    @include transition('height', '400', 'ease');
-
-    position: relative;
-    top: 0.5rem;
-    z-index: 1000;
-    width: 200%;
-    max-width: 100%;
-    max-height: 0;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    cursor: pointer;
-    visibility: hidden;
-    background-color: transparent;
-    opacity: 0;
-    padding: {
-      right: var(--left-right-padding);
-      left: var(--left-right-padding);
-    }
-
-    &.show {
-      max-height: 260px;
-      visibility: visible;
-      opacity: 1;
-    }
-
-    @include bp-min('md') {
-      --left-right-padding: 0;
-
-      position: absolute;
-      top: 100%;
-      left: -0.5em;
-      max-width: 150px;
-    }
-
-    &__list {
-      --clr-text-awal: #{$clr-tertiary};
-      --clr-text-hover: #{$clr-primary};
-      --clr-bg-awal: #{$clr-primary};
-      --clr-bg-hover: #{color.mix($white, $clr-secondary, 30%)};
-      --padding-per-list: 0.625rem;
-      @include transition('colors', 'DEFAULT', 'ease');
-
-      font: {
-        family: $ff-uni-sans;
-        weight: 900;
-        size: 1.25rem;
-      }
-
-      padding: var(--padding-per-list);
-      color: var(--clr-text-awal);
-      background-color: var(--clr-bg-awal);
-
-      &:hover {
-        color: var(--clr-text-hover);
-        background-color: var(--clr-bg-hover);
-      }
-
-      @include bp-min('md') {
-        --clr-text-awal: #{$clr-tertiary};
-        --clr-text-hover: #{$clr-tertiary};
-        --clr-bg-awal: #{$clr-secondary};
-        --padding-per-list: 1rem;
-      }
     }
   }
 
@@ -267,8 +269,8 @@ $max-height-dropdown-md: 20rem; /* 320px  */
       // }
 
       /* INI GATAU KENAPA HARUS DISINI, BERI SAYA PENJELASAN */
-      &:hover .dropdown {
-        max-height: $max-height-dropdown-md;
+      @at-root &:hover .dropdown {
+        max-height: $max-height-dropdown;
         visibility: visible;
         opacity: 1;
       }
