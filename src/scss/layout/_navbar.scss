@@ -160,7 +160,8 @@ $max-height-dropdown-md: 20rem; /* 320px  */
     width: 200%;
     max-width: 100%;
     max-height: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     cursor: pointer;
     visibility: hidden;
     background-color: transparent;
@@ -183,7 +184,6 @@ $max-height-dropdown-md: 20rem; /* 320px  */
       top: 100%;
       left: -0.5em;
       max-width: 150px;
-      padding-top: 0.6em;
     }
 
     &__list {
@@ -289,6 +289,7 @@ $max-height-dropdown-md: 20rem; /* 320px  */
     @include transition($trans);
 
     display: inline-block;
+    margin-bottom: 0.4rem; /* FIXME: Hacks agar dropdown gak ilang pas di hover */
     color: var(--font-color-default);
     cursor: pointer;
 
