@@ -231,7 +231,9 @@
     position: relative;
     display: flex;
     align-items: center;
+    width: 400px;
     max-width: 400px;
+    height: 200px;
     max-height: 200px;
     overflow: hidden;
     cursor: pointer;
@@ -247,6 +249,24 @@
       transform: translateX(-120%) skew(-20deg);
       @include transition();
     }
+
+    .newspaper:hover &::before {
+      transform: translateX(0);
+    }
+
+    @include bp-min('sm') {
+      width: 550px;
+      max-width: 550px;
+      height: 300px;
+      max-height: 300px;
+    }
+
+    @include bp-min('md') {
+      width: 382px;
+      max-width: 382px;
+      height: 232px;
+      max-height: 232px;
+    }
   }
 
   &__date,
@@ -261,6 +281,11 @@
   &__date {
     margin-top: 1rem;
     font-size: 1rem;
+
+    @include bp-min('sm') {
+      margin-top: 1.25rem;
+      font-size: 1.25rem;
+    }
   }
 
   &__headlines {
@@ -268,38 +293,12 @@
     font-size: 1.4rem;
     line-height: 0.8;
     color: $clr-secondary;
-  }
 
-  &:hover {
-    .newspaper__image {
-      &::before {
-        transform: translateX(0);
-      }
-    }
-  }
-
-  @include bp-min('sm') {
-    &__image {
-      max-width: 550px;
-      max-height: 300px;
-    }
-    &__date {
-      margin-top: 1.25rem;
-      font-size: 1.25rem;
-    }
-
-    &__headlines {
+    @include bp-min('sm') {
       margin-top: 1rem;
       font-size: 1.8rem;
       line-height: 0.8;
       color: $clr-secondary;
-    }
-  }
-
-  @include bp-min('md') {
-    &__image {
-      max-width: 382px;
-      max-height: 232px;
     }
   }
 }
