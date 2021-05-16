@@ -170,7 +170,7 @@ $max-height-dropdown-md: 20rem; /* 320px  */
       left: var(--left-right-padding);
     }
 
-    &--show {
+    &.show {
       max-height: 260px;
       visibility: visible;
       opacity: 1;

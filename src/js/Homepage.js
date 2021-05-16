@@ -1,8 +1,11 @@
 import { Updates } from './content';
 
-const mappedUpdates = Updates.map((update) => {
-  const { title, img, date, link } = update;
-
+/**
+ * Function to create a single news
+ * @param {{title: string, img: string, date: string, link: string}} News - List of News data
+ * @returns String literal for a news
+ */
+const SingleNews = ({ title, img, date, link }) => {
   return `
     <article class="newspaper">
       <div class="newspaper__image">
@@ -18,11 +21,13 @@ const mappedUpdates = Updates.map((update) => {
       <div class="newspaper__headlines">${title}</div>
     </article>
   `;
-});
+};
 
 const Homepage = () => {
   const newsParent = $('#js-news');
-  $.each(mappedUpdates, (_, el) => newsParent.append(el));
+  const newsLists = Updates.map((data) => SingleNews(data)).join('');
+
+  newsParent.append(newsLists);
 };
 
 export default Homepage;
