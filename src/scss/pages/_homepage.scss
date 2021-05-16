@@ -268,16 +268,13 @@
 }
 
 .newspaper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: max-content;
+  flex: 0 0 auto;
 
   &__image {
     position: relative;
     display: flex;
     align-items: center;
-    max-width: 320px;
+    max-width: 400px;
     max-height: 200px;
     overflow: hidden;
     cursor: pointer;
@@ -364,16 +361,20 @@
   }
 
   .l-news-wrapper {
-    display: grid;
-    grid-template-columns: repeat(12, auto);
-    gap: 4rem;
+    /*
+    * See more in: 
+    * https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6 
+    */
+    display: flex;
+    flex-wrap: nowrap;
     align-items: center;
-    justify-items: center;
     padding: 1.5rem 0;
-    overflow: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: $clr-primary $clr-tertiary;
+
+    > *:not(:last-child) {
+      margin-right: 4em;
+    }
   }
 
   @include bp-min('sm') {
