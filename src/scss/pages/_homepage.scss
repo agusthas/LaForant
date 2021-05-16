@@ -25,57 +25,6 @@
   }
 }
 
-.o-section-header {
-  font-family: $ff-tungsten;
-  font-size: 3.4rem;
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-
-  @include bp-min('sm') {
-    font-size: 5rem;
-  }
-
-  @include bp-min('md') {
-    font-size: 7rem;
-  }
-
-  @include bp-min('lg') {
-    font-size: 8.5rem;
-  }
-}
-
-.o-section-subtitle {
-  font-family: $ff-uni-sans;
-  font-size: 1.1rem;
-  line-height: 1.2;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-
-  @include bp-min('sm') {
-    font-size: 1.5rem;
-  }
-
-  @include bp-min('md') {
-    font-size: 1.8rem;
-  }
-}
-
-.o-section-body {
-  max-width: 45ch;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: $clr-text-secondary;
-
-  @include bp-min('sm') {
-    font-size: 1rem;
-  }
-
-  @include bp-min('md') {
-    font-size: 1.125rem;
-  }
-}
-
 .l-section-container {
   padding: 5.25rem 2rem;
   @include bp-min('sm') {
@@ -546,6 +495,7 @@
 
   &__body {
     margin-top: 1rem;
+    color: $clr-text-secondary;
   }
 
   &__btn {
