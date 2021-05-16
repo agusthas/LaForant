@@ -13,6 +13,7 @@ const SingleNews = ({ title, img, date, link }) => {
           href="${link}"
           target="_blank"
           ><img
+            loading="lazy"
             src="${img}"
             alt="${title}"
         /></a>
