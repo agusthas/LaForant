@@ -9,7 +9,7 @@
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
     "max-nesting-depth": [
-      2,
+      3,
       {
         "ignore": ["pseudo-classes", "blockless-at-rules"]
       }

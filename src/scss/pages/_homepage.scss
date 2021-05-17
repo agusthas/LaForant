@@ -32,6 +32,12 @@
   }
 }
 
+@mixin override-class($class-to-override) {
+  &#{$class-to-override} {
+    @content;
+  }
+}
+
 .top {
   position: relative;
   z-index: 2;
@@ -41,17 +47,23 @@
   justify-content: center;
   height: 100%;
   min-height: 100%;
-  padding-bottom: 2rem !important;
   overflow-x: hidden;
   overflow-y: hidden;
   color: $clr-tertiary;
   text-align: center;
   background-color: $clr-primary;
 
+  @include override-class('.l-section-container') {
+    padding-bottom: 2rem;
+
+    @include bp-min('md') {
+      padding-top: 5.4rem;
+    }
+  }
+
   @include bp-min('md') {
     flex-direction: row;
     justify-content: initial;
-    padding-top: 5.4rem !important;
   }
 
   @include bp-min('lg') {
@@ -301,19 +313,33 @@
 
 .news {
   position: relative;
-  padding-top: 1.5rem !important;
-  padding-bottom: 6rem !important;
 
-  @include bp-min('md') {
-    padding-bottom: 5.5rem !important;
+  @include override-class('.l-section-container') {
+    padding-top: 1.5rem;
+    padding-bottom: 6rem;
+
+    @include bp-min('md') {
+      padding-bottom: 5.5rem;
+    }
   }
 
-  &__title {
-    position: relative;
-    top: 2.5rem;
-    left: 0.4rem;
-    z-index: 10;
-    color: $clr-secondary;
+  &__title.o-section-header {
+    @include override-class('.o-section-header') {
+      position: relative;
+      top: 2.5rem;
+      left: 0.4rem;
+      z-index: 10;
+      color: $clr-secondary;
+
+      @include bp-min('sm') {
+        position: relative;
+        top: 3.5rem;
+        left: 0.4rem;
+        z-index: 10;
+        font-size: 7rem;
+        color: $clr-secondary;
+      }
+    }
   }
 
   .l-news-wrapper {
@@ -330,17 +356,6 @@
 
     > *:not(:last-child) {
       margin-right: 4em;
-    }
-  }
-
-  @include bp-min('sm') {
-    &__title {
-      position: relative;
-      top: 3.5rem;
-      left: 0.4rem;
-      z-index: 10;
-      font-size: 7rem;
-      color: $clr-secondary;
     }
   }
 }
@@ -493,7 +508,13 @@
 }
 
 .maps {
-  padding-top: 7rem;
+  @include override-class('.l-section-container') {
+    padding-top: 7rem;
+
+    @include bp-min('lg') {
+      margin-top: 3.5rem;
+    }
+  }
 
   &__content {
     margin-top: 2rem;
@@ -519,10 +540,6 @@
     @include bp-min('lg') {
       background-position: top -5px left 0;
     }
-  }
-
-  @include bp-min('lg') {
-    margin-top: 3.5rem;
   }
 }
 
