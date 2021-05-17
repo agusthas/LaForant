@@ -131,7 +131,6 @@ $max-height-dropdown: 20rem; /* 320px  */
   visibility: hidden;
   background-color: transparent;
   opacity: 0;
-  scrollbar-width: auto;
 
   &.show {
     max-height: $max-height-dropdown;
@@ -146,6 +145,10 @@ $max-height-dropdown: 20rem; /* 320px  */
     top: 100%;
     left: -0.5em;
     max-width: $max-height-dropdown;
+  }
+
+  @include bp-min('lg') {
+    scrollbar-width: auto;
   }
 
   &__list {
