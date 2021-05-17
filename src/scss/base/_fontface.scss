@@ -1,6 +1,6 @@
-/* 
-Tungsten Bold
-*/
+/*******************
+ TUNGSTEN
+ *******************/
 @font-face {
   font-family: 'Tungsten Bold';
   font-style: normal;
@@ -8,10 +8,9 @@ Tungsten Bold
   src: url('/assets/fonts/tungsten-bold/Tungsten-Bold.ttf') format('truetype');
 }
 
-/* 
-Uni Sans
-*/
-
+/*******************
+ Uni Sans
+ *******************/
 @font-face {
   font-family: 'Uni Sans';
   font-style: normal;
@@ -24,4 +23,14 @@ Uni Sans
   font-style: normal;
   font-weight: 200;
   src: url('/assets/fonts/uni-sans/Uni-Sans-Thin.otf') format('opentype');
+}
+
+/*******************
+ VALORANT
+ *******************/
+@font-face {
+  font-family: 'VALORANT';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/valorant/VALORANT.ttf') format('truetype');
 }
