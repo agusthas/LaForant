@@ -17,7 +17,6 @@
     "scss/dollar-variable-no-missing-interpolation": true,
     "scss/comment-no-empty": true,
     "scss/declaration-nested-properties-no-divided-groups": true,
-    "scss/dimension-no-non-numeric-values": true,
     "scss/map-keys-quotes": "always",
     "scss/no-duplicate-mixins": true,
     "scss/no-global-function-names": true
