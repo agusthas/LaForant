@@ -10,9 +10,6 @@
     "lint:fix": "stylelint \"./src/**/*.{scss,css}\" --fix"
   },
   "devDependencies": {
-    "postcss": "^8.2.15",
-    "postcss-combine-media-query": "^1.0.1",
-    "postcss-scss": "^2.1.1",
     "sass": "^1.32.12",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
