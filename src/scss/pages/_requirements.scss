@@ -19,12 +19,12 @@
 .spec {
   height: 100%;
   min-height: 100%;
-  padding-top: 9rem;
-  padding-bottom: 1rem;
+  padding-top: 9rem !important;
+  padding-bottom: 1rem !important;
   background-color: $clr-primary;
 
   @include bp-min('md') {
-    padding-top: 4rem;
+    padding-top: 4rem !important;
   }
 
   &__header {
@@ -96,7 +96,7 @@
 }
 
 .requirement {
-  padding-top: 8rem;
+  padding-top: 8rem !important;
 
   @include bp-min('md') {
     padding-top: 10rem;

@@ -41,7 +41,7 @@
   justify-content: center;
   height: 100%;
   min-height: 100%;
-  padding-bottom: 2rem;
+  padding-bottom: 2rem !important;
   overflow-x: hidden;
   overflow-y: hidden;
   color: $clr-tertiary;
@@ -51,7 +51,7 @@
   @include bp-min('md') {
     flex-direction: row;
     justify-content: initial;
-    padding-top: 5.4rem;
+    padding-top: 5.4rem !important;
   }
 
   @include bp-min('lg') {
@@ -301,8 +301,12 @@
 
 .news {
   position: relative;
-  padding-top: 1.5rem;
-  padding-bottom: 6rem;
+  padding-top: 1.5rem !important;
+  padding-bottom: 6rem !important;
+
+  @include bp-min('md') {
+    padding-bottom: 5.5rem !important;
+  }
 
   &__title {
     position: relative;
@@ -339,10 +343,6 @@
       color: $clr-secondary;
     }
   }
-
-  @include bp-min('md') {
-    padding-bottom: 5.5rem;
-  }
 }
 
 .agents {
@@ -352,9 +352,25 @@
   background-color: $clr-secondary;
 
   &--wrapper {
-    @extend .l-section-container;
+    // @extend .l-section-container;
 
+    padding: 5.25rem 2rem;
     padding-bottom: 2rem;
+
+    @include bp-min('sm') {
+      padding: 4rem 3rem;
+      padding-bottom: 2rem;
+    }
+
+    @include bp-min('md') {
+      display: flex;
+      flex-direction: column;
+      order: 1;
+      padding: 4rem 5rem;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-left: auto;
+    }
   }
 
   &__body {
@@ -362,10 +378,11 @@
     margin-top: 2rem;
     line-height: 1.6;
     color: $clr-tertiary;
-  }
 
-  &__btn--desktop {
-    display: none;
+    @include bp-min('sm') {
+      max-width: 65ch;
+      font-size: 1rem;
+    }
   }
 
   &__btn {
@@ -375,6 +392,26 @@
     z-index: 10;
     padding: 0.5em 1.5em;
     transform: translateX(-50%);
+
+    @include bp-min('sm') {
+      bottom: 150px;
+      padding: 0.6em 4.5em;
+      font-size: 1rem;
+    }
+
+    @include bp-min('md') {
+      display: none;
+    }
+  }
+
+  &__btn--desktop {
+    display: none;
+
+    @include bp-min('md') {
+      display: initial;
+      max-width: 80%;
+      margin-top: 6rem;
+    }
   }
 
   &__images {
@@ -399,31 +436,9 @@
     transform: translate(1rem, 3rem);
   }
 
-  @include bp-min('sm') {
-    &__body {
-      max-width: 65ch;
-      font-size: 1rem;
-    }
-
-    &__btn {
-      bottom: 150px;
-      padding: 0.6em 4.5em;
-      font-size: 1rem;
-    }
-  }
-
   @include bp-min('md') {
     display: flex;
     padding: 4rem 0;
-
-    &--wrapper {
-      display: flex;
-      flex-direction: column;
-      order: 1;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin-left: auto;
-    }
 
     &__title {
       max-width: 8ch;
@@ -434,16 +449,6 @@
       max-width: 50ch;
       margin-top: 2.5rem;
       font-size: 1.125rem;
-    }
-
-    &__btn--desktop {
-      display: initial;
-      max-width: 80%;
-      margin-top: 6rem;
-    }
-
-    &__btn {
-      display: none;
     }
 
     &__images {
