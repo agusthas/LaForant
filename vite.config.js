@@ -13,10 +13,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        maps: resolve(__dirname, '/html/maps.html'),
-        agents: resolve(__dirname, '/html/agents.html'),
-        requirement: resolve(__dirname, '/html/requirement.html'),
-        register: resolve(__dirname, '/html/register.html'),
+        maps: resolve(__dirname, '/pages/maps.html'),
+        agents: resolve(__dirname, '/pages/agents.html'),
+        requirement: resolve(__dirname, '/pages/requirement.html'),
+        register: resolve(__dirname, '/pages/register.html'),
       },
     },
   },
