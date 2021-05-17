@@ -41,7 +41,7 @@
   justify-content: center;
   height: 100%;
   min-height: 100%;
-  padding-bottom: 2rem;
+  padding-bottom: 2rem !important; /* Overwrite */
   overflow-x: hidden;
   overflow-y: hidden;
   color: $clr-tertiary;
@@ -51,7 +51,7 @@
   @include bp-min('md') {
     flex-direction: row;
     justify-content: initial;
-    padding-top: 5.4rem;
+    padding-top: 5.4rem !important;
   }
 
   @include bp-min('lg') {
@@ -301,8 +301,8 @@
 
 .news {
   position: relative;
-  padding-top: 1.5rem;
-  padding-bottom: 6rem;
+  padding-top: 1.5rem !important;
+  padding-bottom: 6rem !important;
 
   &__title {
     position: relative;
@@ -354,7 +354,7 @@
   &--wrapper {
     @extend .l-section-container;
 
-    padding-bottom: 2rem;
+    padding-bottom: 2rem !important;
   }
 
   &__body {
@@ -488,7 +488,7 @@
 }
 
 .maps {
-  padding-top: 7rem;
+  padding-top: 7rem !important;
 
   &__content {
     margin-top: 2rem;
