@@ -97,12 +97,19 @@
 }
 
 .requirement {
-  padding-top: 8rem !important;
+  @include override-class('.l-section-container') {
+    padding-top: 8rem;
 
-  @include bp-min('md') {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+    @include bp-min('md') {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
   }
+
+  background: url('/public/assets/images/bg-requirements.png');
+  background-repeat: no-repeat;
+  background-position: left 2rem top 5rem;
+  background-size: 100%;
 
   &__title {
     display: flex;
