@@ -8,6 +8,11 @@
  HOMEPAGE
  *******************/
 
+/* FIXME: HACKS */
+main.l-container {
+  overflow: hidden;
+}
+
 @include keyframe(bounce) {
   0%,
   100% {
@@ -427,7 +432,6 @@
     position: relative;
     max-width: 450px;
     margin: 0 auto;
-    overflow-x: clip; // FIXME: Hacks
   }
 
   &__left-img {
