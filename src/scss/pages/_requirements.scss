@@ -14,8 +14,8 @@
 .spec {
   height: 100%;
   min-height: 100%;
-  padding-top: 9rem;
-  padding-bottom: 1rem;
+  padding-top: 9rem !important;
+  padding-bottom: 1rem !important;
   background-color: $clr-primary;
 
   &__title {
