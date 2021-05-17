@@ -1,0 +1,5 @@
+@mixin override-class($class-to-override) {
+  &#{$class-to-override} {
+    @content;
+  }
+}

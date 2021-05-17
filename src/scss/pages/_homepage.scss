@@ -32,12 +32,6 @@
   }
 }
 
-@mixin override-class($class-to-override) {
-  &#{$class-to-override} {
-    @content;
-  }
-}
-
 .top {
   position: relative;
   z-index: 2;

@@ -17,14 +17,15 @@
 }
 
 .spec {
-  height: 100%;
-  min-height: 100%;
-  padding-top: 9rem !important;
-  padding-bottom: 1rem !important;
-  background-color: $clr-primary;
-
-  @include bp-min('md') {
-    padding-top: 4rem !important;
+  @include override-class('.l-section-container') {
+    height: 100%;
+    min-height: 100%;
+    padding-top: 9rem;
+    padding-bottom: 1rem;
+    background-color: $clr-primary;
+    @include bp-min('md') {
+      padding-top: 4rem;
+    }
   }
 
   &__header {
