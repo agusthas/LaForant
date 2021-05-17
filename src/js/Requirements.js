@@ -26,9 +26,7 @@ const SingleRequirement = ({
   storage,
 }) => {
   return `
-    <div class="req-card ${
-      type.toLowerCase() == 'recommended' && 'req-card--recommended'
-    }">
+    <div class="req-card req-card--${type.toLowerCase()}"}>
       <div class="req-card__header">
         <h4 class="req-card__title">${type}</h4>
         <p class="req-card__subtitle">(${fps} FPS)</p>

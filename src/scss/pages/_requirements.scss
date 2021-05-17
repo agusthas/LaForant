@@ -1,9 +1,46 @@
 @use 'sass:color';
+@use 'sass:math';
 @use '../abstracts/' as *;
 
 /*******************
  REQUIREMENT
  *******************/
+$color-lists: (
+  'minimum': (
+    'BACKGROUND': $clr-tertiary,
+    'title': $clr-primary,
+    'subtitle': $clr-secondary,
+    'list': $clr-primary,
+  ),
+  'recommended': (
+    'BACKGROUND': $clr-primary,
+    'title': $clr-tertiary,
+    'subtitle': $clr-secondary,
+    'list': $clr-tertiary,
+  ),
+  'highend': (
+    'BACKGROUND': $clr-secondary,
+    'title': $clr-primary,
+    'subtitle': $clr-tertiary,
+    'list': $clr-primary,
+  ),
+);
+
+@mixin variants($list) {
+  @each $type, $obj in $list {
+    @each $selector, $color in $obj {
+      @if ($selector == 'BACKGROUND') {
+        &--#{$type} {
+          background-color: $color;
+        }
+      } @else {
+        &--#{$type} &__#{$selector} {
+          color: $color;
+        }
+      }
+    }
+  }
+}
 
 .big-heading {
   font-family: $ff-tungsten;
@@ -17,6 +54,24 @@
 }
 
 .spec {
+  position: relative;
+
+  &::after,
+  &::before {
+    position: absolute;
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    content: '';
+    background-color: $clr-tertiary;
+  }
+
+  &::before {
+    right: 0;
+    bottom: 0;
+    width: 30%;
+    height: 30%;
+    box-shadow: 0 0 1em rgba(#000, 0.3);
+  }
+
   @include override-class('.l-section-container') {
     height: 100%;
     min-height: 100%;
@@ -41,16 +96,6 @@
   &__title {
     position: relative;
     display: inline-block;
-
-    &::after {
-      position: absolute;
-      top: 100%;
-      right: -1em;
-      left: 0;
-      height: 0.05em;
-      content: '';
-      background-color: $clr-secondary;
-    }
 
     @include bp-min('sm') {
       align-self: flex-start;
@@ -106,10 +151,16 @@
     }
   }
 
+  position: relative;
   background: url('/assets/images/bg-requirements.png');
   background-repeat: no-repeat;
   background-position: left 2rem top 5rem;
   background-size: 100%;
+
+  @include bp-min('lg') {
+    background-position: top 4rem center;
+    background-size: 90%;
+  }
 
   &__title {
     display: flex;
@@ -126,6 +177,10 @@
 
     @include bp-min('md') {
       font-size: 4rem;
+    }
+
+    @include bp-min('lg') {
+      font-size: 5.5rem;
     }
   }
 
@@ -153,16 +208,28 @@
 
   @include bp-min('md') {
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 4.5rem;
+
+    > * {
+      width: 100%;
+    }
   }
 }
 
 .req-card {
+  @include variants($color-lists);
+
   position: relative;
   max-width: 350px;
-  padding: 0.75rem 0.5rem;
-  background-color: $clr-tertiary;
+  padding: 1rem 0.5rem;
+  background-color: transparent;
+  outline: 3px solid $clr-primary;
+
+  @include bp-min('lg') {
+    max-width: none;
+  }
 
   & + & {
     margin: 0;
@@ -170,34 +237,8 @@
 
     @include bp-min('md') {
       margin: 0;
+      margin-left: 6rem;
     }
-  }
-
-  &::before,
-  &::after {
-    /* determine how long  */
-    --pseudo-width: 40%;
-
-    /* determine how thick it is */
-    --pseudo-offset: -0.2rem;
-
-    position: absolute;
-    z-index: -1;
-    width: var(--pseudo-width);
-    height: var(--pseudo-width);
-    content: '';
-  }
-
-  &::before {
-    top: var(--pseudo-offset);
-    left: var(--pseudo-offset);
-    background-color: $clr-primary;
-  }
-
-  &::after {
-    right: var(--pseudo-offset);
-    bottom: var(--pseudo-offset);
-    background-color: $clr-primary;
   }
 
   &__header {
@@ -210,6 +251,7 @@
     font-size: 1.5rem;
     color: $clr-primary;
     text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   &__subtitle {
@@ -232,14 +274,9 @@
     & + & {
       margin-top: 0.8rem; /* Magic number */
     }
-  }
 
-  /* --------------------------- */
-  &--recommended &__header {
-    background-color: $clr-primary;
-  }
-
-  &--recommended &__title {
-    color: $clr-tertiary;
+    @include bp-min('lg') {
+      font-size: 1.5rem;
+    }
   }
 }
