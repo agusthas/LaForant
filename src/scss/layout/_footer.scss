@@ -49,6 +49,10 @@
     @include bp-min('sm') {
       margin: 0;
     }
+
+    @include bp-max('xs') {
+      font-size: calc(var(--font-size-title) - 0.5);
+    }
   }
 
   &__bottom {

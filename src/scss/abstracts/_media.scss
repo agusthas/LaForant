@@ -1,14 +1,24 @@
 @use "sass:map";
 
 /* prettier-ignore */
-$breakpoints: (
+$breakpoints-up: (
   'sm': 600px, // Mobile Phones
   'md': 1000px, // Ipad
   'lg': 1600px, // Laptop
 );
 
+$breakpoints-down: (
+  'xs': 374px,
+);
+
 @mixin bp-min($br) {
-  @media (min-width: map.get($breakpoints, $br)) {
+  @media (min-width: map.get($breakpoints-up, $br)) {
+    @content;
+  }
+}
+
+@mixin bp-max($br) {
+  @media (max-width: map.get($breakpoints-down, $br)) {
     @content;
   }
 }
