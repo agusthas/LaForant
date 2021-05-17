@@ -1,10 +1,20 @@
 @use 'sass:color';
 @use 'sass:math';
+@use 'sass:map';
 @use '../abstracts/' as *;
 
 /*******************
  REQUIREMENT
  *******************/
+@include keyframe(testing) {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 $color-lists: (
   'minimum': (
     'BACKGROUND': $clr-tertiary,
@@ -42,6 +52,13 @@ $color-lists: (
   }
 }
 
+@mixin text-outline($default-color, $fill-color, $stroke-width, $stroke-color) {
+  color: $default-color;
+  -webkit-text-fill-color: $fill-color;
+  -webkit-text-stroke-width: $stroke-width;
+  -webkit-text-stroke-color: $stroke-color;
+}
+
 .big-heading {
   font-family: $ff-tungsten;
   font-size: 5rem; /* 80px */
@@ -55,22 +72,7 @@ $color-lists: (
 
 .spec {
   position: relative;
-
-  &::after,
-  &::before {
-    position: absolute;
-    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-    content: '';
-    background-color: $clr-tertiary;
-  }
-
-  &::before {
-    right: 0;
-    bottom: 0;
-    width: 30%;
-    height: 30%;
-    box-shadow: 0 0 1em rgba(#000, 0.3);
-  }
+  z-index: 1;
 
   @include override-class('.l-section-container') {
     height: 100%;
@@ -84,12 +86,9 @@ $color-lists: (
   }
 
   &__header {
+    position: relative;
     @include bp-min('sm') {
       display: flex;
-    }
-
-    @include bp-min('md') {
-      gap: 20%;
     }
   }
 
@@ -104,6 +103,51 @@ $color-lists: (
 
     @include bp-min('md') {
       align-self: center;
+      margin: 0;
+      font-size: 11rem;
+    }
+
+    &::after,
+    &::before {
+      position: absolute;
+      content: '';
+    }
+
+    &::before {
+      /* LINE */
+      top: -4rem;
+      left: 0;
+      width: 7em;
+      height: 1px;
+      background-color: $clr-tertiary;
+
+      @include bp-min('lg') {
+        display: none;
+      }
+    }
+
+    &::after {
+      /* BOX */
+      bottom: -2rem;
+      left: -2rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: $clr-secondary;
+
+      @include bp-min('lg') {
+        @include animation(
+          $delay: 0s,
+          $name: testing,
+          $duration: 0.4s,
+          $timing: ease-out,
+          $count: 1,
+          $direction: alternate,
+          $fillmode: forwards,
+          $play-state: running
+        );
+
+        width: 15rem;
+      }
     }
   }
 
@@ -128,6 +172,7 @@ $color-lists: (
 
     @include bp-min('md') {
       margin: 0;
+      margin-right: 10rem;
       margin-left: auto;
     }
 
@@ -137,6 +182,47 @@ $color-lists: (
       margin: 0;
       margin-right: 20%;
       margin-left: auto;
+    }
+
+    &::after {
+      /* DEFY THE LIMITS */
+      position: absolute;
+      top: 10rem;
+      right: -10rem;
+      max-width: 10ch;
+      font-family: $ff-uni-sans;
+      font-size: 1rem;
+      font-weight: 900;
+      color: $clr-secondary;
+      letter-spacing: 0.07em;
+      content: 'DEFY THE LIMITS';
+      transform: rotate(90deg);
+
+      @include bp-min('lg') {
+        top: 6rem;
+      }
+    }
+  }
+
+  .big-laforant-text {
+    @include text-outline(
+      $default-color: $clr-tertiary,
+      $fill-color: transparent,
+      $stroke-width: 1px,
+      $stroke-color: rgba($clr-tertiary, 0.3)
+    );
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: -1;
+    font-family: $ff-valorant;
+    font-size: 15.625rem; /* 250px */
+    line-height: 0.55; /* Magic Number */
+    transform: translateX(-50%);
+
+    @include bp-min('lg') {
+      font-size: 18rem;
     }
   }
 }
