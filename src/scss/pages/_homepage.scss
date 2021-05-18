@@ -8,11 +8,6 @@
  HOMEPAGE
  *******************/
 
-/* FIXME: HACKS */
-main.l-container {
-  overflow: hidden;
-}
-
 @include keyframe(bounce) {
   0%,
   100% {
@@ -23,17 +18,6 @@ main.l-container {
   50% {
     transform: translateY(0);
     animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
-  }
-}
-
-.l-section-container {
-  padding: 5.25rem 2rem;
-  @include bp-min('sm') {
-    padding: 4rem 3rem;
-  }
-
-  @include bp-min('md') {
-    padding: 4rem 5rem;
   }
 }
 

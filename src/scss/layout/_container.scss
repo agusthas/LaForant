@@ -1,0 +1,17 @@
+@use '../abstracts' as *;
+
+/* FIXME: HACKS */
+.l-main-container {
+  overflow: hidden;
+}
+
+.l-section-container {
+  padding: 5.25rem 2rem;
+  @include bp-min('sm') {
+    padding: 4rem 3rem;
+  }
+
+  @include bp-min('md') {
+    padding: 4rem 5rem;
+  }
+}

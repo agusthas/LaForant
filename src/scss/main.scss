@@ -1,7 +1,8 @@
 @use './base';
 
-@use './layout/navbar';
-@use './layout/footer';
+// @use './layout/navbar';
+// @use './layout/footer';
+@use './layout';
 
 @use './pages/homepage';
 @use './pages/requirements';

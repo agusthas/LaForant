@@ -50,3 +50,14 @@
     font-size: 1.125rem;
   }
 }
+
+.o-big-heading {
+  font-family: $ff-tungsten;
+  font-size: 5rem; /* 80px */
+  line-height: 1;
+  color: $clr-tertiary;
+
+  @include bp-min('md') {
+    font-size: 9rem;
+  }
+}
