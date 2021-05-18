@@ -22,7 +22,7 @@
 
 .o-section-subtitle {
   font-family: $ff-uni-sans;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -39,7 +39,7 @@
 .o-section-body {
   max-width: 45ch;
   font-family: $ff-roboto;
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.6;
 
   @include bp-min('sm') {
