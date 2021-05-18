@@ -115,11 +115,17 @@ $color-lists: (
 
     &::before {
       /* LINE */
-      top: -4rem;
+      --line-top-offset: -1.5rem;
+
+      top: var(--line-top-offset);
       left: 0;
       width: 7em;
       height: 1px;
       background-color: $clr-tertiary;
+
+      @include bp-min('sm') {
+        --line-top-offset: -4rem;
+      }
 
       @include bp-min('lg') {
         display: none;
@@ -128,11 +134,17 @@ $color-lists: (
 
     &::after {
       /* BOX */
-      bottom: -2rem;
-      left: -2rem;
+      --box-offset: -1rem;
+
+      bottom: var(--box-offset);
+      left: var(--box-offset);
       width: 0.5rem;
       height: 0.5rem;
       background-color: $clr-secondary;
+
+      @include bp-min('sm') {
+        --box-offset: -2rem;
+      }
 
       @include bp-min('lg') {
         @include animation(
