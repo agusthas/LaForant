@@ -84,6 +84,7 @@ $color-lists: (
   &__title {
     position: relative;
     display: inline-block;
+    color: $clr-tertiary;
 
     @include bp-min('sm') {
       align-self: flex-start;
