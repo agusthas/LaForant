@@ -1,3 +1,5 @@
+import './vendors/jquery.min';
+
 /**
  * Function to toggle Sidebar
  * @param {Node} element
@@ -22,33 +24,40 @@ const sidebarToggle = (element, opener, closer) => {
   }
 };
 
-/**
- * Dropdown Toggler
- * @param {NodeListOf<Element>} toggler A nodelist of node elements to listens the click event
- * @param {Function} sideEffect Callback function that receives the current cliked element as its parameter
- */
-const dropdownToggle = (toggler, sideEffect = () => {}) => {
-  try {
-    toggler.forEach((toggle) => {
-      toggle.addEventListener('click', (e) => {
-        const current = e.target;
+const dropdown = (toggler) => {
+  const handleClick = (e) => {
+    const curr = e.target;
+    const dd = curr.nextElementSibling;
 
-        sideEffect(current);
-        $(current).siblings().toggleClass('show');
-      });
+    toggler.forEach((el) => {
+      if (el !== curr) {
+        el.nextElementSibling.classList.remove('show');
+      }
     });
-  } catch (error) {
-    console.log(error);
-  }
+
+    if (dd.classList.contains('show')) {
+      dd.classList.remove('show');
+    } else {
+      dd.classList.add('show');
+    }
+  };
+
+  toggler.forEach((el) => {
+    el.addEventListener('click', handleClick);
+  });
+
+  window.addEventListener('click', (event) => {
+    toggler.forEach((el) => {
+      if (event.target !== el) {
+        el.nextElementSibling.classList.remove('show');
+      }
+    });
+  });
 };
 
 const Navbar = () => {
   const linkText = document.querySelectorAll('[data-dd-toggler]');
-
-  dropdownToggle(linkText, (current) => {
-    current.classList.toggle('navbar__link-text--active');
-    console.log(current);
-  });
+  dropdown(linkText);
 
   const sidebarOpen = document.querySelector('#js-hamburger--open');
   const sidebarClose = document.querySelector('#js-hamburger--close');

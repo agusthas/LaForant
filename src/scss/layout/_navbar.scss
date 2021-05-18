@@ -259,24 +259,6 @@ $max-height-dropdown: 20rem; /* 320px  */
       &:not(:first-child) {
         margin-left: $gap-link-md;
       }
-
-      // FIXME: kalo mau nambah transisi silahkan di lakukan
-      // &::after {
-      //   position: absolute;
-      //   top: calc(100% + 0.3em);
-      //   right: -0.2em;
-      //   left: -0.2em;
-      //   height: 3px;
-      //   content: '';
-      //   background-color: $clr-secondary;
-      // }
-
-      /* INI GATAU KENAPA HARUS DISINI, BERI SAYA PENJELASAN */
-      @at-root &:hover .dropdown {
-        max-height: $max-height-dropdown;
-        visibility: visible;
-        opacity: 1;
-      }
     }
 
     @include bp-min('lg') {

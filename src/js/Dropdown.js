@@ -5,9 +5,9 @@ import { listAppend } from './utils';
 
 const SingeList = ({ name, link = '/index.html' }) => {
   return `
-    <li class="dropdown__list">
-      <a href="${link}">${name}</a>
-    </li>
+    <a href="${link}">
+      <li class="dropdown__list">${name}</li>
+    </a>
     `;
 };
 
