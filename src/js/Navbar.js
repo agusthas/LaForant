@@ -63,6 +63,12 @@ const Navbar = () => {
   const sidebarClose = document.querySelector('#js-hamburger--close');
   const sidebar = document.querySelector('#js-sidebar');
 
+  window.matchMedia('(min-width: 1000px)').addEventListener('change', (e) => {
+    if (e.matches) {
+      sidebar.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+  });
   sidebarToggle(sidebar, sidebarOpen, sidebarClose);
 };
 
