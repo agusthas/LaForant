@@ -84,6 +84,19 @@ $main-color: (
     background-color: map.get($color, 'bg-awal');
     outline: 1px solid map.get($color, 'outline-awal');
 
+    /* FIXME: Hacks */
+    @include bp-max('xs') {
+      padding: 0.5em 1em;
+    }
+
+    @include bp-min('sm') {
+      font-size: 1rem;
+    }
+
+    @include bp-min('lg') {
+      font-size: 1.3rem;
+    }
+
     &__box {
       @extend %box-placeholder;
 
@@ -117,14 +130,6 @@ $main-color: (
       &::before {
         transform: translateX(0) skew(var(--skew));
       }
-    }
-
-    @include bp-min('sm') {
-      font-size: 1rem;
-    }
-
-    @include bp-min('lg') {
-      font-size: 1.3rem;
     }
   }
 }

@@ -168,6 +168,10 @@ main.l-container {
     letter-spacing: 0.05em;
     filter: drop-shadow(0 0 10px rgba($clr-primary, 0.8));
 
+    @include bp-max('xs') {
+      font-size: 3rem;
+    }
+
     @include bp-min('sm') {
       font-size: 5.5rem;
     }
