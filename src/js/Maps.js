@@ -9,9 +9,9 @@ const Showcases = MapsData.map((item, index) => {
   const { name, image, desc } = item;
 
   return `
-      <div data-maps-index="${index}" class="showcases__top" style="background-image: url('${image}')"></div>
+      <div class="showcases__top" style="background-image: url('${image}')"></div>
 
-      <div class="showcases__bottom">
+      <div data-maps-index="0${index}" class="showcases__bottom">
         <h4 class="showcases__title">${name}</h4>
         <p class="showcases__description">${desc}</p>
       </div>
