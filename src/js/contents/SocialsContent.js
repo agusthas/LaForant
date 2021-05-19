@@ -1,4 +1,4 @@
-const Socials = [
+const SocialsContent = [
   {
     icon: 'fab fa-facebook-f',
     link: 'https://www.facebook.com/PlayVALORANT/',
@@ -13,4 +13,4 @@ const Socials = [
   },
 ];
 
-export default Socials;
+export default SocialsContent;

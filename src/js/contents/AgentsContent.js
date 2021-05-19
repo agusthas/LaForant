@@ -1,4 +1,4 @@
-const Agents = [
+const AgentsContent = [
   {
     name: 'ASTRA',
     link: '#',
@@ -21,4 +21,4 @@ const Agents = [
   },
 ];
 
-export default Agents;
+export default AgentsContent;

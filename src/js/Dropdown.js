@@ -1,6 +1,6 @@
 import './vendors/jquery.min';
-import Maps from './contents/Maps';
-import Agents from './contents/Agents';
+import MapsContent from './contents/MapsContent';
+import AgentsContent from './contents/AgentsContent';
 import { listAppend } from './utils';
 
 const SingeList = ({ name, link = '/index.html' }) => {
@@ -14,12 +14,12 @@ const SingeList = ({ name, link = '/index.html' }) => {
 const Dropdown = () => {
   listAppend(
     $('[data-dropdown-maps]'),
-    Maps.map((value) => SingeList(value)),
+    MapsContent.map((value) => SingeList(value)),
   );
 
   listAppend(
     $('[data-dropdown-agents]'),
-    Agents.map((value) => SingeList(value)),
+    AgentsContent.map((value) => SingeList(value)),
   );
 };
 

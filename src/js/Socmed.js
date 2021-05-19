@@ -1,4 +1,4 @@
-import Socials from './contents/Socials';
+import SocialsContent from './contents/SocialsContent';
 import { listAppend } from './utils';
 
 /**
@@ -17,7 +17,7 @@ const Socmed = () => {
 
   listAppend(
     socmedParent,
-    Socials.map((value) => aTag(value)),
+    SocialsContent.map((value) => aTag(value)),
   );
 };
 

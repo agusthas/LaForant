@@ -1,5 +1,5 @@
 import './vendors/jquery.min';
-import Specs from './contents/Specs';
+import SpecsContent from './contents/SpecsContent';
 import { listAppend } from './utils';
 
 /**
@@ -59,7 +59,7 @@ const Requirements = () => {
   const reqParent = $('[data-requirement]');
   listAppend(
     reqParent,
-    Specs.map((value) => SingleRequirement(value)),
+    SpecsContent.map((value) => SingleRequirement(value)),
   );
 };
 

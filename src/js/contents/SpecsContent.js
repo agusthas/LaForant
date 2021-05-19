@@ -1,4 +1,4 @@
-const Specs = [
+const SpecsContent = [
   {
     type: 'minimum',
     fps: '30',
@@ -31,4 +31,4 @@ const Specs = [
   },
 ];
 
-export default Specs;
+export default SpecsContent;
