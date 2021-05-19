@@ -1,9 +1,10 @@
+/* Maximal and Minimal of 4  */
 const MapsContent = [
   {
     name: 'BREEZE',
     link: '/pages/maps.html',
     image: '/assets/images/breeze.png',
-    desc: 'Our latest new maps. Featuring historic ruins and seaside caves on a tropical islands. Watch your flanks and beware of this map open spaces and long range engangements. As long as you got it covered, it will be a Breeze.',
+    desc: 'Our latest new map. Featuring historic ruins and seaside caves on a tropical islands. Watch your flanks and beware of this map open spaces and long range engangements. As long as you got it covered, it will be a Breeze.',
   },
   {
     name: 'ICEBOX',

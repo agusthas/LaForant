@@ -20,6 +20,13 @@ const Showcases = MapsData.map((item, index) => {
 
 const Maps = () => {
   const listMapsParent = $('#js-list-maps');
+
+  MapsData.forEach((el, i) => {
+    const curr = listMapsParent.children(`[data-maps-index="${i}"]`);
+
+    curr.css('background-image', `url("${el.image}")`);
+  });
+
   const nextBtn = $('#js-next-btn');
   const prevBtn = $('#js-prev-btn');
 

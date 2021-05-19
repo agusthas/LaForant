@@ -166,20 +166,12 @@
     opacity: 1;
   }
 
-  $list-image: (
-    url('/assets/images/breeze.png'),
-    url('/assets/images/icebox.png'),
-    url('/assets/images/bind.png'),
-    url('/assets/images/haven.png')
-  );
-
   @for $i from 1 through 4 {
     .list-#{$i - 1} {
       position: relative;
       z-index: 100;
       overflow: hidden;
       cursor: pointer;
-      background-image: list.nth($list-image, $i);
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
