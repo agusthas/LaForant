@@ -265,10 +265,19 @@
     color: $clr-tertiary;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+
+    @include bp-min('sm') {
+      font-size: 1.825rem;
+    }
   }
 
   &__description {
     margin-top: 2rem;
     font-size: 1rem;
+
+    @include bp-min('sm') {
+      max-width: 65ch;
+      font-size: 1.125rem;
+    }
   }
 }
