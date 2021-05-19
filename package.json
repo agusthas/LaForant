@@ -5,12 +5,11 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "sass:compile": "sass ./src/scss:./src/css",
-    "lint": "stylelint \"./src/**/*.{scss,css}\"",
-    "lint:fix": "stylelint \"./src/**/*.{scss,css}\" --fix"
+    "sass:postcss": "sass ./src/scss/main.scss ./src/css/main.css --no-source-map; postcss ./src/css/main.css -o ./src/css/main.css --no-map"
   },
   "devDependencies": {
     "postcss": "^8.2.15",
+    "postcss-cli": "^8.3.1",
     "postcss-combine-media-query": "^1.0.1",
     "postcss-scss": "^2.1.1",
     "sass": "^1.32.12",
