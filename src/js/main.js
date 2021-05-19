@@ -11,5 +11,5 @@ Dropdown(); /* Put all dropdown list */
 Socmed(); /* Put all Social Media Links to Socials */
 Navbar(); /* Navbar functionality (Sidebar, Dropdown) */
 Homepage(); /* Homepage Related (Latest Updates) */
-Requirements(); /* Requirements Related */
-Maps();
+Requirements(); /* Requirements Page Related */
+Maps(); /* Maps Page Related */
