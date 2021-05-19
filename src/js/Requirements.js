@@ -1,6 +1,14 @@
-import './vendors/jquery.min';
-import SpecsContent from './contents/SpecsContent';
-import { listAppend } from './utils';
+import './vendors/jquery.min.js';
+import SpecsContent from './contents/SpecsContent.js';
+
+/**
+ * Function to append list to parent container
+ * @param {JQuery<HTMLElement>} parent The parent container of dropdown as Jquery Object
+ * @param {Array<HTMLElement>} list List of HTML Elements to be appended
+ */
+const listAppend = (parent, list) => {
+  parent.each((_, el) => $(el).append(list));
+};
 
 /**
  * Function to create a Single Requirements

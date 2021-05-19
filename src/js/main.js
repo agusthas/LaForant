@@ -1,11 +1,10 @@
-import '../scss/main.scss';
-import './vendors/jquery.min';
-import Navbar from './Navbar';
-import Homepage from './Homepage';
-import Socmed from './Socmed';
-import Dropdown from './Dropdown';
-import Requirements from './Requirements';
-import Maps from './Maps';
+import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
+import Navbar from './Navbar.js';
+import Homepage from './Homepage.js';
+import Socmed from './Socmed.js';
+import Dropdown from './Dropdown.js';
+import Requirements from './Requirements.js';
+import Maps from './Maps.js';
 
 Dropdown(); /* Put all dropdown list */
 Socmed(); /* Put all Social Media Links to Socials */

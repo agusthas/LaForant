@@ -1,5 +1,5 @@
-import './vendors/jquery.min';
-import MapsContent from './contents/MapsContent';
+import './vendors/jquery.min.js';
+import MapsContent from './contents/MapsContent.js';
 
 /* Slicing last item */
 const MapsData = MapsContent.slice(0, -1);

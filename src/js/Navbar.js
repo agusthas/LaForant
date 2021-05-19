@@ -1,4 +1,4 @@
-import './vendors/jquery.min';
+import './vendors/jquery.min.js';
 
 /**
  * Function to toggle Sidebar

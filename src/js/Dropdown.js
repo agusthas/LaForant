@@ -1,7 +1,15 @@
-import './vendors/jquery.min';
-import MapsContent from './contents/MapsContent';
-import AgentsContent from './contents/AgentsContent';
-import { listAppend } from './utils';
+import './vendors/jquery.min.js';
+import MapsContent from './contents/MapsContent.js';
+import AgentsContent from './contents/AgentsContent.js';
+
+/**
+ * Function to append list to parent container
+ * @param {JQuery<HTMLElement>} parent The parent container of dropdown as Jquery Object
+ * @param {Array<HTMLElement>} list List of HTML Elements to be appended
+ */
+const listAppend = (parent, list) => {
+  parent.each((_, el) => $(el).append(list));
+};
 
 const SingeList = ({ name, link = '/index.html' }) => {
   return `

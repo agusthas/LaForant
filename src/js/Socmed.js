@@ -1,5 +1,14 @@
-import SocialsContent from './contents/SocialsContent';
-import { listAppend } from './utils';
+import './vendors/jquery.min.js';
+import SocialsContent from './contents/SocialsContent.js';
+
+/**
+ * Function to append list to parent container
+ * @param {JQuery<HTMLElement>} parent The parent container of dropdown as Jquery Object
+ * @param {Array<HTMLElement>} list List of HTML Elements to be appended
+ */
+const listAppend = (parent, list) => {
+  parent.each((_, el) => $(el).append(list));
+};
 
 /**
  * Creating <a> tag
