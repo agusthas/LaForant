@@ -225,7 +225,7 @@
 
     position: relative;
     padding: 2rem 1.5rem;
-    background-color: $clr-secondary;
+    background-color: rgba($clr-secondary, 80%);
 
     @include bp-min('md') {
       position: absolute;
@@ -237,15 +237,17 @@
     &::after,
     &::before {
       position: absolute;
-      content: '';
-      background-color: $clr-primary;
     }
 
     &::before {
-      top: 0;
-      right: 0;
-      width: 1rem;
-      height: 1rem;
+      top: 5px;
+      right: 10px;
+      font-family: $ff-uni-sans;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: $clr-tertiary;
+      letter-spacing: 0.1rem;
+      content: attr(data-maps-index);
     }
 
     &::after {
@@ -254,6 +256,8 @@
       width: 2rem;
       height: 2rem;
       clip-path: polygon(0 3%, 0% 100%, 100% 100%);
+      content: '';
+      background-color: $clr-primary;
     }
   }
 
