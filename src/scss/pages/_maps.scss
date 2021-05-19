@@ -175,17 +175,36 @@
 
   @for $i from 1 through 4 {
     .list-#{$i - 1} {
-      @include transition('DEFAULT', '150');
-
+      position: relative;
+      z-index: 100;
+      overflow: hidden;
       cursor: pointer;
       background-image: list.nth($list-image, $i);
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
+
+      &::before {
+        @include transition();
+
+        position: absolute;
+        top: -2px;
+        bottom: -2px;
+        z-index: -100;
+        width: 120%;
+        content: '';
+        background-color: rgba($clr-secondary, 30%);
+        transform: translateX(-100%);
+      }
+
+      &:hover {
+        &::before {
+          transform: translateX(0);
+        }
+      }
     }
 
     .list-#{$i - 1}.active {
-      background-color: rgba($clr-secondary, 50%);
       transform: translateY(-2rem);
     }
   }
