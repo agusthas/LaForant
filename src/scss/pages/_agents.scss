@@ -60,6 +60,30 @@
   font-weight: 900;
   line-height: 1;
   letter-spacing: 0.03em;
+
+  @include bp-min('sm') {
+    font-size: 2.3rem;
+  }
+}
+
+.text-subtitle {
+  font-family: $ff-uni-sans;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.025em;
+
+  @include bp-min('sm') {
+    font-size: 1.25rem;
+  }
+}
+
+.text-body {
+  max-width: 60ch;
+  line-height: 1.6;
+  @include bp-min('sm') {
+    font-size: 1.125rem;
+  }
 }
 
 .underline-after {
@@ -76,12 +100,28 @@
 }
 
 .agent {
-  padding: 7rem 2rem;
+  --py: 7rem;
+  --px: 2rem;
+
+  position: relative;
+  padding: var(--py) var(--px);
   color: $clr-tertiary;
   background-color: $clr-primary;
 
+  @include bp-min('sm') {
+    --px: 4rem;
+  }
+
+  &__image {
+    max-width: 393px;
+  }
+
   &__carousel {
     margin-top: 3rem;
+  }
+
+  &__content {
+    width: 100%;
   }
 
   &__header {
@@ -96,6 +136,10 @@
     line-height: 1;
     color: $clr-secondary;
     letter-spacing: 0.025em;
+
+    @include bp-min('sm') {
+      font-size: 8rem;
+    }
   }
 
   &__header &__quote {
@@ -104,56 +148,62 @@
     font-weight: 900;
     line-height: 1.2;
     letter-spacing: 0.025em;
+
+    @include bp-min('sm') {
+      margin-top: 0.5rem;
+      font-size: 1.8rem;
+    }
+
+    @include bp-min('lg') {
+      margin: 0;
+    }
   }
 
   .bio {
-    margin-top: 2rem;
+    margin-top: 4rem;
 
     &__body {
       margin-top: 1.2rem;
-      line-height: 1.6;
     }
   }
 
   .abilities {
+    width: 100%;
     margin-top: 3.5rem;
 
     &__icons {
       justify-content: initial;
       margin-top: 1.5rem;
 
-      > .icon {
-        width: auto;
-        padding: 0.5rem;
-      }
-
-      > .icon.active {
-        background-color: $clr-secondary;
-      }
-
       > *:not(:last-child) {
         margin-right: 1rem;
       }
+    }
 
-      img {
-        width: 38px;
+    .icon {
+      width: auto;
+      padding: 0.5rem;
+    }
+
+    .icon--active {
+      background-color: $clr-secondary;
+    }
+
+    img {
+      width: 38px;
+      @include bp-min('sm') {
+        width: 45px;
       }
     }
 
     &__desc {
       margin-top: 1.25rem;
       &-title {
-        font-family: $ff-uni-sans;
-        font-size: 1.25rem;
-        font-weight: 900;
-        line-height: 1;
         color: $clr-secondary;
-        letter-spacing: 0.025em;
       }
 
       &-body {
         margin-top: 1rem;
-        line-height: 1.6;
       }
     }
   }
