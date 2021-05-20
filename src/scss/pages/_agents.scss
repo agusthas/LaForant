@@ -1,0 +1,160 @@
+@use '../abstracts/' as *;
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.carousel-indicator {
+  --gap: 1rem;
+
+  > *:not(:last-child) {
+    margin-right: var(--gap);
+  }
+
+  > div {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .tr {
+    background-color: $clr-tertiary;
+
+    &--left {
+      clip-path: polygon(100% 0, 100% 100%, 0 50%);
+    }
+
+    &--right {
+      clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    }
+  }
+
+  .cc {
+    --color: #{$clr-tertiary};
+
+    border: 1px solid var(--color);
+    border-radius: 99999px;
+
+    &--active {
+      --color: #{$clr-secondary};
+
+      background-color: var(--color);
+      border-color: var(--color);
+    }
+  }
+}
+
+.text-title {
+  font-family: $ff-tungsten;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+.underline-after {
+  position: relative;
+  &::after {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 1.5em;
+    height: 2px;
+    content: '';
+    background-color: $clr-secondary;
+  }
+}
+
+.agent {
+  padding: 7rem 2rem;
+  color: $clr-tertiary;
+  background-color: $clr-primary;
+
+  &__carousel {
+    margin-top: 3rem;
+  }
+
+  &__header {
+    align-items: flex-start;
+    margin-top: 3rem;
+  }
+
+  &__header &__name {
+    font-family: $ff-tungsten;
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 1;
+    color: $clr-secondary;
+    letter-spacing: 0.025em;
+  }
+
+  &__header &__quote {
+    font-family: $ff-uni-sans;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: 0.025em;
+  }
+
+  .bio {
+    margin-top: 2rem;
+
+    &__body {
+      margin-top: 1.2rem;
+      line-height: 1.6;
+    }
+  }
+
+  .abilities {
+    margin-top: 3.5rem;
+
+    &__icons {
+      justify-content: initial;
+      margin-top: 1.5rem;
+
+      > .icon {
+        width: auto;
+        padding: 0.5rem;
+      }
+
+      > .icon.active {
+        background-color: $clr-secondary;
+      }
+
+      > *:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      img {
+        width: 38px;
+      }
+    }
+
+    &__desc {
+      margin-top: 1.25rem;
+      &-title {
+        font-family: $ff-uni-sans;
+        font-size: 1.25rem;
+        font-weight: 900;
+        line-height: 1;
+        color: $clr-secondary;
+        letter-spacing: 0.025em;
+      }
+
+      &-body {
+        margin-top: 1rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
