@@ -116,12 +116,19 @@
 
 .toggler-btn {
   display: flex;
-  gap: 4rem;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   color: $clr-secondary;
   cursor: pointer;
+
+  > *:not(:last-child) {
+    margin-right: 4rem;
+
+    @include bp-min('md') {
+      margin: 0;
+    }
+  }
 
   .fa-chevron-left {
     @include transition();
@@ -139,10 +146,6 @@
       color: $clr-tertiary;
       transform: scale(1.1);
     }
-  }
-
-  @include bp-min('md') {
-    gap: 0;
   }
 
   @include bp-min('lg') {
