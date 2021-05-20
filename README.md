@@ -1,8 +1,9 @@
 ## Supported Viewport
 
-Phones : >= 375px
-Ipad : >= 600px
-Maximum size : <= 1920px
+- Phones : >= 375px
+- Ipad : >= 600px
+- Laptop : >= 1366px
+- Maximum size : <= 1920px
 
 # LIVE DEPLOYMENT
 
