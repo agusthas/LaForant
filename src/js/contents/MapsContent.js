@@ -1,4 +1,3 @@
-/* Maximal and Minimal of 4  */
 const MapsContent = [
   {
     name: 'BREEZE',
@@ -22,7 +21,13 @@ const MapsContent = [
     name: 'HAVEN',
     link: '/pages/maps.html',
     image: '/assets/images/haven.png',
-    desc: "Okay i'm out of words.",
+    desc: 'Haven.',
+  },
+  {
+    name: 'ASCENT',
+    link: '/pages/maps.html',
+    image: '/assets/images/ascent.png',
+    desc: 'Ascent.',
   },
   {
     name: 'VIEW ALL MAPS',
