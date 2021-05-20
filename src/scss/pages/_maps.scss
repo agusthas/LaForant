@@ -122,12 +122,12 @@
   color: $clr-secondary;
   cursor: pointer;
 
+  @include bp-min('md') {
+    justify-content: space-between;
+  }
+
   > *:not(:last-child) {
     margin-right: 4rem;
-
-    @include bp-min('md') {
-      margin: 0;
-    }
   }
 
   .fa-chevron-left {
@@ -158,19 +158,18 @@
   opacity: 0;
 
   @include bp-min('md') {
-    display: grid;
+    display: flex;
     flex-grow: 1;
-    grid-template-columns: repeat(4, 300px);
-    gap: 1rem;
+    align-items: center;
     justify-content: center;
-    height: 200px;
     visibility: visible;
-    background-color: $clr-primary;
     opacity: 1;
   }
 
   @for $i from 1 through 4 {
     .list-#{$i - 1} {
+      @include transition();
+
       position: relative;
       z-index: 100;
       overflow: hidden;
@@ -178,6 +177,17 @@
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
+
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      > img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        pointer-events: none;
+      }
 
       &::before {
         @include transition();

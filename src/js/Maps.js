@@ -20,15 +20,18 @@ const Showcases = MapsData.map((item, index) => {
 
 const Maps = () => {
   const listMapsParent = $('#js-list-maps');
-
-  MapsData.forEach((el, i) => {
-    const curr = listMapsParent.children(`[data-maps-index="${i}"]`);
-
-    curr.css('background-image', `url("${el.image}")`);
-  });
-
   const nextBtn = $('#js-next-btn');
   const prevBtn = $('#js-prev-btn');
+
+  MapsData.forEach((el, i) => {
+    const img = `
+    <div class="list-${i}" data-maps-index="${i}">
+      <img src="${el.image}" alt=""/>
+    <div>
+    `;
+
+    listMapsParent.append(img);
+  });
 
   /**
    * Set active class to the active list
@@ -36,14 +39,13 @@ const Maps = () => {
    */
   const setActiveList = (activeIndex) => {
     listMapsParent.children().each((_, el) => {
-      listMapsParent.children().each((_, el) => {
-        const curr = $(el);
-        if (curr.data().mapsIndex === activeIndex) {
-          curr.addClass('active');
-        } else {
-          curr.removeClass('active');
-        }
-      });
+      const curr = $(el);
+
+      if (curr.data().mapsIndex === activeIndex) {
+        curr.addClass('active');
+      } else {
+        curr.removeClass('active');
+      }
     });
   };
 
@@ -56,6 +58,7 @@ const Maps = () => {
       if (currIndex < 0 || currIndex > MapsData.length - 1) {
         throw new RangeError('Current Index if out of bounds');
       }
+
       $('#js-maps-showcases').html(Showcases[currIndex]);
     } catch (error) {
       $('#js-maps-showcases').html(Showcases[0]);
@@ -66,12 +69,8 @@ const Maps = () => {
   let currentIndex = 0;
 
   listMapsParent.each((_, el) => {
-    const curr = $(el);
-
-    curr.on('click', (e) => {
-      const currList = $(e.target);
-
-      currentIndex = currList.data().mapsIndex;
+    $(el).on('click', (e) => {
+      currentIndex = $(e.target).data().mapsIndex;
       setActiveList(currentIndex);
       setShowcase(currentIndex);
     });
