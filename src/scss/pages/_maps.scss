@@ -154,8 +154,7 @@
 }
 
 .list-maps {
-  visibility: hidden;
-  opacity: 0;
+  display: none;
 
   @include bp-min('md') {
     display: flex;
@@ -174,9 +173,6 @@
       z-index: 100;
       overflow: hidden;
       cursor: pointer;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
 
       &:not(:last-child) {
         margin-right: 1rem;
