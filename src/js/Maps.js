@@ -19,13 +19,20 @@ const Showcases = MapsData.map((item, index) => {
 });
 
 const Maps = () => {
+  let mapFromUrl = new URL(window.location.href).searchParams.get('map');
+
+  let currentIndex = 0;
+  if (mapFromUrl) {
+    currentIndex = MapsData.findIndex(({ name }) => name == mapFromUrl);
+  }
+
   const listMapsParent = $('#js-list-maps');
   const nextBtn = $('#js-next-btn');
   const prevBtn = $('#js-prev-btn');
 
   MapsData.forEach((el, i) => {
     const img = `
-    <div class="list-${i}" data-maps-index="${i}">
+    <div class="list-${i}" data-maps-index="${i}" data-maps-name=${el.name}>
       <img src="${el.image}" alt=""/>
     <div>
     `;
@@ -40,6 +47,10 @@ const Maps = () => {
   const setActiveList = (activeIndex) => {
     listMapsParent.children().each((_, el) => {
       const curr = $(el);
+
+      if (typeof activeIndex !== 'number') {
+        activeIndex = Number(activeIndex);
+      }
 
       if (curr.data().mapsIndex === activeIndex) {
         curr.addClass('active');
@@ -65,8 +76,6 @@ const Maps = () => {
       console.log(error);
     }
   };
-
-  let currentIndex = 0;
 
   listMapsParent.each((_, el) => {
     $(el).on('click', (e) => {
