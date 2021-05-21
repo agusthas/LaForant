@@ -50,12 +50,7 @@ $size-per-div: 1.125rem;
   }
 
   .circle-container {
-    flex-wrap: nowrap;
-    justify-content: initial;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    cursor: grab;
+    display: none;
 
     > *:not(:last-child) {
       margin-right: 1rem;
@@ -70,6 +65,7 @@ $size-per-div: 1.125rem;
     }
 
     @include bp-min('sm') {
+      display: flex;
       justify-content: space-around;
       cursor: initial;
     }

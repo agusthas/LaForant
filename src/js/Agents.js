@@ -3,6 +3,7 @@ import AgentsContent from './contents/AgentsContent.js';
 
 const AgentsData = AgentsContent.slice(0, -1);
 let currentIndex = 0; /* GLOBAL VARIABLE */
+let abilityCurrentIndex = 0;
 let defaultAgent = 'viper';
 
 const getCurrentAgent = (searchId) => {
@@ -32,6 +33,7 @@ const Agents = () => {
 
     setActiveCircle(currentIndex);
     setAgentsHeader(currentIndex);
+    setAgentClass(currentIndex);
     setAbilities(currentIndex);
     $(this).removeAttr('disabled');
   };
@@ -47,6 +49,7 @@ const Agents = () => {
 
     setActiveCircle(currentIndex);
     setAgentsHeader(currentIndex);
+    setAgentClass(currentIndex);
     setAbilities(currentIndex);
     $(this).removeAttr('disabled');
   };
@@ -94,6 +97,22 @@ const Agents = () => {
     icons.forEach((el) => $('#js-icons').append(el));
     $('#js-icons').each((_, icon) => setIconListener(icon, handleIconClick));
     setAbilityDescription(currentAbilities[0]);
+  };
+
+  //--------- SET AGENT CLASS -----------//
+  const setAgentClass = (currIndex) => {
+    const currentAgent = getCurrentAgent(currIndex);
+
+    const element = `
+      <img
+        class="class__title"
+        src="${currentAgent.role_symbol}"
+        alt=""
+      />
+      <div class="class__text">${currentAgent.role}</div>
+    `;
+
+    $('#js-agent-class').empty().append(element);
   };
 
   //--------- SET ABILITY DESCRIPTION ---------------//
@@ -158,11 +177,12 @@ const Agents = () => {
         ).id;
 
         setAgentsHeader(currentIndex);
+        setAgentClass(currentIndex);
         setAbilities(currentIndex);
         setActiveCircle(currentIndex);
         clearInterval(timer);
       }
-    }, 150);
+    }, 250);
   };
 
   const circleIndicator = ({ id }) =>
@@ -176,8 +196,49 @@ const Agents = () => {
 
   carouselNextBtn.on('click', handleNext);
   carouselPrevBtn.on('click', handlePrev);
+  const currentAbility = getCurrentAbilities(currentIndex);
 
   displayLoadingScreen();
+
+  $(window).on('keydown', (event) => {
+    if (event.code === 'ArrowDown') {
+      carouselNextBtn.trigger('click');
+    }
+
+    if (event.code === 'ArrowUp') {
+      carouselPrevBtn.trigger('click');
+    }
+
+    if (event.code === 'ArrowRight') {
+      abilityCurrentIndex += 1;
+
+      if (abilityCurrentIndex > currentAbility.length - 1) {
+        abilityCurrentIndex = 0;
+      }
+
+      setActiveIcons(abilityCurrentIndex);
+      const findCurrentAbility = getCurrentAbilities(currentIndex).find(
+        ({ id }) => id === abilityCurrentIndex,
+      );
+
+      setAbilityDescription(findCurrentAbility);
+    }
+
+    if (event.code === 'ArrowLeft') {
+      abilityCurrentIndex -= 1;
+
+      if (abilityCurrentIndex < 0) {
+        abilityCurrentIndex = currentAbility.length - 1;
+      }
+
+      setActiveIcons(abilityCurrentIndex);
+      const findCurrentAbility = getCurrentAbilities(currentIndex).find(
+        ({ id }) => id === abilityCurrentIndex,
+      );
+
+      setAbilityDescription(findCurrentAbility);
+    }
+  });
 };
 
 export default Agents;
