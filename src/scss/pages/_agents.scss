@@ -7,14 +7,6 @@
   width: 100%;
 }
 
-.flex-row {
-  flex-direction: row;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
 .carousel-indicator {
   --gap: 1rem;
 
@@ -72,17 +64,17 @@
   font-weight: 900;
   line-height: 1;
   letter-spacing: 0.025em;
-
-  @include bp-min('sm') {
-    font-size: 1.25rem;
-  }
 }
 
 .text-body {
   max-width: 60ch;
   line-height: 1.6;
-  @include bp-min('sm') {
-    font-size: 1.125rem;
+  @include bp-min('md') {
+    max-width: 35ch;
+  }
+
+  @include bp-min('lg') {
+    max-width: 50ch;
   }
 }
 
@@ -104,6 +96,7 @@
   --px: 2rem;
 
   position: relative;
+  flex-direction: column;
   padding: var(--py) var(--px);
   color: $clr-tertiary;
   background-color: $clr-primary;
@@ -112,21 +105,65 @@
     --px: 4rem;
   }
 
+  @include bp-min('md') {
+    --py: 0;
+    --px: 6rem;
+
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding-top: 4.5rem;
+    padding-right: 4rem;
+    padding-left: 8rem;
+  }
+
+  @include bp-min('lg') {
+    justify-content: space-around;
+  }
+
   &__image {
     max-width: 393px;
+
+    @include bp-min('md') {
+      flex: 0 0 auto;
+      order: 1;
+      max-width: 420px;
+    }
+
+    @include bp-min('lg') {
+      max-width: 500px;
+    }
   }
 
   &__carousel {
     margin-top: 3rem;
+
+    @include bp-min('md') {
+      position: absolute;
+      top: 50%;
+      left: -50%;
+      display: inline-flex;
+      margin: 0;
+      transform: rotate(90deg) translateY(-4rem);
+    }
   }
 
   &__content {
     width: 100%;
+
+    @include bp-min('md') {
+      width: auto;
+    }
   }
 
   &__header {
+    flex-direction: column;
     align-items: flex-start;
     margin-top: 3rem;
+
+    @include bp-min('md') {
+      margin: 0;
+    }
   }
 
   &__header &__name {
@@ -139,6 +176,10 @@
 
     @include bp-min('sm') {
       font-size: 8rem;
+    }
+
+    @include bp-min('md') {
+      font-size: 10rem;
     }
   }
 
@@ -154,22 +195,39 @@
       font-size: 1.8rem;
     }
 
-    @include bp-min('lg') {
+    @include bp-min('md') {
+      order: -1;
       margin: 0;
+      font-size: 1.5rem;
     }
   }
 
   .bio {
     margin-top: 4rem;
 
+    @include bp-min('md') {
+      margin: 0;
+      margin-top: 2rem;
+    }
+
     &__body {
       margin-top: 1.2rem;
+
+      @include bp-min('md') {
+        max-width: 45ch;
+      }
     }
   }
 
   .abilities {
     width: 100%;
     margin-top: 3.5rem;
+
+    @include bp-min('md') {
+      order: 2;
+      width: auto;
+      margin: 0;
+    }
 
     &__icons {
       justify-content: initial;
@@ -181,18 +239,57 @@
     }
 
     .icon {
+      position: relative;
+      z-index: 1;
       width: auto;
       padding: 0.5rem;
-    }
+      overflow: hidden;
+      cursor: pointer;
 
-    .icon--active {
-      background-color: $clr-secondary;
+      @include bp-min('md') {
+        &::before {
+          @include transition($duration: '150', $timing: 'out');
+
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          content: '';
+          background-color: $clr-secondary;
+          transform: translateX(-110%) skew(-10deg);
+        }
+
+        &:hover::before {
+          transform: translateX(0);
+        }
+
+        &:hover img {
+          transform: scale(1.1);
+        }
+      }
     }
 
     img {
       width: 38px;
+      pointer-events: none;
       @include bp-min('sm') {
         width: 45px;
+      }
+
+      @include bp-min('md') {
+        @include transition($duration: '300', $timing: 'out');
+
+        transform: scale(1);
+      }
+    }
+
+    .icon--active {
+      background-color: rgba($clr-secondary, 90%);
+
+      &::before {
+        display: none;
       }
     }
 
