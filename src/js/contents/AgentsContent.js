@@ -150,6 +150,82 @@ const AgentsContent = [
     ],
   },
   {
+    id: 4,
+    name: 'ASTRA',
+    link: '/pages/agents.html?agent=astra',
+    image: '/assets/images/astra/astra.png',
+    quote: 'Ghanaian Predicter',
+    bio: 'Ghanaian Agent Astra harnesses the energies of the cosmos to reshape battlefields to her whim. With full command of her astral form and a talent for deep strategic foresight, she’s always eons ahead of her enemy’s next move.',
+    ability: [
+      {
+        id: 0,
+        ability_name: 'GRAVITY WELL',
+        ability_logo: '/assets/images/astra/astra-gravity-well.png',
+        ability_description:
+          'ACTIVATE a Star to form a Gravity Well. Players in the area are pulled toward the center before it explodes, making all players still trapped inside vulnerable',
+      },
+      {
+        id: 1,
+        ability_name: 'nova pulse',
+        ability_logo: '/assets/images/astra/astra-nova-pulse.png',
+        ability_description:
+          'ACTIVATE a Star to detonate a Nova Pulse. The Nova Pulse charges briefly then strikes, concussing all players in its area.',
+      },
+      {
+        id: 2,
+        ability_name: 'nebula / dissipate',
+        ability_logo: '/assets/images/astra/astra-nebula-dissipate.png',
+        ability_description:
+          'ACTIVATE a Star to transform it into a Nebula (smoke). USE (F) a Star to Dissipate it, returning the Star to be placed in a new location after a delay. Dissipate briefly forms a fake Nebula at the Star’s location before returning.',
+      },
+      {
+        id: 3,
+        ability_name: 'astral form',
+        ability_logo: '/assets/images/astra/astra-astral-form.png',
+        ability_description:
+          'ACTIVATE to enter Astral Form where you can place Stars with PRIMARY FIRE. Stars can be reactivated later, transforming them into Nova Pulses, Nebula, or Gravity Well.',
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: 'REYNA',
+    link: '/pages/agents.html?agent=reyna',
+    image: '/assets/images/reyna/reyna.png',
+    quote: 'The Mexican Vampire',
+    bio: 'Forged in the heart of Mexico, Reyna dominates single combat, popping off with each kill she scores. Her capability is only limited by her raw skill, making her highly dependent on performance.',
+    ability: [
+      {
+        id: 0,
+        ability_name: 'LEER',
+        ability_logo: '/assets/images/reyna/reyna-leer.png',
+        ability_description:
+          'Equip an ethereal eye. Activate to cast the eye a short distance forward at a fixed range, passing through obstructions in the way. The eye will Nearsight all enemies who can see it. The eye will disappear either after two seconds or receiving any bullet damage.',
+      },
+      {
+        id: 1,
+        ability_name: 'DEVOUR',
+        ability_logo: '/assets/images/reyna/reyna-devour.png',
+        ability_description:
+          "Instantly consume a nearby Soul Orb, disabling Reyna's ability to fire for 1 second and creating a tether between Reyna and the Soul Orb whilst rapidly healing for 100 health over 3 seconds. The tether will break if it is caught between any obstacle for more than a second, ending the healing prematurely. This ability can Overheal but Reyna cannot exceed 150 health (including shields). The Overheal will decay after 25 seconds over 1 second, but can be refreshed whenever devour is recast. Excess health will be consumed before excess shield. If an enemy damaged by Reyna is killed within 3 seconds by another player/stimuli then a Soul Orb will be dropped, allowing her to Devour. If Empress is active, this skill will automatically cast, will not consume the Soul Orb, and will not create a tether.",
+      },
+      {
+        id: 2,
+        ability_name: 'DISMISS',
+        ability_logo: '/assets/images/reyna/reyna-dismiss.png',
+        ability_description:
+          'Instantly consume a nearby Soul Orb, becoming intangible for 2 seconds and gaining a burst of movement speed for the first second of the duration. Reyna can change what weapon she will equip whilst Dismiss is active, always equipping the last weapon selected during Dismiss. If an enemy damaged by Reyna is killed within 3 seconds by another player/stimuli then a Soul Orb will be dropped, allowing her to Dismiss. If Empress is active, Reyna also becomes invisible.',
+      },
+      {
+        id: 3,
+        ability_name: 'EMPRESS',
+        ability_logo: '/assets/images/reyna/reyna-empress.png',
+        ability_description:
+          'Enter a frenzy for 30 seconds, increasing firing, equip and reload speeds by 15%. Grants infinite charges of Soul Harvest abilities. Scoring a kill fully refreshes the duration.',
+      },
+    ],
+  },
+  {
     name: 'VIEW ALL AGENTS',
     link: '/pages/agents.html',
   },
