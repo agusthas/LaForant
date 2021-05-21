@@ -6,15 +6,6 @@
 /*******************
  REQUIREMENT
  *******************/
-@include keyframe(boxSlide) {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 $color-lists: (
   'minimum': (
     'BACKGROUND': $clr-tertiary,
@@ -123,7 +114,6 @@ $color-lists: (
     }
 
     &::after {
-      /* BOX */
       --box-offset: -1rem;
 
       bottom: var(--box-offset);
@@ -137,9 +127,10 @@ $color-lists: (
       }
 
       @include bp-min('lg') {
+        /* BIG UNDERLINE */
         @include animation(
           $delay: 0s,
-          $name: boxSlide,
+          $name: underlineSlide,
           $duration: 0.4s,
           $timing: ease-out,
           $count: 1,

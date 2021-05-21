@@ -1,0 +1,108 @@
+@use '../abstracts/' as *;
+
+@include keyframe(loader) {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@include keyframe(underlineSlide) {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@include keyframe(fadein) {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@include keyframe(slidedown) {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@include keyframe(slideright) {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@include keyframe(slideleft) {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@include keyframe(fadeInTest) {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@include keyframe(scaleFadeIn) {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@include keyframe(bounce) {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+  }
+}

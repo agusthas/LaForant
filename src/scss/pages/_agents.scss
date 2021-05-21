@@ -4,32 +4,6 @@
 
 $minheight-lg: calc(923px / 2);
 
-@include keyframe(fadeInTest) {
-  from {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@include keyframe(scaleFadeIn) {
-  0% {
-    visibility: hidden;
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 .underline-after {
   position: relative;
   &::after {

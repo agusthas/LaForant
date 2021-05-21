@@ -2,56 +2,6 @@
 @use 'sass:list';
 @use '../abstracts/' as *;
 
-@include keyframe(fadein) {
-  from {
-    visibility: hidden;
-    opacity: 0;
-  }
-  to {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
-@include keyframe(slidedown) {
-  from {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@include keyframe(slideright) {
-  from {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateX(60px);
-  }
-  to {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@include keyframe(slideleft) {
-  from {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateX(-60px);
-  }
-  to {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 .maps {
   position: relative;
   max-height: 100%;
