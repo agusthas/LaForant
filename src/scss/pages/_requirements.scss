@@ -6,7 +6,7 @@
 /*******************
  REQUIREMENT
  *******************/
-@include keyframe(testing) {
+@include keyframe(boxSlide) {
   0% {
     transform: translateX(100%);
   }
@@ -139,7 +139,7 @@ $color-lists: (
       @include bp-min('lg') {
         @include animation(
           $delay: 0s,
-          $name: testing,
+          $name: boxSlide,
           $duration: 0.4s,
           $timing: ease-out,
           $count: 1,

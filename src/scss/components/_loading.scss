@@ -1,0 +1,52 @@
+@use '../abstracts/' as *;
+
+@include keyframe(loader) {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: $clr-primary;
+
+  &__circle {
+    @include animation(
+      $delay: 0s,
+      $name: loader,
+      $duration: 1.5s,
+      $timing: linear,
+      $count: infinite
+    );
+
+    width: clamp(5rem, 10vw, 8rem);
+    height: clamp(5rem, 10vw, 8rem);
+    background-color: transparent;
+    border: 0.5em solid $clr-tertiary;
+    border-top-color: $clr-primary;
+    border-radius: 9999px;
+  }
+
+  &__text {
+    margin-top: 1rem;
+    font-family: $ff-tungsten;
+    font-size: clamp(4rem, 10vw, 7rem);
+    font-weight: 900;
+    color: $clr-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+}
