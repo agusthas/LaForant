@@ -162,7 +162,7 @@ const Agents = () => {
         setActiveCircle(currentIndex);
         clearInterval(timer);
       }
-    }, 500);
+    }, 150);
   };
 
   const circleIndicator = ({ id }) =>
