@@ -49,6 +49,13 @@ $minheight-lg: calc(923px / 2);
   }
 
   &__image {
+    @include animation(
+      $delay: 0s,
+      $name: scaleFadeIn,
+      $duration: 0.6s,
+      $timing: ease-in-out
+    );
+
     max-width: 393px;
 
     @include bp-min('md') {
@@ -56,14 +63,8 @@ $minheight-lg: calc(923px / 2);
       order: 1;
       max-width: 420px;
 
-      > img {
-        @include animation(
-          $delay: 0s,
-          $name: scaleFadeIn,
-          $duration: 0.6s,
-          $timing: ease-in-out
-        );
-      }
+      // > img {
+      // }
     }
 
     @include bp-min('lg') {
@@ -91,10 +92,12 @@ $minheight-lg: calc(923px / 2);
   }
 
   &__content {
+    position: relative;
     width: 100%;
 
     @include bp-min('md') {
       width: 30%;
+      min-height: calc(100vh / 1.75);
     }
 
     @include bp-min('lg') {
@@ -181,6 +184,42 @@ $minheight-lg: calc(923px / 2);
     }
   }
 
+  .class {
+    position: absolute;
+    justify-content: initial;
+    width: auto;
+    visibility: hidden;
+    opacity: 0;
+
+    @include bp-min('sm') {
+      top: 5rem;
+      right: 0;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @include bp-min('md') {
+      top: auto;
+      right: auto;
+      bottom: -5rem;
+      left: 0;
+    }
+
+    &__title {
+      max-width: 32px;
+    }
+
+    &__text {
+      margin-left: 1rem;
+      font-family: $ff-uni-sans;
+      font-size: 1.25rem;
+      font-weight: 900;
+      line-height: 1;
+      color: $clr-tertiary;
+      letter-spacing: 0.025em;
+    }
+  }
+
   .abilities {
     width: 100%;
     margin-top: 3.5rem;
@@ -188,6 +227,7 @@ $minheight-lg: calc(923px / 2);
     @include bp-min('md') {
       order: 2;
       width: auto;
+      min-height: calc(100vh / 2);
       margin: 0;
     }
 

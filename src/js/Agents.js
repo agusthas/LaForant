@@ -170,7 +170,9 @@ const Agents = () => {
 
   //--------- Calling all Functions -----------//
 
-  $('.tr.tr--left').after(AgentsData.map((el) => circleIndicator(el)).join(''));
+  $('#js-circle-container')
+    .empty()
+    .append(AgentsData.map((el) => circleIndicator(el)).join(''));
 
   carouselNextBtn.on('click', handleNext);
   carouselPrevBtn.on('click', handlePrev);

@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../abstracts/' as *;
 
 $gap: 1rem;
@@ -8,11 +9,6 @@ $size-per-div: 1.125rem;
 
   > *:not(:last-child) {
     margin-right: var(--gap);
-  }
-
-  > div {
-    width: $size-per-div;
-    height: $size-per-div;
   }
 
   .tr {
@@ -38,14 +34,50 @@ $size-per-div: 1.125rem;
 
     --color: #{$clr-tertiary};
 
+    flex: 0 0 auto;
+    width: $size-per-div;
+    height: $size-per-div;
     border: 1px solid var(--color);
     border-radius: 99999px;
 
     &--active {
       --color: #{$clr-secondary};
 
+      position: relative;
       background-color: var(--color);
       border-color: var(--color);
+    }
+  }
+
+  .circle-container {
+    flex-wrap: nowrap;
+    justify-content: initial;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    cursor: grab;
+
+    > *:not(:last-child) {
+      margin-right: 1rem;
+
+      @include bp-min('sm') {
+        margin: 0;
+      }
+
+      @include bp-min('md') {
+        margin-right: 1rem;
+      }
+    }
+
+    @include bp-min('sm') {
+      justify-content: space-around;
+      cursor: initial;
+    }
+
+    @include bp-min('md') {
+      justify-content: initial;
+      width: auto;
+      overflow: visible;
     }
   }
 }
