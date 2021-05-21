@@ -93,33 +93,22 @@
 
     <main class="agent-container l-main-container">
       <section class="flex agent">
-        <div class="agent__image">
-          <img src="/assets/images/viper.png" alt="" />
-        </div>
+        <div id="js-agent-image" class="agent__image"></div>
 
-        <div class="flex carousel-indicator agent__carousel">
-          <div class="tr tr--left"></div>
-          <div class="cc"></div>
-          <div class="cc"></div>
-          <div class="cc"></div>
-          <div class="cc cc--active"></div>
-          <div class="cc"></div>
-          <div class="tr tr--right"></div>
+        <div id="js-carousel" class="flex carousel-indicator agent__carousel">
+          <button id="js-carousel-prev" class="tr tr--left"></button>
+          <button id="js-carousel-next" class="tr tr--right"></button>
         </div>
 
         <div class="agent__content">
-          <header class="flex agent__header">
-            <h1 class="agent__name">KILLJOY</h1>
-            <p class="agent__quote">THE STRONGHOLD OF CHINA</p>
+          <header class="no-select flex agent__header">
+            <h1 id="js-agent-name" class="agent__name"></h1>
+            <p id="js-agent-quote" class="agent__quote"></p>
           </header>
 
           <div class="agent__bio bio">
             <h2 class="bio__title text-title underline-after">BIOGRAPHY</h2>
-            <p class="bio__body text-body">
-              Sage creates safety for herself and her team wherever she goes.
-              Able to revive fallen friends and stave off aggressive pushes, she
-              provides a calm center to a hellish fight.
-            </p>
+            <p id="js-agent-bio" class="bio__body text-body"></p>
           </div>
         </div>
 
@@ -128,29 +117,14 @@
             SPECIAL ABILITIES
           </h2>
 
-          <figure class="flex abilities__icons">
-            <div class="flex icon icon--active">
-              <img src="/assets/images/sage-slow-orb.png" alt="" />
-            </div>
-            <div class="flex icon">
-              <img src="/assets/images/sage-healing-orb.png" alt="" />
-            </div>
-            <div class="flex icon">
-              <img src="/assets/images/sage-barrier-orb.png" alt="" />
-            </div>
-            <div class="flex icon">
-              <img src="/assets/images/sage-resurrection.png" alt="" />
-            </div>
-          </figure>
+          <div id="js-icons" class="flex abilities__icons"></div>
 
           <div class="abilities__desc">
-            <h4 class="abilities__desc-title text-subtitle">BARRIER ORB</h4>
-            <p class="abilities__desc-body text-body">
-              Equip a barrier orb. Fire places a solid wall. Alternate fire
-              rotates the targeter. The wall "fortifies" after a 3-second delay,
-              increasing its health. Shortly before expiring, the wall rapidly
-              loses health
-            </p>
+            <h4
+              id="js-ability-name"
+              class="abilities__desc-title text-subtitle"
+            ></h4>
+            <p id="js-ability-body" class="abilities__desc-body text-body"></p>
           </div>
         </div>
       </section>

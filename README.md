@@ -67,6 +67,7 @@ $ npm run dev
 - [Zell's CSS Reset](https://github.com/zellwk/css-reset)
 - [Valorant](https://playvalorant.com/en-us/)
 - [Games Radar](https://www.gamesradar.com/best-fps-games/)
+- [Disable Multiple Clicks in JQuery](https://stackoverflow.com/questions/43514382/disable-multiple-clicks-javascript)
 
 ### Images:
 

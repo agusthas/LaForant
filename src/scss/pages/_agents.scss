@@ -1,5 +1,9 @@
 @use '../abstracts/' as *;
 
+.no-select {
+  user-select: none;
+}
+
 .flex {
   display: flex;
   align-items: center;
@@ -20,7 +24,13 @@
   }
 
   .tr {
+    display: block;
+    width: 1.125rem;
+    height: 1.125rem;
+    cursor: pointer;
     background-color: $clr-tertiary;
+    border: 0;
+    outline: 0;
 
     &--left {
       clip-path: polygon(100% 0, 100% 100%, 0 50%);
@@ -245,6 +255,8 @@
       padding: 0.5rem;
       overflow: hidden;
       cursor: pointer;
+      background-color: transparent;
+      border: 0;
 
       @include bp-min('md') {
         &::before {
