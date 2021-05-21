@@ -24,6 +24,11 @@
     <title>LAFORANT</title>
   </head>
   <body>
+    <div class="loading">
+      <div class="loading__circle"></div>
+      <div class="loading__text">Sabar cuy...</div>
+    </div>
+
     <!-- NAVBAR -->
     <nav>
       <div class="nav">
@@ -101,14 +106,14 @@
         </div>
 
         <div class="agent__content">
-          <header class="no-select flex agent__header">
-            <h1 id="js-agent-name" class="agent__name"></h1>
-            <p id="js-agent-quote" class="agent__quote"></p>
-          </header>
+          <header
+            id="js-agent-name-quote"
+            class="no-select flex agent__header"
+          ></header>
 
-          <div class="agent__bio bio">
+          <div id="js-agent-bio" class="agent__bio bio">
             <h2 class="bio__title text-title underline-after">BIOGRAPHY</h2>
-            <p id="js-agent-bio" class="bio__body text-body"></p>
+            <p class="bio__body text-body"></p>
           </div>
         </div>
 

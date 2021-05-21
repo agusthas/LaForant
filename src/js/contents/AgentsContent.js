@@ -2,7 +2,7 @@ const AgentsContent = [
   {
     id: 0,
     name: 'VIPER',
-    link: '/pages/agents.html',
+    link: '/pages/agents.html?agent=viper',
     image: '/assets/images/viper.png',
     quote: 'The American chemist',
     bio: "Viper deploys an array of poisonous chemical devices to control the battlefield and cripple the enemy's vision. If the toxins don't kill her prey, her mind games surely will",
@@ -40,7 +40,7 @@ const AgentsContent = [
   {
     id: 1,
     name: 'SAGE',
-    link: '/pages/agents.html',
+    link: '/pages/agents.html?agent=sage',
     image: '/assets/images/sage.png',
     quote: 'The stronghold of china',
     bio: 'Sage creates safety for herself and her team wherever she goes. Able to revive fallen friends and stave off aggressive pushes, she provides a calm center to a hellish fight',
@@ -78,7 +78,7 @@ const AgentsContent = [
   {
     id: 2,
     name: 'JETT',
-    link: '/pages/agents.html',
+    link: '/pages/agents.html?agent=jett',
     image: '/assets/images/jett.png',
     quote: 'The Korean Tornado',
     bio: "Jett's agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies before they even know what hit them.",
@@ -115,7 +115,7 @@ const AgentsContent = [
   {
     id: 3,
     name: 'SKYE',
-    link: '/pages/agents.html',
+    link: '/pages/agents.html?agent=skye',
     image: '/assets/images/skye.png',
     quote: 'The Guardian Of Australia',
     bio: "Skye and her band of beasts trail-blaze the way through hostile territory. With her creations hampering the enemy, and her power to heal others, the team is strongest and safest by Skye's side.",
@@ -151,7 +151,7 @@ const AgentsContent = [
   },
   {
     name: 'VIEW ALL AGENTS',
-    link: '#',
+    link: '/pages/agents.html',
   },
 ];
 

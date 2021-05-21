@@ -3,6 +3,7 @@ import AgentsContent from './contents/AgentsContent.js';
 
 const AgentsData = AgentsContent.slice(0, -1);
 let currentIndex = 0; /* GLOBAL VARIABLE */
+let defaultAgent = 'viper';
 
 const getCurrentAgent = (searchId) => {
   return AgentsData.find(({ id }) => id === searchId);
@@ -13,6 +14,9 @@ const getCurrentAbilities = (currentAgentId) => {
 };
 
 const Agents = () => {
+  const parameter =
+    new URL(window.location.href).searchParams.get('agent') || defaultAgent;
+
   //------- CAROUSEL -------------//
   const carouselNextBtn = $('#js-carousel-next');
   const carouselPrevBtn = $('#js-carousel-prev');
@@ -29,9 +33,7 @@ const Agents = () => {
     setActiveCircle(currentIndex);
     setAgentsHeader(currentIndex);
     setAbilities(currentIndex);
-    setTimeout(() => {
-      $(this).removeAttr('disabled');
-    }, 800);
+    $(this).removeAttr('disabled');
   };
 
   const handlePrev = function (e) {
@@ -46,21 +48,27 @@ const Agents = () => {
     setActiveCircle(currentIndex);
     setAgentsHeader(currentIndex);
     setAbilities(currentIndex);
-    setTimeout(() => {
-      $(this).removeAttr('disabled');
-    }, 800);
+    $(this).removeAttr('disabled');
   };
 
   //--------- SET AGENTS HEADER ---------------//
   const setAgentsHeader = (searchedIndex) => {
     const currentAgent = getCurrentAgent(searchedIndex);
+    const image = `<img src="${currentAgent.image}" alt="${currentAgent.name}" />`;
+    const nameQuote = `
+      <h1 class="agent__name">${currentAgent.name}</h1>
+      <p class="agent__quote">${currentAgent.quote}</p>
+    `;
 
-    $('#js-agent-image').html(
-      `<img src="${currentAgent.image}" alt="${currentAgent.name}" />`,
-    );
-    $('#js-agent-name').html(currentAgent.name);
-    $('#js-agent-quote').html(currentAgent.quote);
-    $('#js-agent-bio').html(currentAgent.bio);
+    const bio = `
+      <h2 class="bio__title text-title underline-after">BIOGRAPHY</h2>
+      <p class="bio__body text-body">${currentAgent.bio}</p>
+    `;
+
+    $('#js-agent-image').empty().append(image);
+
+    $('#js-agent-name-quote').empty().append(nameQuote);
+    $('#js-agent-bio').empty().append(bio);
   };
 
   //--------- SET AGENTS ABILITIES ---------------//
@@ -137,18 +145,37 @@ const Agents = () => {
     );
   };
 
-  //--------- Calling all Functions -----------//
+  const displayLoadingScreen = () => {
+    let i = 0;
+    $('.loading').show();
+    let timer = setInterval(() => {
+      carouselNextBtn.trigger('click');
+      i++;
+      if (i === AgentsData.length) {
+        $('.loading').slideUp();
+        currentIndex = AgentsData.find(
+          (item) => item.name.toLowerCase() === parameter.toLowerCase(),
+        ).id;
+
+        setAgentsHeader(currentIndex);
+        setAbilities(currentIndex);
+        setActiveCircle(currentIndex);
+        clearInterval(timer);
+      }
+    }, 500);
+  };
+
   const circleIndicator = ({ id }) =>
     `<div data-agents-index="${id}" class="cc"></div>`;
 
-  $('.tr.tr--left').after(AgentsData.map((el) => circleIndicator(el)).join(''));
+  //--------- Calling all Functions -----------//
 
-  setAgentsHeader(currentIndex);
-  setAbilities(currentIndex);
-  setActiveCircle(currentIndex);
+  $('.tr.tr--left').after(AgentsData.map((el) => circleIndicator(el)).join(''));
 
   carouselNextBtn.on('click', handleNext);
   carouselPrevBtn.on('click', handlePrev);
+
+  displayLoadingScreen();
 };
 
 export default Agents;

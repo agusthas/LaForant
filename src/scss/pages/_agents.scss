@@ -1,5 +1,84 @@
 @use '../abstracts/' as *;
 
+$minheight-lg: calc(923px / 2);
+
+@include keyframe(loader) {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: $clr-primary;
+
+  &__circle {
+    @include animation(
+      $delay: 0s,
+      $name: loader,
+      $duration: 1.5s,
+      $timing: linear,
+      $count: infinite
+    );
+
+    width: clamp(5rem, 10vw, 8rem);
+    height: clamp(5rem, 10vw, 8rem);
+    background-color: transparent;
+    border: 0.5em solid $clr-tertiary;
+    border-top-color: $clr-primary;
+    border-radius: 9999px;
+  }
+
+  &__text {
+    margin-top: 1rem;
+    font-family: $ff-tungsten;
+    font-size: clamp(4rem, 10vw, 7rem);
+    font-weight: 900;
+    color: $clr-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+}
+
+@include keyframe(fadeInTest) {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@include keyframe(scaleFadeIn) {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .no-select {
   user-select: none;
 }
@@ -42,6 +121,8 @@
   }
 
   .cc {
+    @include transition('colors', '150');
+
     --color: #{$clr-tertiary};
 
     border: 1px solid var(--color);
@@ -66,6 +147,10 @@
   @include bp-min('sm') {
     font-size: 2.3rem;
   }
+
+  @include bp-min('lg') {
+    font-size: 2.5rem;
+  }
 }
 
 .text-subtitle {
@@ -84,7 +169,7 @@
   }
 
   @include bp-min('lg') {
-    max-width: 50ch;
+    font-size: 1.125rem;
   }
 }
 
@@ -128,7 +213,8 @@
   }
 
   @include bp-min('lg') {
-    justify-content: space-around;
+    gap: 3rem;
+    justify-content: center;
   }
 
   &__image {
@@ -138,14 +224,25 @@
       flex: 0 0 auto;
       order: 1;
       max-width: 420px;
+
+      > img {
+        @include animation(
+          $delay: 0s,
+          $name: scaleFadeIn,
+          $duration: 0.6s,
+          $timing: ease-in-out
+        );
+      }
     }
 
     @include bp-min('lg') {
-      max-width: 500px;
+      max-width: 550px;
     }
   }
 
   &__carousel {
+    --translate-y: 4rem;
+
     margin-top: 3rem;
 
     @include bp-min('md') {
@@ -154,7 +251,11 @@
       left: -50%;
       display: inline-flex;
       margin: 0;
-      transform: rotate(90deg) translateY(-4rem);
+      transform: rotate(90deg) translateY(calc(-1 * var(--translate-y)));
+    }
+
+    @include bp-min('lg') {
+      --translate-y: 8rem;
     }
   }
 
@@ -162,7 +263,14 @@
     width: 100%;
 
     @include bp-min('md') {
+      width: 30%;
+    }
+
+    @include bp-min('lg') {
       width: auto;
+      min-height: $minheight-lg;
+      // min-height: 50vh;
+      // margin-top: 2rem;
     }
   }
 
@@ -177,12 +285,19 @@
   }
 
   &__header &__name {
+    @include animation(
+      $delay: 0s,
+      $name: 'fadeInTest',
+      $duration: 500ms,
+      $timing: ease,
+      $fillmode: forwards
+    );
+
     font-family: $ff-tungsten;
     font-size: 6rem;
     font-weight: 900;
     line-height: 1;
     color: $clr-secondary;
-    letter-spacing: 0.025em;
 
     @include bp-min('sm') {
       font-size: 8rem;
@@ -190,6 +305,10 @@
 
     @include bp-min('md') {
       font-size: 10rem;
+    }
+
+    @include bp-min('lg') {
+      font-size: 12rem;
     }
   }
 
@@ -209,6 +328,10 @@
       order: -1;
       margin: 0;
       font-size: 1.5rem;
+    }
+
+    @include bp-min('lg') {
+      letter-spacing: 0.05em;
     }
   }
 
@@ -239,12 +362,21 @@
       margin: 0;
     }
 
+    @include bp-min('lg') {
+      flex-basis: 400px;
+      min-height: calc(923px / 2);
+    }
+
     &__icons {
       justify-content: initial;
       margin-top: 1.5rem;
 
       > *:not(:last-child) {
         margin-right: 1rem;
+      }
+
+      @include bp-min('lg') {
+        margin-top: 2rem;
       }
     }
 
@@ -307,12 +439,20 @@
 
     &__desc {
       margin-top: 1.25rem;
+
+      @include bp-min('lg') {
+        margin-top: 2rem;
+      }
+
       &-title {
         color: $clr-secondary;
       }
+    }
 
-      &-body {
-        margin-top: 1rem;
+    &__desc-body {
+      margin-top: 1rem;
+      @include bp-min('lg') {
+        max-width: 40ch;
       }
     }
   }
