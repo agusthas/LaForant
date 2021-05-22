@@ -186,7 +186,6 @@ const Agents = () => {
 
     let timer = setInterval(() => {
       carouselNextBtn.trigger('click');
-      console.log(currentIndex);
 
       if (currentIndex === AgentsData.length - 1) {
         loadingEl.slideUp();
