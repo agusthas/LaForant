@@ -1,5 +1,9 @@
+import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
+import Navbar from './layout/Navbar.js';
 import './vendors/jquery.min.js';
 import UpdatesContent from './contents/UpdatesContent.js';
+
+Navbar(); /* Navbar functionality (Sidebar, Dropdown) */
 
 /**
  * Function to create a single news
@@ -25,11 +29,7 @@ const SingleNews = ({ title, img, date, link }) => {
   `;
 };
 
-const Homepage = () => {
-  const newsParent = $('#js-news');
-  const newsLists = UpdatesContent.map((data) => SingleNews(data)).join('');
+const newsParent = $('#js-news');
+const newsLists = UpdatesContent.map((data) => SingleNews(data)).join('');
 
-  newsParent.append(newsLists);
-};
-
-export default Homepage;
+newsParent.append(newsLists);

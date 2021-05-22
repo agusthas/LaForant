@@ -1,6 +1,6 @@
-import './vendors/jquery.min.js';
-import MapsContent from './contents/MapsContent.js';
-import AgentsContent from './contents/AgentsContent.js';
+import '../vendors/jquery.min.js';
+import MapsContent from '../contents/MapsContent.js';
+import AgentsContent from '../contents/AgentsContent.js';
 
 /**
  * Function to append list to parent container

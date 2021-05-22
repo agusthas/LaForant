@@ -1,5 +1,5 @@
-import './vendors/jquery.min.js';
-import SocialsContent from './contents/SocialsContent.js';
+import '../vendors/jquery.min.js';
+import SocialsContent from '../contents/SocialsContent.js';
 
 /**
  * Function to append list to parent container
