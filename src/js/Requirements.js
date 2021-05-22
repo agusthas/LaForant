@@ -1,5 +1,9 @@
+import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
+import Navbar from './layout/Navbar.js';
 import './vendors/jquery.min.js';
 import SpecsContent from './contents/SpecsContent.js';
+
+Navbar();
 
 /**
  * Function to append list to parent container
@@ -63,12 +67,8 @@ const SingleRequirement = ({
   `;
 };
 
-const Requirements = () => {
-  const reqParent = $('[data-requirement]');
-  listAppend(
-    reqParent,
-    SpecsContent.map((value) => SingleRequirement(value)),
-  );
-};
-
-export default Requirements;
+const reqParent = $('[data-requirement]');
+listAppend(
+  reqParent,
+  SpecsContent.map((value) => SingleRequirement(value)),
+);
