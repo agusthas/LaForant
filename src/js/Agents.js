@@ -181,13 +181,16 @@ const Agents = () => {
 
   //-------- SET LOADING SCREEN -------------//
   const displayLoadingScreen = () => {
-    let i = 0;
-    $('.loading').show();
+    const loadingEl = $('#js-agent-page-loading');
+    loadingEl.show();
+
     let timer = setInterval(() => {
       carouselNextBtn.trigger('click');
-      i++;
-      if (i === AgentsData.length) {
-        $('.loading').slideUp();
+      console.log(currentIndex);
+
+      if (currentIndex === AgentsData.length - 1) {
+        loadingEl.slideUp();
+
         currentIndex = AgentsData.find(
           (item) => item.name.toLowerCase() === parameter.toLowerCase(),
         ).id;
