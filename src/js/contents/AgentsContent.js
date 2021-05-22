@@ -137,27 +137,28 @@ const AgentsContent = [
         ability_name: 'Regrowth',
         ability_logo: '/assets/images/skye/skye-regrowth.png',
         ability_description:
-          'Instantly throw a projectile that expands into a brief vision cloud on impact with a surface. Hold the ability key to curve the cloud in the direction of your crosshair.',
+          'EQUIP a healing trinket. HOLD FIRE to channel, healing allies in range and line of sight. Can be reused until her healing pool (Health.png 100) is depleted. Skye cannot heal herself',
       },
       {
         id: 1,
         ability_name: 'trailblazer',
         ability_logo: '/assets/images/skye/skye-trailblazer.png',
-        ability_description: 'Instantly propel Jett high into the air.',
+        ability_description:
+          'EQUIP a Tasmanian tiger trinket. FIRE to send out and take control of the predator. While in control, FIRE to leap forward, exploding in a concussive blast and damaging directly hit enemies.',
       },
       {
         id: 2,
         ability_name: 'guiding light',
         ability_logo: '/assets/images/skye/skye-guiding-light.png',
         ability_description:
-          'Instantly propel in the direction she is moving. If Jett is standing still, she will propel forward.',
+          'EQUIP a hawk trinket. FIRE to send it forward. HOLD FIRE to guide the hawk in the direction of your crosshair. RE-USE while the hawk is in flight to transform it into a flash that plays a hit confirm if an enemy was within range and line of sight.',
       },
       {
         id: 3,
         ability_name: 'seekers',
         ability_logo: '/assets/images/skye/skye-seekers.png',
         ability_description:
-          'Equip a set of 5 highly accurate throwing knives. Fire to throw a single knife. Alternative Fire to throw all remaining daggers at once. Restocks upon killing an enemy.',
+          'EQUIP a Seeker trinket. FIRE to send out three Seekers to track down the three closest enemies. If a Seeker reaches its target, it nearsights them.',
       },
     ],
   },
@@ -218,28 +219,28 @@ const AgentsContent = [
         ability_name: 'LEER',
         ability_logo: '/assets/images/reyna/reyna-leer.png',
         ability_description:
-          'Equip an ethereal eye. Activate to cast the eye a short distance forward at a fixed range, passing through obstructions in the way. The eye will Nearsight all enemies who can see it. The eye will disappear either after two seconds or receiving any bullet damage.',
+          'EQUIP an ethereal destructible eye. ACTIVATE to cast the eye a short distance forward. The eye will Nearsight all enemies who look at it.',
       },
       {
         id: 1,
         ability_name: 'DEVOUR',
         ability_logo: '/assets/images/reyna/reyna-devour.png',
         ability_description:
-          "Instantly consume a nearby Soul Orb, disabling Reyna's ability to fire for 1 second and creating a tether between Reyna and the Soul Orb whilst rapidly healing for 100 health over 3 seconds. The tether will break if it is caught between any obstacle for more than a second, ending the healing prematurely. This ability can Overheal but Reyna cannot exceed 150 health (including shields). The Overheal will decay after 25 seconds over 1 second, but can be refreshed whenever devour is recast. Excess health will be consumed before excess shield. If an enemy damaged by Reyna is killed within 3 seconds by another player/stimuli then a Soul Orb will be dropped, allowing her to Devour. If Empress is active, this skill will automatically cast, will not consume the Soul Orb, and will not create a tether.",
+          'Enemies killed by Reyna leave behind Soul Orbs that last 3 seconds. INSTANTLY consume a nearby soul orb, rapidly healing for a short duration. Health gained through this skill exceeding 100 will decay over time. If EMPRESS is active, this skill will automatically cast and not consume the orb.',
       },
       {
         id: 2,
         ability_name: 'DISMISS',
         ability_logo: '/assets/images/reyna/reyna-dismiss.png',
         ability_description:
-          'Instantly consume a nearby Soul Orb, becoming intangible for 2 seconds and gaining a burst of movement speed for the first second of the duration. Reyna can change what weapon she will equip whilst Dismiss is active, always equipping the last weapon selected during Dismiss. If an enemy damaged by Reyna is killed within 3 seconds by another player/stimuli then a Soul Orb will be dropped, allowing her to Dismiss. If Empress is active, Reyna also becomes invisible.',
+          'INSTANTLY consume a nearby soul orb, becoming intangible for a short duration. If EMPRESS is active, also become invisible.',
       },
       {
         id: 3,
         ability_name: 'EMPRESS',
         ability_logo: '/assets/images/reyna/reyna-empress.png',
         ability_description:
-          'Enter a frenzy for 30 seconds, increasing firing, equip and reload speeds by 15%. Grants infinite charges of Soul Harvest abilities. Scoring a kill fully refreshes the duration.',
+          'INSTANTLY enter a frenzy, increasing firing speed, equip and reload speed dramatically. Scoring a kill renews the duration.',
       },
     ],
   },
