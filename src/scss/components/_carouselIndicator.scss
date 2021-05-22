@@ -39,11 +39,16 @@ $size-per-div: 1.125rem;
 
     display: inline-block;
     flex: 0 0 auto;
-    width: $size-per-div * 3;
-    height: $size-per-div * 3;
+    width: 3rem;
+    height: 3rem;
     cursor: pointer;
     background-color: transparent;
     border: 1px solid transparent;
+
+    @include bp-min('lg') {
+      width: $size-per-div * 3;
+      height: $size-per-div * 3;
+    }
 
     &--active {
       --color: #{$clr-secondary};
