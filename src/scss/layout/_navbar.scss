@@ -148,7 +148,7 @@ $max-height-dropdown: 20rem; /* 320px  */
   }
 
   @include bp-min('lg') {
-    scrollbar-width: auto;
+    scrollbar-width: thin;
   }
 
   &__list {
