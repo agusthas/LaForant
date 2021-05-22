@@ -244,24 +244,22 @@ const Agents = () => {
   };
 
   //--------- Calling all Functions -----------//
-  $(function () {
-    displayLoadingScreen();
+  displayLoadingScreen();
 
-    $('#js-circle-container')
-      .empty()
-      .append(AgentsData.map((el) => circleIndicator(el)).join(''));
+  $('#js-circle-container')
+    .empty()
+    .append(AgentsData.map((el) => circleIndicator(el)).join(''));
 
-    $('#js-circle-container')
-      .children()
-      .each((_, el) => {
-        $(el).on('click', handleCircleClick);
-      });
+  $('#js-circle-container')
+    .children()
+    .each((_, el) => {
+      $(el).on('click', handleCircleClick);
+    });
 
-    carouselNextBtn.on('click', handleNext);
-    carouselPrevBtn.on('click', handlePrev);
+  carouselNextBtn.on('click', handleNext);
+  carouselPrevBtn.on('click', handlePrev);
 
-    $(window).on('keydown', handleArrowClick);
-  });
+  $(window).on('keydown', handleArrowClick);
 };
 
 export default Agents;
