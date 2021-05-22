@@ -48,7 +48,7 @@ $minheight-lg: calc(923px / 2);
     min-height: 100vh;
     padding-top: 4.5rem;
     padding-right: 4rem;
-    padding-left: 8rem;
+    padding-left: 10rem;
   }
 
   @include bp-min('lg') {
@@ -89,8 +89,8 @@ $minheight-lg: calc(923px / 2);
     margin-top: 3rem;
 
     @include bp-min('sm') {
-      width: 60%;
       max-width: 100%;
+      margin-top: 4rem;
     }
 
     @include bp-min('md') {
@@ -105,6 +105,12 @@ $minheight-lg: calc(923px / 2);
 
     @include bp-min('lg') {
       --translate-y: 8rem;
+    }
+
+    .cc {
+      @include bp-min('md') {
+        transform: rotate(-90deg);
+      }
     }
   }
 

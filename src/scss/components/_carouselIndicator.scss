@@ -9,6 +9,9 @@ $size-per-div: 1.125rem;
 
   > *:not(:last-child) {
     margin-right: var(--gap);
+    @include bp-min('md') {
+      margin-right: 1.5rem;
+    }
   }
 
   .tr {
@@ -34,16 +37,17 @@ $size-per-div: 1.125rem;
 
     --color: #{$clr-tertiary};
 
+    display: inline-block;
     flex: 0 0 auto;
-    width: $size-per-div;
-    height: $size-per-div;
-    border: 1px solid var(--color);
-    border-radius: 99999px;
+    width: $size-per-div * 3;
+    height: $size-per-div * 3;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid transparent;
 
     &--active {
       --color: #{$clr-secondary};
 
-      position: relative;
       background-color: var(--color);
       border-color: var(--color);
     }

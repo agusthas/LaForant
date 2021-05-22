@@ -20,8 +20,14 @@ const Agents = () => {
     new URL(window.location.href).searchParams.get('agent') || defaultAgent;
 
   //--------- SET CAROUSEL CIRCLE INDICATOR -----------//
-  const circleIndicator = ({ id }) =>
-    `<div data-agents-index="${id}" class="cc"></div>`;
+  const circleIndicator = ({
+    id,
+    icon = '/assets/images/jett/jett-icon.png',
+  }) =>
+    `<button data-agents-index="${id}" class="cc">
+      <img src="${icon}" alt="" />
+    </button>
+    `;
 
   //------- CAROUSEL -------------//
   const carouselNextBtn = $('#js-carousel-next');
@@ -143,6 +149,16 @@ const Agents = () => {
       });
   };
 
+  //--------- HANDLER FOR CIRCLE CLICK -----------//
+  const handleCircleClick = (e) => {
+    currentIndex = $(e.target).data().agentsIndex;
+
+    setAgentsHeader(currentIndex);
+    setAgentClass(currentIndex);
+    setAbilities(currentIndex);
+    setActiveCircle(currentIndex);
+  };
+
   //-------- SET ICON CLICK LISTENER -------------//
   const setIconListener = (iconElement, listenerCallback) => {
     $(iconElement).on('click', listenerCallback);
@@ -223,14 +239,20 @@ const Agents = () => {
       );
     }
   };
-  //--------- Calling all Functions -----------//
 
+  //--------- Calling all Functions -----------//
   $(function () {
     displayLoadingScreen();
 
     $('#js-circle-container')
       .empty()
       .append(AgentsData.map((el) => circleIndicator(el)).join(''));
+
+    $('#js-circle-container')
+      .children()
+      .each((_, el) => {
+        $(el).on('click', handleCircleClick);
+      });
 
     carouselNextBtn.on('click', handleNext);
     carouselPrevBtn.on('click', handlePrev);
