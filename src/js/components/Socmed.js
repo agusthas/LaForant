@@ -1,4 +1,3 @@
-import '../vendors/jquery.min.js';
 import SocialsContent from '../contents/SocialsContent.js';
 
 /**

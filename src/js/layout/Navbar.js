@@ -1,4 +1,3 @@
-import '../vendors/jquery.min.js';
 import Dropdown from '../components/Dropdown.js';
 import Socmed from '../components/Socmed.js';
 

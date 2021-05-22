@@ -1,5 +1,4 @@
 import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
-import './vendors/jquery.min.js';
 import AgentsContent from './contents/AgentsContent.js';
 import { limitIndex } from './utils/limitIndex.js';
 import Navbar from './layout/Navbar.js';

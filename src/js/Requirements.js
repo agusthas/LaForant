@@ -1,6 +1,5 @@
 import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
 import Navbar from './layout/Navbar.js';
-import './vendors/jquery.min.js';
 import SpecsContent from './contents/SpecsContent.js';
 
 Navbar();
