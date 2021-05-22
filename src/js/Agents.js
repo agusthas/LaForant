@@ -1,5 +1,6 @@
 import './vendors/jquery.min.js';
 import AgentsContent from './contents/AgentsContent.js';
+import { limitIndex } from './utils/limitIndex.js';
 
 const AgentsData = AgentsContent.slice(0, -1);
 let currentIndex = 0; /* GLOBAL VARIABLE */
@@ -18,6 +19,10 @@ const Agents = () => {
   const parameter =
     new URL(window.location.href).searchParams.get('agent') || defaultAgent;
 
+  //--------- SET CAROUSEL CIRCLE INDICATOR -----------//
+  const circleIndicator = ({ id }) =>
+    `<div data-agents-index="${id}" class="cc"></div>`;
+
   //------- CAROUSEL -------------//
   const carouselNextBtn = $('#js-carousel-next');
   const carouselPrevBtn = $('#js-carousel-prev');
@@ -25,12 +30,9 @@ const Agents = () => {
   const handleNext = function (e) {
     $(this).attr('disabled', true);
 
-    currentIndex += 1;
+    currentIndex = limitIndex(0, ++currentIndex, AgentsData.length - 1);
 
-    if (currentIndex > AgentsData.length - 1) {
-      currentIndex = 0;
-    }
-
+    abilityCurrentIndex = 0;
     setActiveCircle(currentIndex);
     setAgentsHeader(currentIndex);
     setAgentClass(currentIndex);
@@ -41,12 +43,9 @@ const Agents = () => {
   const handlePrev = function (e) {
     $(this).attr('disabled', true);
 
-    currentIndex -= 1;
+    currentIndex = limitIndex(0, --currentIndex, AgentsData.length - 1);
 
-    if (currentIndex < 0) {
-      currentIndex = AgentsData.length - 1;
-    }
-
+    abilityCurrentIndex = 0;
     setActiveCircle(currentIndex);
     setAgentsHeader(currentIndex);
     setAgentClass(currentIndex);
@@ -115,12 +114,6 @@ const Agents = () => {
     $('#js-agent-class').empty().append(element);
   };
 
-  //--------- SET ABILITY DESCRIPTION ---------------//
-  const setAbilityDescription = (current) => {
-    $('#js-ability-name').html(current?.ability_name);
-    $('#js-ability-body').html(current?.ability_description);
-  };
-
   //--------- CLICK HANDLER ABILITIES ---------------//
   const handleIconClick = (e) => {
     const currElement = e.target;
@@ -155,6 +148,12 @@ const Agents = () => {
     $(iconElement).on('click', listenerCallback);
   };
 
+  //--------- SET ABILITY DESCRIPTION ---------------//
+  const setAbilityDescription = (current) => {
+    $('#js-ability-name').html(current?.ability_name);
+    $('#js-ability-body').html(current?.ability_description);
+  };
+
   //-------- SET ACTIVE CIRCLE INDICATOR -------------//
   const setActiveCircle = (activeIndex) => {
     $('.cc').each((_, el) =>
@@ -164,6 +163,7 @@ const Agents = () => {
     );
   };
 
+  //-------- SET LOADING SCREEN -------------//
   const displayLoadingScreen = () => {
     let i = 0;
     $('.loading').show();
@@ -185,22 +185,8 @@ const Agents = () => {
     }, 250);
   };
 
-  const circleIndicator = ({ id }) =>
-    `<div data-agents-index="${id}" class="cc"></div>`;
-
-  //--------- Calling all Functions -----------//
-
-  $('#js-circle-container')
-    .empty()
-    .append(AgentsData.map((el) => circleIndicator(el)).join(''));
-
-  carouselNextBtn.on('click', handleNext);
-  carouselPrevBtn.on('click', handlePrev);
-  const currentAbility = getCurrentAbilities(currentIndex);
-
-  displayLoadingScreen();
-
-  $(window).on('keydown', (event) => {
+  //--------- HANDLER ARROW CLICK -----------//
+  const handleArrowClick = (event) => {
     if (event.code === 'ArrowDown') {
       carouselNextBtn.trigger('click');
     }
@@ -210,34 +196,46 @@ const Agents = () => {
     }
 
     if (event.code === 'ArrowRight') {
-      abilityCurrentIndex += 1;
+      const currentAbility = getCurrentAbilities(currentIndex);
 
-      if (abilityCurrentIndex > currentAbility.length - 1) {
-        abilityCurrentIndex = 0;
-      }
-
-      setActiveIcons(abilityCurrentIndex);
-      const findCurrentAbility = getCurrentAbilities(currentIndex).find(
-        ({ id }) => id === abilityCurrentIndex,
+      abilityCurrentIndex = limitIndex(
+        0,
+        ++abilityCurrentIndex,
+        currentAbility.length - 1,
       );
-
-      setAbilityDescription(findCurrentAbility);
+      setActiveIcons(abilityCurrentIndex);
+      setAbilityDescription(
+        currentAbility.find(({ id }) => id === abilityCurrentIndex),
+      );
     }
 
     if (event.code === 'ArrowLeft') {
-      abilityCurrentIndex -= 1;
+      const currentAbility = getCurrentAbilities(currentIndex);
 
-      if (abilityCurrentIndex < 0) {
-        abilityCurrentIndex = currentAbility.length - 1;
-      }
-
-      setActiveIcons(abilityCurrentIndex);
-      const findCurrentAbility = getCurrentAbilities(currentIndex).find(
-        ({ id }) => id === abilityCurrentIndex,
+      abilityCurrentIndex = limitIndex(
+        0,
+        --abilityCurrentIndex,
+        currentAbility.length - 1,
       );
-
-      setAbilityDescription(findCurrentAbility);
+      setActiveIcons(abilityCurrentIndex);
+      setAbilityDescription(
+        currentAbility.find(({ id }) => id === abilityCurrentIndex),
+      );
     }
+  };
+  //--------- Calling all Functions -----------//
+
+  $(function () {
+    displayLoadingScreen();
+
+    $('#js-circle-container')
+      .empty()
+      .append(AgentsData.map((el) => circleIndicator(el)).join(''));
+
+    carouselNextBtn.on('click', handleNext);
+    carouselPrevBtn.on('click', handlePrev);
+
+    $(window).on('keydown', handleArrowClick);
   });
 };
 
