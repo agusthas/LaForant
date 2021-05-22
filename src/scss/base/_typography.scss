@@ -90,9 +90,6 @@
   line-height: 1.6;
   @include bp-min('md') {
     max-width: 35ch;
-  }
-
-  @include bp-min('lg') {
     font-size: 1.125rem;
   }
 }
