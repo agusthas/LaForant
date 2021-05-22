@@ -153,16 +153,11 @@ const setActiveIcons = (activeIndex) => {
 const handleCircleClick = (e) => {
   currentIndex = $(e.target).data().agentsIndex;
 
-<<<<<<< HEAD
-    let timer = setInterval(() => {
-      carouselNextBtn.trigger('click');
-=======
   setAgentsHeader(currentIndex);
   setAgentClass(currentIndex);
   setAbilities(currentIndex);
   setActiveCircle(currentIndex);
 };
->>>>>>> hotfixes
 
 //-------- SET ICON CLICK LISTENER -------------//
 const setIconListener = (iconElement, listenerCallback) => {
