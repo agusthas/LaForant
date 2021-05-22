@@ -366,14 +366,18 @@ $minheight-lg: calc(923px / 2);
       @include bp-min('lg') {
         margin-top: 2rem;
       }
+    }
 
-      &-title {
-        color: $clr-secondary;
-      }
+    &__desc-title {
+      color: $clr-secondary;
     }
 
     &__desc-body {
+      max-height: 250px;
       margin-top: 1rem;
+      overflow: auto;
+      scrollbar-color: $clr-secondary $clr-primary;
+
       @include bp-min('lg') {
         max-width: 40ch;
       }
