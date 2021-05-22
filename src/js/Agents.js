@@ -181,26 +181,16 @@ const setActiveCircle = (activeIndex) => {
 //-------- SET LOADING SCREEN -------------//
 const displayLoadingScreen = () => {
   const loadingEl = $('#js-agent-page-loading');
-  loadingEl.show();
 
-  let timer = setInterval(() => {
-    carouselNextBtn.trigger('click');
-    console.log(currentIndex);
+  currentIndex = AgentsData.find(
+    (item) => item.name.toLowerCase() === parameter.toLowerCase(),
+  ).id;
 
-    if (currentIndex === AgentsData.length - 1) {
-      loadingEl.slideUp();
-
-      currentIndex = AgentsData.find(
-        (item) => item.name.toLowerCase() === parameter.toLowerCase(),
-      ).id;
-
-      setAgentsHeader(currentIndex);
-      setAgentClass(currentIndex);
-      setAbilities(currentIndex);
-      setActiveCircle(currentIndex);
-      clearInterval(timer);
-    }
-  }, 250);
+  setAgentsHeader(currentIndex);
+  setAgentClass(currentIndex);
+  setAbilities(currentIndex);
+  setActiveCircle(currentIndex);
+  loadingEl.slideUp();
 };
 
 //--------- HANDLER ARROW CLICK -----------//
@@ -243,7 +233,24 @@ const handleArrowClick = (event) => {
 };
 
 //--------- Calling all Functions -----------//
-displayLoadingScreen();
+$(() => {
+  AgentsData.forEach((agent) => {
+    const agentImage = new Image();
+    const agentIcon = new Image();
+    const classIcon = new Image();
+
+    agentImage.src = agent.image;
+    agentIcon.src = agent.icon;
+    classIcon.src = agent.role_symbol;
+
+    agent.ability.forEach(({ ability_logo }) => {
+      const abilityIcon = new Image();
+      abilityIcon.src = ability_logo;
+    });
+  });
+
+  displayLoadingScreen();
+});
 
 $('#js-circle-container')
   .empty()
