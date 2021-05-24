@@ -30,6 +30,11 @@
     <title>LAFORANT</title>
   </head>
   <body>
+    <div id="js-maps-loading" class="loading">
+      <div class="loading__circle"></div>
+      <div class="loading__text">BENTAR...</div>
+    </div>
+
     <!-- NAVBAR -->
     <nav>
       <div class="nav">
@@ -45,7 +50,7 @@
           <span class="hamburger__line"></span>
         </button>
       </div>
-      <div id="js-sidebar" class="l-nav">
+      <div id="js-sidebar" class="l-nav maps-navbar">
         <div class="navbar">
           <div class="l-top-wrapper">
             <a href="/index.html" class="">
@@ -99,22 +104,35 @@
 
     <main class="maps-container l-main-container">
       <section class="maps">
-        <h1 class="maps__title o-big-heading">MAPS</h1>
-      </section>
+        <div class="l-maps-image">
+          <div class="decor-b-l">
+            <div class="rect-top"></div>
+            <div class="rect-bottom"></div>
+          </div>
 
-      <div class="l-showcases">
-        <div class="toggler-btn">
-          <i id="js-prev-btn" class="fas fa-chevron-left"></i>
-          <div id="js-list-maps" class="list-maps"></div>
-          <i id="js-next-btn" class="fas fa-chevron-right"></i>
+          <div id="js-map-image" class="l-flex-map-img"></div>
+          <div class="decor-t-r"></div>
         </div>
 
-        <div id="js-maps-showcases" class="showcases"></div>
-      </div>
+        <div class="l-maps-description">
+          <div class="flex maps__buttons">
+            <button id="js-prev-map-button" class="icon">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="js-next-map-button" class="icon">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <div id="js-map-content"></div>
+
+          <div class="underline"></div>
+        </div>
+      </section>
     </main>
 
     <!-- FOOOTER -->
-    <footer class="footer">
+    <footer class="maps-footer footer">
       <div class="footer__top">
         <div data-socmed class="social"></div>
 
@@ -136,6 +154,7 @@
         </div>
       </div>
     </footer>
+
     <!-- Scripts -->
     <script type="module" src="/src/js/Maps.js"></script>
   </body>

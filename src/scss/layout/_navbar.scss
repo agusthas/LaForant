@@ -109,6 +109,10 @@ $max-height-dropdown: 20rem; /* 320px  */
     visibility: visible;
     background-color: transparent;
     opacity: 1;
+
+    &.maps-navbar {
+      background-color: $clr-primary;
+    }
   }
 }
 
@@ -276,7 +280,7 @@ $max-height-dropdown: 20rem; /* 320px  */
     @include transition($trans);
 
     display: inline-block;
-    margin-bottom: 0.4rem; /* FIXME: Hacks agar dropdown gak ilang pas di hover */
+    margin-bottom: 0.4rem;
     color: var(--font-color-default);
     cursor: pointer;
 

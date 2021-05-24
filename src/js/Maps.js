@@ -1,113 +1,94 @@
 import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
 import Navbar from './layout/Navbar.js';
 import MapsContent from './contents/MapsContent.js';
+import { limitIndex } from './utils/limitIndex.js';
 
-Navbar();
-
-/* Slicing last item */
-const MapsData = MapsContent.slice(0, -1);
-
-/* Mapping each element in MapsData into an HTML Element */
-const Showcases = MapsData.map((item, index) => {
-  const { name, image, desc } = item;
-
-  return `
-      <div class="showcases__top" style="background-image: url('${image}')"></div>
-
-      <div data-maps-index="0${index}" class="showcases__bottom">
-        <h4 class="showcases__title">${name}</h4>
-        <p class="showcases__description">${desc}</p>
-      </div>
-    `;
-});
-
-let mapFromUrl = new URL(window.location.href).searchParams.get('map');
+const parameter =
+  new URL(window.location.href).searchParams.get('map') || 'breeze';
 
 let currentIndex = 0;
-if (mapFromUrl) {
-  currentIndex = MapsData.findIndex(({ name }) => name == mapFromUrl);
-}
+let MapsElements = [];
+let MapsLength = 0;
 
-const listMapsParent = $('#js-list-maps');
-const nextBtn = $('#js-next-btn');
-const prevBtn = $('#js-prev-btn');
+const setElements = (content) => {
+  // Set Map Image
+  $('#js-map-image').empty().append(content.img);
 
-MapsData.forEach((el, i) => {
-  const img = `
-    <div class="list-${i}" data-maps-index="${i}" data-maps-name=${el.name}>
-      <img src="${el.image}" alt=""/>
-    <div>
-    `;
+  // Set Map Content
+  const currentContent = [content.heading, content.paragraph];
 
-  listMapsParent.append(img);
-});
+  $('#js-map-content').empty().append(currentContent);
+};
 
-/**
- * Set active class to the active list
- * @param {Number} activeIndex The current active index
- */
-const setActiveList = (activeIndex) => {
-  listMapsParent.children().each((_, el) => {
-    const curr = $(el);
+const setPrevClick = (target) => {
+  $(target).on('click', (e) => {
+    currentIndex = limitIndex(0, --currentIndex, MapsLength);
 
-    if (typeof activeIndex !== 'number') {
-      activeIndex = Number(activeIndex);
-    }
-
-    if (curr.data().mapsIndex === activeIndex) {
-      curr.addClass('active');
-    } else {
-      curr.removeClass('active');
-    }
+    setElements(MapsElements[currentIndex]);
   });
 };
 
-/**
- * Set showcase to the active list
- * @param {Number} currIndex The current active index
- */
-const setShowcase = (currIndex) => {
-  try {
-    if (currIndex < 0 || currIndex > MapsData.length - 1) {
-      throw new RangeError('Current Index if out of bounds');
-    }
+const setNextClick = (target) => {
+  $(target).on('click', (e) => {
+    currentIndex = limitIndex(0, ++currentIndex, MapsLength);
 
-    $('#js-maps-showcases').html(Showcases[currIndex]);
-  } catch (error) {
-    $('#js-maps-showcases').html(Showcases[0]);
-    console.log(error);
-  }
+    setElements(MapsElements[currentIndex]);
+  });
 };
 
-listMapsParent.each((_, el) => {
-  $(el).on('click', (e) => {
-    currentIndex = $(e.target).data().mapsIndex;
-    setActiveList(currentIndex);
-    setShowcase(currentIndex);
+const setArrowKeyClick = (prev, next) => {
+  $(window).on('keydown', (e) => {
+    if (e.code === 'ArrowRight') $(next).trigger('click');
+    if (e.code === 'ArrowLeft') $(prev).trigger('click');
   });
-});
+};
 
-setActiveList(currentIndex);
-setShowcase(currentIndex);
+const transformContent = (content) => {
+  const elementObject = content.map((item) => {
+    const dot = document.createElement('span');
+    const heading = document.createElement('h1');
+    const paragraph = document.createElement('p');
+    const img = new Image();
+    const param =
+      new URL(window.location.origin + item.link).searchParams.get('map') ||
+      null;
 
-nextBtn.on('click', (e) => {
-  currentIndex += 1;
+    heading.className = 'maps__name';
+    dot.className = 'decor-dot';
+    paragraph.className = 'maps__description';
+    img.className = 'maps__image';
 
-  if (currentIndex > MapsData.length - 1) {
-    currentIndex = 0;
-  }
+    heading.textContent = item.name;
+    dot.textContent = '.';
+    heading.appendChild(dot);
+    paragraph.textContent = item.desc;
+    img.src = item.image;
+    img.alt = item.name;
 
-  setActiveList(currentIndex);
-  setShowcase(currentIndex);
-});
+    return {
+      id: item.id,
+      heading,
+      paragraph,
+      img,
+      param,
+    };
+  });
 
-prevBtn.on('click', (e) => {
-  currentIndex -= 1;
+  const len = elementObject.length - 1;
+  return [elementObject, len];
+};
 
-  if (currentIndex < 0) {
-    currentIndex = MapsData.length - 1;
-  }
+$(function () {
+  Navbar();
 
-  setActiveList(currentIndex);
-  setShowcase(currentIndex);
+  setNextClick($('#js-next-map-button'));
+  setPrevClick($('#js-prev-map-button'));
+  setArrowKeyClick($('#js-prev-map-button'), $('#js-next-map-button'));
+
+  [MapsElements, MapsLength] = transformContent(MapsContent.slice(0, -1));
+
+  currentIndex = MapsElements.find(({ param }) => param === parameter).id;
+
+  setElements(MapsElements[currentIndex]);
+  $('#js-maps-loading').fadeOut();
 });
