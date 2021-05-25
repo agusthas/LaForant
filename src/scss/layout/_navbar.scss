@@ -8,9 +8,9 @@ $hamburger-box-size: 30px;
 $logo-height-xs: 2rem;
 $logo-height-md: 3rem;
 
-$gap-link-md: 1.8rem; /* 28.8px */
+$gap-link-md: 1.8rem;
 
-$max-height-dropdown: 20rem; /* 320px  */
+$max-height-dropdown: 20rem;
 
 .hamburger {
   display: flex;
@@ -254,7 +254,7 @@ $max-height-dropdown: 20rem; /* 320px  */
   }
 
   &__link {
-    position: relative; // buat dropdown desktop + ::after di bp 'md'
+    position: relative;
     margin-bottom: 2.5rem;
 
     @include bp-min('md') {

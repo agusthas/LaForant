@@ -84,7 +84,6 @@ $main-color: (
     background-color: map.get($color, 'bg-awal');
     outline: 1px solid map.get($color, 'outline-awal');
 
-    /* FIXME: Hacks */
     @include bp-max('xs') {
       padding: 0.5em 1em;
     }

@@ -4,6 +4,10 @@
 
 $minheight-lg: calc(923px / 2);
 
+/*******************
+ AGENTS
+ *******************/
+
 .underline-after {
   position: relative;
   &::after {
@@ -404,3 +408,7 @@ $minheight-lg: calc(923px / 2);
     }
   }
 }
+
+/*******************
+ END OF AGENTS
+ *******************/

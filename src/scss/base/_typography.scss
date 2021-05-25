@@ -53,7 +53,7 @@
 
 .o-big-heading {
   font-family: $ff-tungsten;
-  font-size: 5rem; /* 80px */
+  font-size: 5rem;
   line-height: 1;
 
   @include bp-min('md') {

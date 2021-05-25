@@ -79,7 +79,7 @@ $color-lists: (
 
     @include bp-min('sm') {
       align-self: flex-start;
-      margin-top: 3rem; /* Magic Number */
+      margin-top: 3rem;
     }
 
     @include bp-min('md') {
@@ -95,7 +95,6 @@ $color-lists: (
     }
 
     &::before {
-      /* LINE */
       --line-top-offset: -1.5rem;
 
       top: var(--line-top-offset);
@@ -127,7 +126,6 @@ $color-lists: (
       }
 
       @include bp-min('lg') {
-        /* BIG UNDERLINE */
         @include animation(
           $delay: 0s,
           $name: underlineSlide,
@@ -145,7 +143,6 @@ $color-lists: (
   }
 
   &__image {
-    /* Translate in y direction */
     $tr-y: 3rem;
 
     width: 90%;
@@ -178,7 +175,6 @@ $color-lists: (
     }
 
     &::after {
-      /* DEFY THE LIMITS */
       position: absolute;
       top: 10rem;
       right: -10rem;
@@ -210,8 +206,8 @@ $color-lists: (
     left: 50%;
     z-index: -1;
     font-family: $ff-valorant;
-    font-size: 15.625rem; /* 250px */
-    line-height: 0.55; /* Magic Number */
+    font-size: 15.625rem;
+    line-height: 0.55;
     transform: translateX(-50%);
 
     @include bp-min('lg') {
@@ -346,12 +342,12 @@ $color-lists: (
   }
 
   &__list {
-    padding: 0 1.25rem; /* 0 20px */
+    padding: 0 1.25rem;
     font-size: 1.125rem;
     color: $clr-primary;
 
     & + & {
-      margin-top: 0.8rem; /* Magic number */
+      margin-top: 0.8rem;
     }
 
     @include bp-min('lg') {
@@ -359,3 +355,7 @@ $color-lists: (
     }
   }
 }
+
+/*******************
+ END OF REQUIREMENT
+ *******************/

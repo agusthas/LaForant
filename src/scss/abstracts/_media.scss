@@ -1,10 +1,9 @@
 @use "sass:map";
 
-/* prettier-ignore */
 $breakpoints-up: (
-  'sm': 600px, // Mobile Phones
-  'md': 1000px, // Ipad
-  'lg': 1600px, // Laptop
+  'sm': 600px,
+  'md': 1000px,
+  'lg': 1600px,
 );
 
 $breakpoints-down: (

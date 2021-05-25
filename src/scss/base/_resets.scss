@@ -1,8 +1,5 @@
 @use '../abstracts/' as a;
 
-/*******************
- Box Sizing
- *******************/
 html {
   box-sizing: border-box;
 }
@@ -16,11 +13,9 @@ html {
 }
 
 * {
-  /* Firefox */
   scrollbar-width: thin;
   scrollbar-color: a.$clr-primary a.$clr-secondary;
 
-  /* Chrome */
   &::-webkit-scrollbar {
     width: 6px;
   }
@@ -46,16 +41,9 @@ body {
   text-rendering: optimizeSpeed;
 }
 
-/*******************
- Lists
- *******************/
 ul {
   list-style: none;
 }
-
-/*******************
- Links
- *******************/
 
 a,
 a:focus,
@@ -64,9 +52,6 @@ a:active {
   text-decoration: none;
 }
 
-/*******************
- Forms and buttons
- *******************/
 input,
 textarea,
 select,
@@ -86,9 +71,6 @@ button * {
   pointer-events: none;
 }
 
-/***********************************
-Image, video, svg
- ***********************************/
 img,
 iframe,
 video,
@@ -102,17 +84,11 @@ svg {
   max-width: 100%;
 }
 
-/*******************
-hidden attribute
- *******************/
 [hidden] {
   visibility: hidden;
   opacity: 0;
 }
 
-/*******************
- No Select Class
- *******************/
 .no-select {
   user-select: none;
 }

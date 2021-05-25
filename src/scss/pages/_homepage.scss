@@ -2,7 +2,6 @@
 
 @use '../components/buttons';
 @use '../components/socials';
-@use '../components/playButton';
 
 /*******************
  HOMEPAGE
@@ -93,11 +92,11 @@
   }
 
   &__content--wrapper {
-    margin-top: 40%; /* Magic Number */
+    margin-top: 40%;
     margin-bottom: 5rem;
 
     @include bp-min('sm') {
-      margin-top: 65%; /* Magic Number */
+      margin-top: 65%;
     }
 
     @include bp-min('md') {
@@ -109,7 +108,7 @@
   &__content--wrapper::before {
     @include bp-min('sm') {
       position: absolute;
-      top: 12%; /* Magic Number */
+      top: 12%;
       left: 50%;
       z-index: -1;
       display: flex;
@@ -317,10 +316,6 @@
   }
 
   .l-news-wrapper {
-    /*
-    * See more in: 
-    * https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6 
-    */
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
