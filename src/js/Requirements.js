@@ -1,8 +1,10 @@
 import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
-import Navbar from './layout/Navbar.js';
 import SpecsContent from './contents/SpecsContent.js';
+import { Sidebar, Dropdown, Socmed } from './components/index.js';
 
-Navbar();
+Sidebar();
+Dropdown();
+Socmed();
 
 /**
  * Function to append list to parent container

@@ -1,9 +1,11 @@
 import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
 import AgentsContent from './contents/AgentsContent.js';
 import { limitIndex } from './utils/limitIndex.js';
-import Navbar from './layout/Navbar.js';
+import { Sidebar, Dropdown, Socmed } from './components/index.js';
 
-Navbar(); /* Navbar functionality (Sidebar, Dropdown) */
+Sidebar();
+Dropdown();
+Socmed();
 
 const AgentsData = AgentsContent.slice(0, -1);
 let currentIndex = 0; /* GLOBAL VARIABLE */

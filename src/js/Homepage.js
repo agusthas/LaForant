@@ -1,8 +1,10 @@
 import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
-import Navbar from './layout/Navbar.js';
 import UpdatesContent from './contents/UpdatesContent.js';
+import { Sidebar, Dropdown, Socmed } from './components/index.js';
 
-Navbar(); /* Navbar functionality (Sidebar, Dropdown) */
+Sidebar();
+Dropdown();
+Socmed();
 
 /**
  * Function to create a single news

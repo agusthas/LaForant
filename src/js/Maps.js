@@ -1,7 +1,7 @@
 import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
-import Navbar from './layout/Navbar.js';
 import MapsContent from './contents/MapsContent.js';
 import { limitIndex } from './utils/limitIndex.js';
+import { Sidebar, Dropdown, Socmed } from './components/index.js';
 
 const parameter =
   new URL(window.location.href).searchParams.get('map') || 'breeze';
@@ -79,7 +79,9 @@ const transformContent = (content) => {
 };
 
 $(function () {
-  Navbar();
+  Sidebar();
+  Dropdown();
+  Socmed();
 
   setNextClick($('#js-next-map-button'));
   setPrevClick($('#js-prev-map-button'));
