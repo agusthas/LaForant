@@ -6,11 +6,6 @@ Sidebar();
 Dropdown();
 Socmed();
 
-/**
- * Function to create a single news
- * @param {{title: string, img: string, date: string, link: string}} News - List of News data
- * @returns String literal for a news
- */
 const SingleNews = ({ title, img, date, link }) => {
   return `
     <article class="newspaper">
