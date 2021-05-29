@@ -20,6 +20,10 @@
   color: $clr-tertiary;
   text-align: center;
   background-color: $clr-primary;
+  background-image: url('/assets/images/city-bg-image.png');
+  background-repeat: no-repeat;
+  background-position: bottom -10px left 30%;
+  background-size: cover;
 
   @include override-class('.l-section-container') {
     padding-bottom: 2rem;
@@ -29,13 +33,22 @@
     }
   }
 
+  @include bp-min('sm') {
+    background-position: center center;
+    background-size: 120%;
+  }
+
   @include bp-min('md') {
     flex-direction: row;
     justify-content: initial;
+    background-position-x: left 20%;
+    background-size: 135%;
   }
 
   @include bp-min('lg') {
     align-items: center;
+    background-position: bottom;
+    background-size: 100%;
   }
 
   &::after {
