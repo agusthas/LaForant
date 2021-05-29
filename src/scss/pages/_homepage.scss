@@ -41,8 +41,8 @@
   @include bp-min('md') {
     flex-direction: row;
     justify-content: initial;
-    background-position-x: left 20%;
-    background-size: 135%;
+    background-position: bottom -10px left 35%;
+    background-size: 150%;
   }
 
   @include bp-min('lg') {
