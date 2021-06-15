@@ -1,11 +1,15 @@
 @use '../abstracts/' as *;
 
+$clr-error: hsl(0, 100%, 74%);
+$clr-success: hsl(154, 59%, 51%);
+$clr-focus: hsl(248, 32%, 49%);
+
 .register-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 2rem 1.125rem;
+  padding: 2rem 1.5rem;
   background: linear-gradient(180deg, transparent 30%, $clr-primary),
     url('/assets/images/register-bg.jpg');
   background-position: center center;
@@ -14,10 +18,6 @@
 
 .register {
   width: 100%;
-
-  // @include bp-min('sm') {
-  //   max-width: 450px;
-  // }
 
   @include bp-min('md') {
     display: flex;
@@ -37,7 +37,7 @@
     text-align: center;
 
     @include bp-min('md') {
-      max-width: 10ch;
+      max-width: 8ch;
       margin-top: auto;
       margin-left: 3rem;
       font-size: 7rem;
@@ -75,8 +75,8 @@
     margin-left: 0;
   }
 
-  > *:not(:last-child) {
-    margin-bottom: 1rem;
+  > * + * {
+    margin-top: 1.125rem;
   }
 
   .helper-text {
@@ -84,26 +84,101 @@
     margin: 0.25rem 0.5rem;
     margin-bottom: -0.5rem;
     font-family: $ff-roboto;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-style: italic;
-    color: red;
+    color: $clr-error;
+    text-align: right;
+
+    &--terms {
+      text-align: left;
+    }
   }
 
   &__control {
+    position: relative;
     width: 100%;
   }
 
   &__input {
     width: 100%;
-    padding: 1em 1em;
+    padding: 1.125em;
     font-family: $ff-roboto;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1;
     color: $clr-primary;
-    background-color: rgba(#c4c4c4, 50%);
+    background-color: #e7e7e7;
     border: 0;
     border-radius: 0.25rem;
+
+    &::placeholder {
+      font-family: $ff-roboto;
+      font-size: 0.9rem;
+      font-weight: 900;
+    }
+
+    &:focus {
+      background-color: transparent;
+      outline: 2px solid $clr-focus;
+    }
+  }
+
+  &__input--password {
+    display: flex;
+    align-items: center;
+
+    &:focus-within {
+      background-color: transparent;
+      outline: 2px solid $clr-focus;
+    }
+
+    > input {
+      flex-basis: 100%;
+      font-family: $ff-roboto;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1;
+      color: $clr-primary;
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+
+      &::placeholder {
+        font-family: $ff-roboto;
+        font-size: 0.9rem;
+        font-weight: 900;
+      }
+    }
+
+    > i {
+      font-size: 1.125rem;
+      cursor: pointer;
+    }
+  }
+
+  &__control.is-error {
+    .form__input {
+      outline: 2px solid $clr-error;
+    }
+
+    .helper-text {
+      display: block;
+    }
+  }
+
+  .dob-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0.2rem;
+
+    > input {
+      font-weight: 500;
+    }
+  }
+
+  .password-wrapper {
+    display: flex;
+    align-items: center;
   }
 
   &__select {
@@ -117,14 +192,84 @@
     font-weight: 400;
   }
 
-  &__input::placeholder {
-    font-family: $ff-roboto;
-    font-size: 1rem;
-    font-weight: 900;
-    letter-spacing: 0.03em;
-  }
-
   &__submit {
     width: 100%;
+  }
+}
+
+.alert {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: rgba($clr-primary, 70%);
+
+  &__header {
+    > * + * {
+      margin-top: 1rem;
+    }
+
+    @include bp-min('md') {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > * + * {
+        margin: 0;
+        margin-left: 2rem;
+      }
+    }
+  }
+
+  &__body {
+    padding: 2rem;
+    margin: 0 1.5rem;
+    text-align: center;
+    background-color: $clr-tertiary;
+    border-radius: 4px;
+
+    > * + * {
+      margin-top: 1rem;
+    }
+
+    @include bp-min('sm') {
+      margin: 0 3rem;
+    }
+  }
+
+  &__icon {
+    font-size: 4rem;
+  }
+
+  &__title {
+    font-family: $ff-tungsten;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: $clr-primary;
+
+    @include bp-min('md') {
+      font-size: 4rem;
+    }
+  }
+
+  &__description {
+    line-height: 1.5;
+
+    @include bp-min('md') {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__redirect {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    font-style: italic;
+
+    .counter {
+      font-weight: 500;
+    }
   }
 }

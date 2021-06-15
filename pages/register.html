@@ -32,71 +32,102 @@
   <body>
     <main class="register-container l-main-container">
       <section class="register">
-        <h1 class="register__title o-big-heading">CREATE AN ACCOUNT</h1>
+        <h1 class="register__title o-big-heading">JOIN THE BETA</h1>
 
         <form id="js-form" class="form">
-          <div class="form__control">
+          <div data-control="email" class="form__control">
             <input
               class="form__input"
               type="text"
               id="email"
               placeholder="EMAIL"
             />
-            <div class="helper-text">Please enter a valid email</div>
+            <div data-input="email" class="helper-text">Error Text</div>
           </div>
 
-          <div class="form__control">
+          <div data-control="username" class="form__control">
             <input
               class="form__input"
               type="text"
               id="username"
               placeholder="USERNAME"
+              autocomplete="off"
             />
-            <div class="helper-text">At least 8 characters</div>
+            <div data-input="username" class="helper-text">Error Text</div>
           </div>
 
-          <div class="form__control">
-            <input class="form__input" type="date" placeholder="DOB" />
+          <div data-control="dob" class="form__control">
+            <div class="dob-wrapper">
+              <input
+                class="form__input"
+                type="number"
+                name="day"
+                id="day"
+                placeholder="DAY"
+              />
+              <input
+                class="form__input"
+                type="number"
+                name="month"
+                id="month"
+                placeholder="MONTH"
+              />
+              <input
+                class="form__input"
+                type="number"
+                name="year"
+                id="year"
+                placeholder="YEAR"
+              />
+            </div>
+
+            <div class="helper-text" data-input="dob">Error Text</div>
           </div>
 
-          <div class="form__control">
-            <input
-              class="form__input"
-              id="password"
-              type="password"
-              placeholder="PASSWORD"
-            />
-            <div class="helper-text">
-              At least 8 characters. Must contain alphanumeric and number.
+          <div data-control="password" class="form__control">
+            <div class="form__input form__input--password">
+              <input id="password" type="password" placeholder="PASSWORD" />
+              <i data-input-sibling="#password" class="fas fa-eye"></i>
+            </div>
+            <div data-input="password" class="helper-text">Error Text</div>
+          </div>
+
+          <div data-control="confirm-password" class="form__control">
+            <div class="form__input form__input--password">
+              <input
+                type="password"
+                id="confirm-password"
+                placeholder="CONFIRM PASSWORD"
+              />
+              <i data-input-sibling="#confirm-password" class="fas fa-eye"></i>
+            </div>
+            <div data-input="confirm-password" class="helper-text">
+              Error Text
             </div>
           </div>
 
-          <div class="form__control">
-            <input
-              class="form__input"
-              type="password"
-              id="confirm-password"
-              placeholder="CONFIRM PASSWORD"
-            />
-            <div class="helper-text">Must match with password above</div>
-          </div>
-
-          <div class="form__control">
-            <select class="form__input form__select" name="" id="">
-              <option class="form__option" value="">Choose Nationality</option>
+          <div data-control="nationality" class="form__control">
+            <select
+              class="form__input form__select"
+              name="nationality"
+              id="nationality"
+            >
+              <option class="form__option" value="">NATIONALITY</option>
               <option class="form__option" value="id">Indonesian</option>
               <option class="form__option" value="other">Other</option>
             </select>
+
+            <div data-input="nationality" class="helper-text"></div>
           </div>
 
-          <div class="form__control">
+          <div class="form__control" data-control="terms">
             <label for="terms">
               <input type="checkbox" name="terms" id="terms" />
-              <span>I agree to terms and service</span>
+              <span>I agree to <strong>Terms and Service</strong></span>
             </label>
 
-            <div class="helper-text terms-check">
-              Please check the checkbox above
+            <div class="helper-text helper-text--terms" data-input="terms">
+              Do you even agree to our terms and service?
             </div>
           </div>
 
@@ -109,6 +140,23 @@
         </form>
       </section>
     </main>
+
+    <div id="js-alert" class="alert">
+      <div class="alert__body">
+        <div class="alert__header">
+          <i class="alert__icon fas fa-check-square"></i>
+          <h2 class="alert__title">WELCOME!</h2>
+        </div>
+        <p class="alert__description">
+          We are glad to say that now you are a part of our Team!
+        </p>
+
+        <div class="alert__redirect">
+          Redirecting back to homepage in:
+          <span data-count="5" id="js-redirect-counter" class="counter"></span>
+        </div>
+      </div>
+    </div>
 
     <!-- FOOOTER -->
     <footer class="footer">
