@@ -53,11 +53,11 @@ $main-color: (
   display: inline-block;
   width: var(--sz);
   height: var(--sz);
-  @include transition('colors', '150');
+  @include transition('colors', '300');
 }
 
 %btn-default-styling {
-  @include transition('colors', $duration: '150');
+  @include transition('colors', $duration: '300');
 
   position: relative;
   z-index: 10;
@@ -103,7 +103,7 @@ $main-color: (
     }
 
     &::before {
-      @include transition('transform', '150');
+      @include transition('transform', '400');
 
       --skew: -30deg;
 
