@@ -179,6 +179,7 @@ const passwordChecker = (passwordString) => {
   }
 
   const specialPassCharacters = [
+    '@',
     '!',
     '#',
     '$',
@@ -203,7 +204,7 @@ const passwordChecker = (passwordString) => {
   if (
     !specialPassCharacters.some((ch) => countOccurence(passwordString, ch) > 0)
   ) {
-    return ['Contains at least one or more special characters', false];
+    return [`Missing special characters: ${specialPassCharacters.join(' ')}`, false];
   }
 
   if (!numbers.some((num) => countOccurence(passwordString, num) > 0)) {
