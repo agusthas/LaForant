@@ -4,16 +4,37 @@ $clr-error: hsl(0, 100%, 74%);
 $clr-success: hsl(154, 59%, 51%);
 $clr-focus: hsl(248, 32%, 49%);
 
+@mixin outline($clr) {
+  box-shadow: 0 0 0 1pt $clr;
+}
+
 .register-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   padding: 2rem 1.5rem;
+  padding-top: 4rem;
   background: linear-gradient(180deg, transparent 30%, $clr-primary),
     url('/assets/images/register-bg.jpg');
   background-position: center center;
   background-size: cover;
+}
+
+.register-logo {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  @include bp-min('sm') {
+    top: 3rem;
+    left: 3rem;
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 
 .register {
@@ -52,11 +73,18 @@ $clr-focus: hsl(248, 32%, 49%);
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  max-height: 650px;
   padding: 1.5rem;
+  overflow-y: auto;
   background-color: #fff;
+
+  > * + * {
+    margin-top: 1.125rem;
+
+    @include bp-min('md') {
+      margin-top: 1.5rem;
+    }
+  }
 
   @include bp-min('sm') {
     width: 100%;
@@ -75,12 +103,8 @@ $clr-focus: hsl(248, 32%, 49%);
     margin-left: 0;
   }
 
-  > * + * {
-    margin-top: 1.125rem;
-  }
-
   .helper-text {
-    display: none;
+    max-height: 0;
     margin: 0.25rem 0.5rem;
     margin-bottom: -0.5rem;
     font-family: $ff-roboto;
@@ -88,6 +112,9 @@ $clr-focus: hsl(248, 32%, 49%);
     font-style: italic;
     color: $clr-error;
     text-align: right;
+    visibility: hidden;
+    opacity: 0;
+    transition: max-height 250ms ease, opacity 250ms ease, visibility 250ms ease;
 
     &--terms {
       text-align: left;
@@ -97,6 +124,14 @@ $clr-focus: hsl(248, 32%, 49%);
   &__control {
     position: relative;
     width: 100%;
+
+    &--button {
+      margin-top: 2rem;
+
+      @include bp-min('md') {
+        margin-top: 3rem;
+      }
+    }
   }
 
   &__input {
@@ -110,6 +145,7 @@ $clr-focus: hsl(248, 32%, 49%);
     background-color: #e7e7e7;
     border: 0;
     border-radius: 0.25rem;
+    outline: 0;
 
     &::placeholder {
       font-family: $ff-roboto;
@@ -118,8 +154,9 @@ $clr-focus: hsl(248, 32%, 49%);
     }
 
     &:focus {
+      @include outline($clr-focus);
+
       background-color: transparent;
-      outline: 2px solid $clr-focus;
     }
   }
 
@@ -128,8 +165,9 @@ $clr-focus: hsl(248, 32%, 49%);
     align-items: center;
 
     &:focus-within {
+      @include outline($clr-focus);
+
       background-color: transparent;
-      outline: 2px solid $clr-focus;
     }
 
     > input {
@@ -158,18 +196,35 @@ $clr-focus: hsl(248, 32%, 49%);
 
   &__control.is-error {
     .form__input {
-      outline: 2px solid $clr-error;
+      @include outline($clr-error);
     }
 
     .helper-text {
-      display: block;
+      max-height: 2em;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__control.is-success {
+    .form__input {
+      @include outline($clr-success);
+    }
+
+    .helper-text {
+      max-height: 0;
+      visibility: hidden;
+      opacity: 0;
     }
   }
 
   .dob-wrapper {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 0.2rem;
+    display: flex;
+    align-items: center;
+
+    > * + * {
+      margin-left: 0.2rem;
+    }
 
     > input {
       font-weight: 500;
@@ -208,9 +263,11 @@ $clr-focus: hsl(248, 32%, 49%);
   background-color: rgba($clr-primary, 70%);
 
   &__header {
+    //stylelint-disable
     > * + * {
       margin-top: 1rem;
     }
+    //stylelint-enable
 
     @include bp-min('md') {
       display: flex;
@@ -231,9 +288,11 @@ $clr-focus: hsl(248, 32%, 49%);
     background-color: $clr-tertiary;
     border-radius: 4px;
 
+    //stylelint-disable
     > * + * {
       margin-top: 1rem;
     }
+    //stylelint-enable
 
     @include bp-min('sm') {
       margin: 0 3rem;

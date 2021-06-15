@@ -1,27 +1,19 @@
 import '../scss/main.scss'; //FIXME: Hapus ini kalo dah mau run di css biasa
 
-$('#js-alert').hide();
+$(() => {
+  $('#js-alert').hide();
+});
 
-/**
- * Check if string is empty or not
- * @param {String | Number} value
- * @returns {Boolean}
- */
 const isEmpty = (value) => {
   if (typeof value === 'string') {
     return !value;
   }
 
   if (typeof value === 'number') {
-    return value < 0;
+    return value === 0;
   }
 };
 
-/**
- *
- * @param {String} type
- * @returns {Array<Function>}
- */
 const useError = (type) => {
   const setError = () => {
     document
@@ -32,53 +24,51 @@ const useError = (type) => {
   const removeError = () => {
     document
       .querySelector(`[data-control="${type}"]`)
-      .classList.remove('is-error');
+      .classList.remove('is-error', 'is-success');
+  };
+
+  const setSuccess = () => {
+    document
+      .querySelector(`[data-control="${type}"]`)
+      .classList.add('is-success');
   };
 
   const setText = (string) => {
     document.querySelector(`[data-input="${type}"]`).innerHTML = string;
   };
 
-  return [setError, removeError, setText];
+  return [setError, setText, setSuccess, removeError];
 };
 
-/**
- * Check for valid Email
- * @param {String} emailString
- * @returns {Array}
- */
 const emailChecker = (emailString) => {
-  if (isEmpty(emailString)) {
-    return ['Email cannot be empty', false];
+  try {
+    if (isEmpty(emailString)) {
+      return ['Email cannot be empty', false];
+    }
+
+    if (countOccurence(emailString, '@') < 1) {
+      return ["Looks like this isn't an email", false];
+    }
+
+    if (countOccurence(emailString, '@') > 1) {
+      return ['@ cannot occur more than 2 times', false];
+    }
+
+    const [recipient, domainName] = emailString.split('@');
+
+    if (!isValidRecipient(recipient)) {
+      return ['Recipient name is invalid', false];
+    }
+
+    if (!isValidDomain(domainName)) {
+      return ['Domain name is invalid', false];
+    }
+    return [null, true];
+  } catch (error) {
+    console.log(error);
+    return ['Hmmm, something wrong but idk what', false];
   }
-
-  if (countOccurence(emailString, '@') < 1) {
-    return ["Looks like this isn't an email", false];
-  }
-
-  if (countOccurence(emailString, '@') > 1) {
-    return ['@ cannot occur more than 2 times', false];
-  }
-
-  const [recipient, domainName] = emailString.split('@');
-
-  if (!isValidRecipient(recipient)) {
-    return ['Recipient name is invalid', false];
-  }
-
-  if (!isValidDomain(domainName)) {
-    return ['Domain name is invalid', false];
-  }
-
-  return [null, true];
 };
-
-/**
- *
- * @param {String} character
- * @param {String} string
- * @returns {Number}
- */
 
 const countOccurence = (string, ch) => {
   return [...string].reduce((prev, curr) => {
@@ -90,11 +80,6 @@ const countOccurence = (string, ch) => {
   }, 0);
 };
 
-/**
- *
- * @param {String} recipient
- * @returns {Boolean}
- */
 const isValidRecipient = (recipient) => {
   const specialCharacters = [
     '!',
@@ -126,22 +111,12 @@ const isValidRecipient = (recipient) => {
   );
 };
 
-/**
- * Check for domain
- * @param {String} domain
- * @returns {Boolean}
- */
 const isValidDomain = (domain) => {
   const domains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'binus.ac.id'];
 
   return domain.match(...domains);
 };
 
-/**
- * Check for username validity
- * @param {String} usernameString Username Value
- * @return {Array}
- */
 const usernameChecker = (usernameString) => {
   if (isEmpty(usernameString)) {
     return ['Username cannot be empty', false];
@@ -154,28 +129,37 @@ const usernameChecker = (usernameString) => {
   return [null, true];
 };
 
-/**
- *
- * @param {Number} day
- * @param {Number} month
- * @param {Number} year
- * @return {Array}
- */
-const dobChecker = (day, month, year) => {
-  if (isEmpty(day) || isEmpty(month) || isEmpty(year)) {
-    return ['Wait, dob cannot be empty', false];
+const dayChecker = (day) => {
+  if (isEmpty(day)) {
+    return ['Day cannot be empty', false];
   }
 
   if (day < 1 || day > 31) {
     return ['Day must in range of 1 - 31', false];
   }
 
+  return [null, true];
+};
+
+const monthChecker = (month) => {
+  if (isEmpty(month)) {
+    return ['Month cannot be empty', false];
+  }
+
   if (month < 1 || month > 12) {
     return ['Month must in range of 1 - 12', false];
   }
 
+  return [null, true];
+};
+
+const yearChecker = (year) => {
+  if (isEmpty(year)) {
+    return ['Year cannot be empty', false];
+  }
+
   if (year < 1970) {
-    return ["Wow, you're old 🤐", false];
+    return ["Wow, you're old", false];
   }
 
   if (new Date().getFullYear() - year < 13) {
@@ -185,11 +169,6 @@ const dobChecker = (day, month, year) => {
   return [null, true];
 };
 
-/**
- * Check Password
- * @param {String} passwordString
- * @returns {Array}
- */
 const passwordChecker = (passwordString) => {
   if (isEmpty(passwordString)) {
     return ['Are you joking?', false];
@@ -234,11 +213,6 @@ const passwordChecker = (passwordString) => {
   return [null, true];
 };
 
-/**
- * @param {String} previous previous password input
- * @param {String} current current password input
- * @returns {Array}
- */
 const confPasswordChecker = (previous, current) => {
   if (isEmpty(current)) {
     return ['?', false];
@@ -250,11 +224,6 @@ const confPasswordChecker = (previous, current) => {
   return [null, true];
 };
 
-/**
- *
- * @param {String} nationality
- * @returns {Array}
- */
 const nationalityChecker = (nationality) => {
   if (isEmpty(nationality)) {
     return ['Please choose a nationality', false];
@@ -263,124 +232,148 @@ const nationalityChecker = (nationality) => {
   return [null, true];
 };
 
-/**
- *
- * @param {HTMLElement} element
- * @returns {Array<Function>}
- */
-const useValue = (element) => {
-  return [
-    element.value,
-    () => {
-      element.value = '';
-    },
-  ];
-};
+const form = document.getElementById('js-form');
 
-document.getElementById('js-form').addEventListener('submit', (e) => {
+const email = form.querySelector('#email');
+email.addEventListener('change', (e) => {
+  const [errorText, errorFlag] = emailChecker(e.target.value);
+  const [setClass, setText, setSuccess, resetClass] = useError('email');
+
+  resetClass();
+  if (!errorFlag) {
+    setClass();
+    setText(errorText);
+  } else {
+    setSuccess();
+  }
+});
+
+const username = form.querySelector('#username');
+username.addEventListener('change', (e) => {
+  const [errorText, errorFlag] = usernameChecker(e.target.value);
+  const [setClass, setText, setSuccess, resetClass] = useError('username');
+
+  resetClass();
+  if (!errorFlag) {
+    setClass();
+    setText(errorText);
+  } else {
+    setSuccess();
+  }
+});
+
+const day = form.querySelector('#day');
+day.addEventListener('change', (e) => {
+  const [errorText, errorFlag] = dayChecker(+e.target.value);
+  const [setClass, setText, setSuccess, resetClass] = useError('dob');
+
+  resetClass();
+  if (!errorFlag) {
+    setClass();
+    setText(errorText);
+  } else {
+    setSuccess();
+  }
+});
+
+const month = form.querySelector('#month');
+month.addEventListener('change', (e) => {
+  const [errorText, errorFlag] = monthChecker(+e.target.value);
+  const [setClass, setText, setSuccess, resetClass] = useError('dob');
+
+  resetClass();
+  if (!errorFlag) {
+    setClass();
+    setText(errorText);
+  } else {
+    setSuccess();
+  }
+});
+
+const year = form.querySelector('#year');
+year.addEventListener('change', (e) => {
+  const [errorText, errorFlag] = yearChecker(+e.target.value);
+  const [setClass, setText, setSuccess, resetClass] = useError('dob');
+
+  resetClass();
+  if (!errorFlag) {
+    setClass();
+    setText(errorText);
+  } else {
+    setSuccess();
+  }
+});
+
+const password = form.querySelector('#password');
+let GlobalPass = '';
+password.addEventListener('change', (e) => {
+  const [errorText, errorFlag] = passwordChecker(e.target.value);
+  const [setClass, setText, setSuccess, resetClass] = useError('password');
+
+  resetClass();
+  if (!errorFlag) {
+    setClass();
+    setText(errorText);
+  } else {
+    setSuccess();
+    GlobalPass = e.target.value;
+  }
+});
+
+const confPassword = form.querySelector('#confirm-password');
+confPassword.addEventListener('change', (e) => {
+  const [errorText, errorFlag] = confPasswordChecker(
+    GlobalPass,
+    e.target.value,
+  );
+  const [setClass, setText, setSuccess, resetClass] =
+    useError('confirm-password');
+
+  resetClass();
+  if (!errorFlag) {
+    setClass();
+    setText(errorText);
+  } else {
+    setSuccess();
+  }
+});
+
+const nationality = form.querySelector('#nationality');
+nationality.addEventListener('change', (e) => {
+  const [errorText, errorFlag] = nationalityChecker(e.target.value);
+
+  const [setClass, setText, setSuccess, resetClass] = useError('nationality');
+
+  resetClass();
+  if (!errorFlag) {
+    setClass();
+    setText(errorText);
+  } else {
+    setSuccess();
+  }
+});
+
+const terms = form.querySelector('#terms');
+terms.addEventListener('change', (e) => {
+  const [setClass, setText, setSuccess, resetClass] = useError('terms');
+
+  resetClass();
+  if (!e.target.checked) {
+    setClass();
+    setText('Please check');
+  } else {
+    resetClass();
+    setSuccess();
+  }
+});
+
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  let isValidInput = true;
+  const formControls = [...document.querySelectorAll('.form__control')];
 
-  const form = e.target;
-  // Get all input elements
-  const [email, resetEmail] = useValue(form.querySelector('#email'));
-  const [username, resetUsername] = useValue(form.querySelector('#username'));
-  const [day, resetDay] = useValue(form.querySelector('#day'));
-  const [month, resetMonth] = useValue(form.querySelector('#month'));
-  const [year, resetYear] = useValue(form.querySelector('#year'));
-  const [password, resetPassword] = useValue(form.querySelector('#password'));
-  const [confPassword, resetConfPassword] = useValue(
-    form.querySelector('#confirm-password'),
-  );
-  const [nationality, resetNationality] = useValue(
-    form.querySelector('#nationality'),
-  );
-  const terms = form.querySelector('#terms');
+  formControls.pop(); // Remove Button
 
-  const [errorEmail, emailFlag] = emailChecker(email);
-  const [errorUsername, usernameFlag] = usernameChecker(username);
-  const [errorDob, dobFlag] = dobChecker(+day, +month, +year);
-  const [errorPassword, passwordFlag] = passwordChecker(password);
-  const [errorConf, confFlag] = confPasswordChecker(password, confPassword);
-  const [errorNationality, nationalityFlag] = nationalityChecker(nationality);
-
-  const [setErrorEmail, removeErrorEmail, setErrorEmailText] =
-    useError('email');
-  const [setErrorUsername, removeErrorUsername, setErrorUsernameText] =
-    useError('username');
-  const [setErrorDob, removeErrorDob, setErrorDobText] = useError('dob');
-  const [setErrorPassword, removeErrorPassword, setErrorPasswordText] =
-    useError('password');
-  const [
-    setErrorConfPassword,
-    removeErrorConfPassword,
-    setErrorConfPasswordText,
-  ] = useError('confirm-password');
-  const [setErrorNationality, removeErrorNationality, setErrorNationalityText] =
-    useError('nationality');
-  const [setErrorTerms, removeErrorTerms, setErrorTermsText] =
-    useError('terms');
-
-  if (!emailFlag) {
-    setErrorEmail();
-    setErrorEmailText(errorEmail);
-    isValidInput = false;
-  }
-
-  if (!usernameFlag) {
-    setErrorUsername();
-    setErrorUsernameText(errorUsername);
-    isValidInput = false;
-  }
-
-  if (!dobFlag) {
-    setErrorDob();
-    setErrorDobText(errorDob);
-    isValidInput = false;
-  }
-
-  if (!passwordFlag) {
-    setErrorPassword();
-    setErrorPasswordText(errorPassword);
-    isValidInput = false;
-  }
-
-  if (!confFlag) {
-    setErrorConfPassword();
-    setErrorConfPasswordText(errorConf);
-    isValidInput = false;
-  }
-
-  if (!nationalityFlag) {
-    setErrorNationality();
-    setErrorNationalityText(errorNationality);
-    isValidInput = false;
-  }
-
-  if (!terms.checked) {
-    setErrorTerms();
-    setErrorTermsText('Please check');
-    isValidInput = false;
-  }
-
-  if (isValidInput) {
-    resetEmail();
-    resetUsername();
-    resetDay();
-    resetMonth();
-    resetYear();
-    resetPassword();
-    resetConfPassword();
-    resetNationality();
-
-    removeErrorEmail();
-    removeErrorUsername();
-    removeErrorDob();
-    removeErrorPassword();
-    removeErrorConfPassword();
-    removeErrorNationality();
-    removeErrorTerms();
-
+  if (formControls.every((el) => el.classList.contains('is-success'))) {
     let count = $('#js-redirect-counter').data('count');
     $('#js-redirect-counter').html(count);
     $('#js-alert').slideDown(function () {

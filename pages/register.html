@@ -30,11 +30,14 @@
     <title>LAFORANT</title>
   </head>
   <body>
+    <a href="/" class="register-logo"
+      ><img src="/assets/images/logo.png" alt=""
+    /></a>
     <main class="register-container l-main-container">
       <section class="register">
         <h1 class="register__title o-big-heading">JOIN THE BETA</h1>
 
-        <form id="js-form" class="form">
+        <form id="js-form" class="form" autocomplete="off">
           <div data-control="email" class="form__control">
             <input
               class="form__input"
@@ -51,7 +54,6 @@
               type="text"
               id="username"
               placeholder="USERNAME"
-              autocomplete="off"
             />
             <div data-input="username" class="helper-text">Error Text</div>
           </div>
@@ -64,6 +66,8 @@
                 name="day"
                 id="day"
                 placeholder="DAY"
+                min="1"
+                max="31"
               />
               <input
                 class="form__input"
@@ -71,6 +75,8 @@
                 name="month"
                 id="month"
                 placeholder="MONTH"
+                min="1"
+                max="12"
               />
               <input
                 class="form__input"
@@ -78,6 +84,7 @@
                 name="year"
                 id="year"
                 placeholder="YEAR"
+                min="1970"
               />
             </div>
 
@@ -120,9 +127,9 @@
             <div data-input="nationality" class="helper-text"></div>
           </div>
 
-          <div class="form__control" data-control="terms">
+          <div class="form__control is-success" data-control="terms">
             <label for="terms">
-              <input type="checkbox" name="terms" id="terms" />
+              <input type="checkbox" name="terms" id="terms" checked />
               <span>I agree to <strong>Terms and Service</strong></span>
             </label>
 
@@ -131,7 +138,7 @@
             </div>
           </div>
 
-          <div class="form__control">
+          <div class="form__control form__control--button">
             <button type="submit" class="form__submit c-btn-accent">
               SUBMIT
               <span class="c-btn-accent__box"></span>
@@ -153,7 +160,7 @@
 
         <div class="alert__redirect">
           Redirecting back to homepage in:
-          <span data-count="5" id="js-redirect-counter" class="counter"></span>
+          <span data-count="3" id="js-redirect-counter" class="counter"></span>
         </div>
       </div>
     </div>
