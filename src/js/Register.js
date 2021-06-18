@@ -204,7 +204,10 @@ const passwordChecker = (passwordString) => {
   if (
     !specialPassCharacters.some((ch) => countOccurence(passwordString, ch) > 0)
   ) {
-    return [`Missing special characters: ${specialPassCharacters.join(' ')}`, false];
+    return [
+      `Missing special characters: ${specialPassCharacters.join(' ')}`,
+      false,
+    ];
   }
 
   if (!numbers.some((num) => countOccurence(passwordString, num) > 0)) {
@@ -374,6 +377,70 @@ form.addEventListener('submit', (e) => {
 
   formControls.pop(); // Remove Button
 
+  if (!email.value) {
+    const [setClass, setText] = useError('email');
+
+    setClass();
+    setText('Email cannot be empty');
+  }
+
+  if (!username.value) {
+    const [setClass, setText] = useError('username');
+
+    setClass();
+    setText('Username cannot be empty');
+  }
+
+  if (!day.value && !month.value && !year.value) {
+    const [setClass, setText] = useError('dob');
+
+    setClass();
+    setText('DOB cannot be empty');
+  }
+
+  if (!day.value) {
+    const [setClass, setText] = useError('dob');
+
+    setClass();
+    setText('Day cannot be empty');
+  }
+
+  if (!month.value) {
+    const [setClass, setText] = useError('dob');
+
+    setClass();
+    setText('Month cannot be empty');
+  }
+
+  if (!year.value) {
+    const [setClass, setText] = useError('dob');
+
+    setClass();
+    setText('Year cannot be empty');
+  }
+
+  if (!password.value) {
+    const [setClass, setText] = useError('password');
+
+    setClass();
+    setText('Password cannot be empty');
+  }
+
+  if (!confPassword.value) {
+    const [setClass, setText] = useError('confirm-password');
+
+    setClass();
+    setText('Confirm Password cannot be empty');
+  }
+
+  if (!nationality.value) {
+    const [setClass, setText] = useError('nationality');
+
+    setClass();
+    setText('Please Select a nationality');
+    return false;
+  }
+
   if (formControls.every((el) => el.classList.contains('is-success'))) {
     let count = $('#js-redirect-counter').data('count');
     $('#js-redirect-counter').html(count);
@@ -388,6 +455,8 @@ form.addEventListener('submit', (e) => {
         }
       }, 1000);
     });
+  } else {
+    alert('Please fill in the form');
   }
 });
 
